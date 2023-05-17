@@ -8,17 +8,35 @@ class Model
     protected $username = "root";
     protected $password = "admin";
 
+    protected $stageHost = "localhost";
+    protected $stageDatabase = "u394975406_veterinary_app";
+    protected $stageUsername = "u394975406_clvc2023";
+    protected $stagePassword = "Clvc2023";
+
     protected $pdo;
     protected $stmt;
     protected $qry;
 
     public function __construct(){
-        $this->connect();
+        // $this->connect();
+
+        $this->connectToStage();
     }
 
     public function connect(){
         try {
             $this->pdo = new PDO("mysql:host={$this->host};dbname={$this->database};charset=utf8","{$this->username}","{$this->password}");
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function connectToStage(){
+        try {
+            $this->pdo = new PDO("mysql:host={$this->stageHost};dbname={$this->stageDatabase};charset=utf8","{$this->stageUsername}","{$this->stagePassword}");
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             
