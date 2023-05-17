@@ -1,0 +1,49 @@
+/* Container for messages */
+.message-container {
+  background-color: #f1f1f1;
+  padding: 20px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+/* Individual messages */
+.message {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+
+/* Message sent by user */
+.user-message {
+  background-color: #DCF8C6;
+  align-self: flex-end;
+}
+
+/* Message sent by vet */
+.vet-message {
+  background-color: #E0E0E0;
+  align-self: flex-start;
+}
+
+/* Style for message input box */
+.message-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+/* Style for send button */
+.send-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

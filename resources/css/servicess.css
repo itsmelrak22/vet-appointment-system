@@ -1,0 +1,152 @@
+
+section {
+    height: fit-content;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding-bottom: 10px;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .row h2{
+    padding: 20px;
+  }
+
+  .column {
+    width: 100%;
+    padding: 0 1em 1em 1em;
+    text-align: center;
+  }
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 2em 1.5em;
+    background: linear-gradient(#ffffff 50%,#0C375A 50%);
+    background-size: 100% 200%;
+    background-position: 0 2.5%;
+    border-radius: 5px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: pink;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f194c;
+    margin: 1em 0;
+  }
+  p {
+    color: #575a7b;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+  .icon-wrapper {
+    background-color: #0C375A;
+    position: relative;
+    margin: auto;
+    font-size: 30px;
+    height: 2.5em;
+    width: 2.5em;
+    color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: 0.5s;
+  }
+  .card:hover {
+    background-position: 0 100%;
+  }
+  .card:hover .icon-wrapper {
+    background-color: #ffffff;
+    color:#0C375A;
+  }
+  .card:hover h3 {
+    color: #ffffff;
+  }
+  .card:hover p {
+    color: #f0f0f0;
+  }
+  
+    .SeeMore{
+    display: flex;
+    justify-content: center;
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+  
+  .SeeMore:hover {
+    background-color: #0C375A;
+    text-decoration: none;
+    transition-duration: 0.1s;
+  }
+  
+  .SeeMore:disabled {
+    /* background-color: #FAFBFC; */
+    background-color: ;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+  }
+  
+  .SeeMore:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+  }
+  
+  .SeeMore:focus {
+    outline: 1px transparent;
+  }
+  
+  .SeeMore:before {
+    display: none;
+  }
+  
+  .SeeMore:-webkit-details-marker {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    section {
+      padding: 0 2em;
+    }
+    .column {
+      flex: 0 50%;
+      max-width: 50%;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    section {
+      padding: 1em 3em;
+    }
+    .column {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+    }
+  }
+  

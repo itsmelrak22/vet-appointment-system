@@ -1,0 +1,91 @@
+/* Contact Section */
+#contact {
+  background-color: #f9f9f9;
+  padding: 80px 0;
+}
+
+#contact h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#contact p {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+#contact label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#contact input[type="text"], 
+#contact input[type="email"], 
+#contact input[type="tel"], 
+#contact textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+#contact input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#contact input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#contact textarea {
+  height: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  #contact {
+    padding: 100px 0;
+  }
+  
+  #contact form {
+    width: 50%;
+    margin: auto;
+  }
+  
+  #contact input[type="text"], 
+  #contact input[type="email"], 
+  #contact input[type="tel"], 
+  #contact textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+}
+
+.success-message {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 9999;
+}

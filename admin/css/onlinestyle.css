@@ -1,0 +1,64 @@
+/* Style for the appointment container */
+.appointment {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+/* Style for the appointment title */
+.appointment h3 {
+  margin-top: 0;
+}
+
+/* Style for the appointment information */
+.appointment p {
+  margin: 0;
+}
+
+/* Style for the owner name */
+.appointment p strong:first-of-type {
+  display: inline-block;
+  width: 150px;
+}
+
+/* Style for the email */
+.appointment p strong:nth-of-type(2) {
+  display: inline-block;
+  width: 150px;
+}
+
+/* Style for the phone number */
+.appointment p strong:nth-of-type(3) {
+  display: inline-block;
+  width: 150px;
+}
+
+/* Style for the appointment date */
+.appointment p strong:nth-of-type(4) {
+  display: inline-block;
+  width: 150px;
+}
+
+/* Style for the pet name */
+.appointment p strong:nth-of-type(5) {
+  display: inline-block;
+  width: 150px;
+}
+
+/* Style for the animal type */
+.appointment p strong:nth-of-type(6) {
+  display: inline-block;
+  width: 150px;
+}
+
+/* Style for the breed */
+.appointment p strong:nth-of-type(7) {
+  display: inline-block;
+  width: 150px;
+}
+
+/* Style for the reference number */
+.appointment p strong:nth-of-type(8) {
+  display: inline-block;
+  width: 150px;
+}
