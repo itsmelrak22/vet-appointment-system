@@ -1,6 +1,6 @@
 <?php
 
-Class MeetingLinks extends Model {
+Class MeetingLink extends Model {
 
     protected $table = 'meeting_links';
 

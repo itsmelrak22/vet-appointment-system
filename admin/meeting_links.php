@@ -5,32 +5,32 @@ spl_autoload_register(function ($class) {
     include '../models/' . $class . '.php';
 });
 
-$instance = new Meeting;
-$doctors = $instance->allWithOutTrash();
+$instance = new MeetingLink;
+$links = $instance->allWithOutTrash();
 ?>
 <?php require_once('includes/header.php') ?>
 <?php require_once('includes/sidebar.php') ?> 
 <body>
-<?php require_once('modals/doctor_modal.php') ?>    
+<?php require_once('modals/meeting_link_modal.php') ?>    
 
 <main>
 	<div class="head-title">
 		<div class="left">
-			<h1>Record list</h1>
+			<h1>Meeeting list</h1>
 			<ul class="breadcrumb">
 				<li>
 					<a class="active" href="../admin/services_list.php">Service list</a>
 				</li>
-				<li><i class='bx bx-chevron-right' ></i></li>
+				<!-- <li><i class='bx bx-chevron-right' ></i></li>
 				<li>
 					<a class="active" href="../admin/doctor_list.php"> Doctor's Information </a> 
-				</li>
+				</li> -->
 			</ul>
 		</div>
 		<!-- Button trigger modal -->
 		<button type="button" class="add" data-bs-toggle="modal" data-bs-target="#createModal">
 			<i class='bx bx-plus'></i>
-			<span class="text">Add doctor</span>
+			<span class="text">Add Meeting Link</span>
 		</button>
 	</div>
 
@@ -68,25 +68,23 @@ $doctors = $instance->allWithOutTrash();
 			<table>
 				<thead>
 					<tr>
-						<th>Doctor's Name</th>
-						<th>Age</th>
-						<th>Description</th>
+						<th>Link</th>
+						<th>Status</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($doctors as $key => $doctor) { ?>
+					<?php foreach ($links as $key => $row) { ?>
 						<tr>
-							<td> <?= $doctor['name'] ?> </td>
-							<td> <?= $doctor['age'] ?> </td>
-							<td> <?= $doctor['description'] ?> </td>
+							<td> <?= $row['link'] ?> </td>
+							<td> <?= $row['status'] ?> </td>
 							<td> 
-								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
+								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
 									<i class='bx bx-pencil'></i>
 									<span class="text">Edit</span>
 								</button>
 
-								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
+								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
 									<i class='bx bx-trash'></i>
 									<span class="text">Delete</span>
 								</button>
@@ -104,12 +102,9 @@ $doctors = $instance->allWithOutTrash();
 
 <script>
     function editRow(row) {
-		
         document.getElementById('edit-id').value = row.id;
-        document.getElementById('edit-name').value = row.name;
-        document.getElementById('edit-age').value = row.age;
-        document.getElementById('edit-description').value = row.description;
-		previewEditImage(row.avatar)
+        document.getElementById('edit-link').value = row.link;
+        document.getElementById('edit-status').value = row.status;
     }
 
 	function deleteRow(row) {

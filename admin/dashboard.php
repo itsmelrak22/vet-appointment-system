@@ -25,7 +25,7 @@
 				</a>
 			</li>
 			<li style="height: 175px">
-				<a href="../admin/dashboard-completed.php">
+				<a href="../admin/dashboard-scheduling.php">
 					<i class='' ></i>
 					<span class="text">
 						<h3> </h3>
