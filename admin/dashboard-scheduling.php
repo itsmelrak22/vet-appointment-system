@@ -91,31 +91,70 @@
 			</div>
 		</div>
 	</div>
-	
 	</main>
 
 
 
 <?php require_once('includes/footer.php') ?> 
+<script>
+	let selectedDate = '';
+
+	document.addEventListener('DOMContentLoaded', function() {
+	var selectedDateElement = document.getElementById('selected-date');
+	var currentDate = new Date().toLocaleDateString();
+	selectedDateElement.textContent = 'SELECTED DATE: ' + currentDate;
+	selectedDate = currentDate;
+
+	});
+</script>
 
 <script>
 	$(function() {
       $("#datepicker").datepicker({
 		minDate: new Date(),
         onSelect: function(dateText, inst) {
+			selectedDate = dateText;
           $("#selected-date").text("SELECTED DATE: " + dateText);
+	console.log(selectedDate)
+
         }
       });
     });
+
 </script>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-	var selectedDateElement = document.getElementById('selected-date');
-	var currentDate = new Date().toLocaleDateString();
-	selectedDateElement.textContent = 'SELECTED DATE: ' + currentDate;
-	});
+  // Function to handle the AJAX request
+  function addTimeSlot() {
+    // Retrieve the selected date
+    var date = selectedDate;
+
+    // Create the AJAX request
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'query_resource/timeslot_create.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Set up the callback function for when the request is complete
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        // Request was successful, handle the response
+        console.log(xhr.responseText);
+        // Additional logic to handle the response can be added here
+      } else {
+        // Request failed, handle the error
+        console.error('Error: ' + xhr.status);
+      }
+    };
+
+    // Send the request
+    xhr.send('date=' + encodeURIComponent(date));
+  }
+
+
 </script>
+
+
+
 
 
 <!-- <script>

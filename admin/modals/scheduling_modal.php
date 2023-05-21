@@ -2,7 +2,6 @@
 <div class="modal fade" id="createModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
-      <form action="" method="post"  enctype="multipart/form-data">
         <div class="modal-header">
           <h5 class="modal-title" id="testModalLabel">Create Time Slot</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -25,9 +24,8 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Add Time slot</button>
+          <button type="button" class="btn btn-primary" onClick="addTimeSlot()">Add Time slot</button>
         </div>
-      </form>
     </div>
   </div>
 </div>
@@ -36,7 +34,6 @@
 <div class="modal fade" id="editModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
-      <form action="" method="post"  enctype="multipart/form-data">
         <div class="modal-header">
           <h5 class="modal-title" id="testModalLabel">Edit User</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -66,9 +63,8 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Edit Service</button>
+          <button type="button" class="btn btn-primary">Edit Service</button>
         </div>
-      </form>
     </div>
   </div>
 </div>
