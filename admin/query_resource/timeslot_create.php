@@ -1,46 +1,46 @@
 <?php
-// Retrieve the selected date from the AJAX request
-$date = $_POST['date'];
+session_start();
+date_default_timezone_set('Asia/Manila');
+header('Content-Type: application/json; charset=utf-8');
 
-print_r( $date );
-exit();
+spl_autoload_register(function ($class) {
+    include '../../models/' . $class . '.php';
+});
+
+$today = date('Y-m-d H:i:s');
+$instance = new Schedule;
+
+$data = json_decode($_POST['data']);
 
 // Perform validation and sanitization on the date
-$date = trim($date); // Remove leading/trailing whitespace
-$date = filter_var($date, FILTER_SANITIZE_STRING); // Sanitize the date as a string
+$date = trim($data->date); // Remove leading/trailing whitespace
+$date = filter_var($date, FILTER_SANITIZE_STRING);
+$hour = filter_var($data->hour, FILTER_SANITIZE_STRING);
+$minutes = filter_var($data->minute, FILTER_SANITIZE_STRING);
+$period = filter_var($data->period, FILTER_SANITIZE_STRING);
+$type = filter_var($data->type, FILTER_SANITIZE_STRING);
 
-// Validate the date format (YYYY-MM-DD)
-if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
-  // Invalid date format
-  echo 'Invalid date format';
-  exit;
+
+$schedules = $instance->setQuery( "SELECT * FROM `schedules` WHERE `date` = '$date' AND `hour` = '$hour' AND `minutes` = '$minutes' AND `period` = '$period' ")->getAll();
+if (count( $schedules ) > 0) {
+    $errors[] = "Schedule is already Registered";
 }
 
-// Example: Insert the timeslot into the database
-// Replace the following code with your database connection and query logic
-
-// Database connection configuration
-$servername = 'your_servername';
-$username = 'your_username';
-$password = 'your_password';
-$dbname = 'your_database_name';
-
-// Create a new PDO instance
-$pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-
-// Prepare the SQL statement
-$sql = "INSERT INTO timeslots (date) VALUES (:date)";
-$stmt = $pdo->prepare($sql);
-
-// Bind the parameters
-$stmt->bindParam(':date', $date);
-
-// Execute the query
-if ($stmt->execute()) {
-  // Timeslot added successfully
-  echo 'Timeslot added to the database';
-} else {
-  // Error occurred while adding the timeslot
-  echo 'Error adding timeslot';
+if( isset($errors) && count( $errors ) > 0 ){
+    http_response_code(500);
+    echo json_encode(array('error' => 'An error occurred.', "message" => $errors[0]));
+    exit();
+}else{
+    try {
+        $instance->setQuery(" INSERT INTO `schedules`( `date`, `hour`, `minutes`, `period`, `type`, `created_at`, `updated_at`) VALUES ('$date','$hour','$minutes','$period','$type','$today','$today')");
+        http_response_code(200);
+        echo json_encode(array('message' => 'Success' ));
+        exit();
+    } catch (\PDOException  $e) {
+        http_response_code(500);
+        echo json_encode(array('error' => 'An error occurred.', "message" => $e->getMessage()));
+        exit();
+    }
 }
+
 ?>

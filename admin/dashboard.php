@@ -26,7 +26,7 @@
 			</li>
 			<li style="height: 175px">
 				<a href="../admin/dashboard-scheduling.php">
-					<i class='' ></i>
+					<i class='bx bx-calendar'></i>
 					<span class="text">
 						<h3> </h3>
 						<p>Scheduling</p>
