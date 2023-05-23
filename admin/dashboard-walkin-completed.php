@@ -5,14 +5,14 @@
 	<main>
 	<?php require_once('includes/count-cards-walkin.php') ?> 
 
-		<div class="table-data">
-			<div class="order">
+	<div class="card" style="height: 60vh">
+			<div class="card-body">
 				<div class="head">
 					<h3>Completed Appointment</h3>
 					<i class='bx bx-search' ></i>
 					<i class='bx bx-filter' ></i>
 				</div>
-				<table>
+				<table id="example" class="table table-striped" >
 					<thead>
 						<tr>
 							<th>Customer Name</th>
@@ -39,5 +39,11 @@
 				</table>
 		</div>
 	</main>
+	<?php require_once('includes/scripts.php') ?> 
+	<script>
+		$(document).ready(function () {
+		$('#example').DataTable();
+	});
+	</script>
 	<?php require_once('includes/footer.php') ?> 
 	

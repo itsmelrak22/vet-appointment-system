@@ -3,8 +3,8 @@
 *{
 margin: 0;
 padding: 0;
-box-sizing: border-box;
-font-family: "Poppins" , sans-serif;
+/* box-sizing: border-box; */
+/* font-family: "Poppins" , sans-serif; */
 }
 .sidebar{
 position: fixed;
@@ -164,7 +164,7 @@ bottom: -8px;
 padding: 10px 14px;
 background: #1d1b31;
 transition: all 0.5s ease;
-overflow: hidden;
+/* overflow: hidden; */
 }
 .sidebar.open li.profile{
 width: 250px;

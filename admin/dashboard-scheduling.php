@@ -94,6 +94,7 @@
 
 
 
+<?php require_once('includes/scripts.php') ?> 
 <?php require_once('includes/footer.php') ?> 
 <script>
 	let selectedDate = '';
@@ -265,3 +266,4 @@
 
 
 </script>
+<?php require_once('includes/footer.php') ?> 

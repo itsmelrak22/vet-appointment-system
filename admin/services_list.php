@@ -17,16 +17,7 @@ $services = $serviceInstance->allWithOutTrash();
 <main>
 	<div class="head-title">
 		<div class="left">
-			<h1>Record list</h1>
-			<ul class="breadcrumb">
-				<li>
-					<a class="active" href="../admin/services_list.php">Service list</a>
-				</li>
-				<li><i class='bx bx-chevron-right' ></i></li>
-				<li>
-					<a class="active" href="../admin/doctor_list.php"> Doctor's Information </a> 
-				</li>
-			</ul>
+			<h1>Services</h1>
 		</div>
 		<button type="button" class="add" data-bs-toggle="modal" data-bs-target="#createModal">
 			<i class='bx bx-plus'></i>
@@ -60,17 +51,15 @@ $services = $serviceInstance->allWithOutTrash();
 
 
 
-	<div class="table-data">
-		<div class="order">
-			<div class="head">
-				<h3>Service list</h3>
-			</div>
-			<table>
+	<div class="card" style="height: 75vh">
+		<div class="card-body">
+			<table id="example" class="table table-striped" style="width:100%;">
 				<thead>
 					<tr>
 						<th>Service Name </th>
 						<th>Info</th>
 						<th>Cost</th>
+						<th>Duration (Minutes)</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -80,13 +69,17 @@ $services = $serviceInstance->allWithOutTrash();
 							<td> <?= $service['name'] ?> </td>
 							<td> <?= $service['info'] ?> </td>
 							<td> <?= $service['price'] ?> </td>
+							<td> <?= $service['duration_minutes'] == '61' ? 
+										'60 mins and up' : 
+										($service['duration_minutes'] ? $service['duration_minutes'] . ' mins' : 
+										'') ?>  </td>
 							<td> 
-								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
+								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
 									<i class='bx bx-pencil'></i>
 									<span class="text">Edit</span>
 								</button>
 
-								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
+								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
 									<i class='bx bx-trash'></i>
 									<span class="text">Delete</span>
 								</button>
@@ -98,17 +91,24 @@ $services = $serviceInstance->allWithOutTrash();
 		</div>
 	</div>
 </main>
-<?php require_once('includes/footer.php') ?> 
 
-
+<?php require_once('includes/scripts.php') ?> 
+<script>
+	$(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
 
 <script>
     function editRow(row) {
-		
+		console.log(row)
         document.getElementById('edit-id').value = row.id;
         document.getElementById('edit-name').value = row.name;
         document.getElementById('edit-info').value = row.info;
         document.getElementById('edit-price').value = row.price;
+		document.getElementById('edit-is_60_more').checked = row.duration_minutes == '61' ? true : false;
+        document.getElementById('edit-duration_minutes').value = row.duration_minutes == '61' ? '' : row.duration_minutes;
+        document.getElementById('edit-duration_minutes').disabled = row.duration_minutes == '61' ? true : false;
 
     }
 
@@ -117,3 +117,5 @@ $services = $serviceInstance->allWithOutTrash();
 	}
 
 </script>
+
+<?php require_once('includes/footer.php') ?> 

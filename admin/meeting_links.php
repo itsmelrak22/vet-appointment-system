@@ -17,15 +17,6 @@ $links = $instance->allWithOutTrash();
 	<div class="head-title">
 		<div class="left">
 			<h1>Meeeting list</h1>
-			<ul class="breadcrumb">
-				<li>
-					<a class="active" href="../admin/services_list.php">Service list</a>
-				</li>
-				<!-- <li><i class='bx bx-chevron-right' ></i></li>
-				<li>
-					<a class="active" href="../admin/doctor_list.php"> Doctor's Information </a> 
-				</li> -->
-			</ul>
 		</div>
 		<!-- Button trigger modal -->
 		<button type="button" class="add" data-bs-toggle="modal" data-bs-target="#createModal">
@@ -60,12 +51,9 @@ $links = $instance->allWithOutTrash();
 
 
 
-	<div class="table-data">
-		<div class="order">
-			<div class="head">
-				<h3>Doctor list</h3>
-			</div>
-			<table>
+	<div class="card" style="height: 75vh">
+		<div class="card-body">
+			<table id="example" class="table table-striped">
 				<thead>
 					<tr>
 						<th>Link</th>
@@ -79,12 +67,12 @@ $links = $instance->allWithOutTrash();
 							<td> <?= $row['link'] ?> </td>
 							<td> <?= $row['status'] ?> </td>
 							<td> 
-								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
+								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
 									<i class='bx bx-pencil'></i>
 									<span class="text">Edit</span>
 								</button>
 
-								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
+								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
 									<i class='bx bx-trash'></i>
 									<span class="text">Delete</span>
 								</button>
@@ -96,9 +84,13 @@ $links = $instance->allWithOutTrash();
 		</div>
 	</div>
 </main>
-<?php require_once('includes/footer.php') ?> 
+<?php require_once('includes/scripts.php') ?> 
 
-
+<script>
+	$(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
 
 <script>
     function editRow(row) {
@@ -112,3 +104,5 @@ $links = $instance->allWithOutTrash();
 	}
 
 </script>
+
+<?php require_once('includes/footer.php') ?> 

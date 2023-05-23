@@ -16,16 +16,7 @@ $doctors = $instance->allWithOutTrash();
 <main>
 	<div class="head-title">
 		<div class="left">
-			<h1>Record list</h1>
-			<ul class="breadcrumb">
-				<li>
-					<a class="active" href="../admin/services_list.php">Service list</a>
-				</li>
-				<li><i class='bx bx-chevron-right' ></i></li>
-				<li>
-					<a class="active" href="../admin/doctor_list.php"> Doctor's Information </a> 
-				</li>
-			</ul>
+			<h1>Doctor list</h1>
 		</div>
 		<!-- Button trigger modal -->
 		<button type="button" class="add" data-bs-toggle="modal" data-bs-target="#createModal">
@@ -60,12 +51,9 @@ $doctors = $instance->allWithOutTrash();
 
 
 
-	<div class="table-data">
-		<div class="order">
-			<div class="head">
-				<h3>Doctor list</h3>
-			</div>
-			<table>
+	<div class="card" style="height: 75vh">
+	<div class="card-body">
+			<table id="example" class="table table-striped">
 				<thead>
 					<tr>
 						<th>Doctor's Name</th>
@@ -98,9 +86,13 @@ $doctors = $instance->allWithOutTrash();
 		</div>
 	</div>
 </main>
-<?php require_once('includes/footer.php') ?> 
 
-
+<?php require_once('includes/scripts.php') ?> 
+<script>
+	$(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
 
 <script>
     function editRow(row) {
@@ -117,3 +109,4 @@ $doctors = $instance->allWithOutTrash();
 	}
 
 </script>
+<?php require_once('includes/footer.php') ?> 

@@ -25,4 +25,5 @@ if( !isset($_SESSION['token']) || !isset($_SESSION['user'])) {
     <link rel="stylesheet" href="css/dashboard-styles.css">
     <link rel="stylesheet" href="css/sidebar-styles.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">

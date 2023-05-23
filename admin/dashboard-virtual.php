@@ -3,16 +3,18 @@
 <body>
 	<?php require_once('includes/sidebar.php') ?> 
 	<main>
-	<?php require_once('includes/count-cards-virtual.php') ?> 
+	<div class="mb-10">
+		<?php require_once('includes/count-cards-virtual.php') ?> 
+	</div>
 
-		<div class="table-data">
-			<div class="order">
+		<div class="card" style="height: 60vh">
+			<div class="card-body">
 				<div class="head">
 					<h3>Appointment for today</h3>
 					<i class='bx bx-search' ></i>
 					<i class='bx bx-filter' ></i>
 				</div>
-				<table>
+				<table id="example" class="table table-striped" >
 					<thead>
 						<tr>
 							<th>Customer Name</th>
@@ -39,6 +41,12 @@
 				</table>
 		</div>
 	</main>
+	<?php require_once('includes/scripts.php') ?> 
+	<script>
+		$(document).ready(function () {
+		$('#example').DataTable();
+	});
+	</script>
 	<?php require_once('includes/footer.php') ?> 
 
 

@@ -38,6 +38,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Price is required";
     }
 
+    if( isset($_POST['duration_minutes']) ){
+        $duration_minutes = $_POST['duration_minutes'];
+        $duration_minutes = filter_var($duration_minutes, FILTER_SANITIZE_STRING);
+        if (empty($duration_minutes)) {
+            $errors[] = "Duration is required";
+        }
+    }
+
+    if( isset($_POST['is_60_more']) ){
+        $duration_minutes = 61;
+    }
+    
+
+
     // Check if already taken
     $services = $serviceClass->setQuery( "SELECT * FROM `services` WHERE `name` = '$name' AND  `id` <> $id;" )->getAll();
     if (count( $services ) > 0) {
@@ -53,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     SET `name` = '$name',
                                         `info` = '$info',
                                         `price` = '$price',
+                                        `duration_minutes` = '$duration_minutes',
                                         `updated_at` = '$today'
                                     WHERE `id` = $id;
                                     ");

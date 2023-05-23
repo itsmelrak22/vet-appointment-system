@@ -11,6 +11,9 @@ $serviceClass = new Service;
 
 header('Content-Type: application/json; charset=utf-8');
 
+// print_r($_POST);
+// exit();
+
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -32,6 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Price is required";
     }
 
+    if( isset($_POST['duration_minutes']) ){
+        $duration_minutes = $_POST['duration_minutes'];
+        $duration_minutes = filter_var($duration_minutes, FILTER_SANITIZE_STRING);
+        if (empty($duration_minutes)) {
+            $errors[] = "Duration is required";
+        }
+    }
+
+    if( isset($_POST['is_60_more']) ){
+        $duration_minutes = 61;
+    }
+    
+
 
     $services = $serviceClass->setQuery( "SELECT * FROM `services` WHERE `name` = '$name'" )->getAll();
     if (count( $services ) > 0) {
@@ -43,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../services_list.php');
     }else{
         try {
-            $serviceClass->setQuery(" INSERT INTO `services`( `name`, `info`, `price`,`created_at`, `updated_at`) VALUES ('$name','$info','$price','$today', '$today') ");
+            $serviceClass->setQuery(" INSERT INTO `services`( `name`, `info`, `price`, `duration_minutes`, `created_at`, `updated_at`) VALUES ('$name','$info','$price','$duration_minutes','$today', '$today') ");
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
         }

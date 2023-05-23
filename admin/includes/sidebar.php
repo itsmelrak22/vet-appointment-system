@@ -24,12 +24,12 @@
           <span class="tooltip">Dashboard</span>
         </li>
 
-        <!-- <li>
-          <a href="walkin_list.php">
+        <li>
+          <a href="dashboard-walkin.php">
             <span class="position-relative">
                 <?php 
                       // $select_walkin = mysqli_query($conn,"SELECT * FROM appointments WHERE status='Pending'"); 
-                      // $counter_walk = 0;
+                      $counter_walk = 0;
                       // if (mysqli_num_rows($select_walkin)){
                       //     while($walk=mysqli_fetch_array($select_walkin)){
                       //       $counter_walk = $counter_walk + 1;     
@@ -39,20 +39,20 @@
                   ?>
                 <i class='bx bx-copy-alt'></i>
                 <span id="notif_walk" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -5px;">
-                  <?php //echo $counter_walk; ?>
+                  <?php echo $counter_walk; ?>
                 </span>
             </span>
-            <span class="links_name" >Walk in appointment</span>
+            <span class="links_name" >Clinic appointment</span>
           </a>
-          <span class="tooltip">Walk in list</span>
-        </li> -->
+          <span class="tooltip">Clinic appointment list</span>
+        </li>
 
-        <!-- <li>
-          <a href="virtual.php">
+        <li>
+          <a href="dashboard-virtual.php">
             <span class="position-relative">
               <?php 
                     // $select_virtual = mysqli_query($conn,"SELECT * FROM appointments2"); 
-                    // $counter_virtual = 0;
+                    $counter_virtual = 0;
                     // if (mysqli_num_rows($select_virtual)){
                     //     while($vir=mysqli_fetch_array($select_virtual)){
                     //     $counter_virtual = $counter_virtual + 1;     
@@ -61,12 +61,14 @@
                     // }
                 ?> 
                 <i class='bx bx-video'></i>
-              <span  id="notif_virtual" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -5px;"> <?php // echo $counter_virtual;?> </span>
+              <span  id="notif_virtual" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -5px;"> 
+                <?php echo $counter_virtual;?> 
+              </span>
             </span>
             <span class="links_name">Virtual appointment</span>
           </a>
           <span class="tooltip">Virtual list</span>
-        </li> -->
+        </li>
       
         <!-- <li>
           <a href="../admin/messreq.php">
@@ -75,21 +77,17 @@
           </a>
           <span class="tooltip">Inquries</span>
         </li> -->
+        <hr style="color: white">
+        <div class="logo-details">
+          <div class="logo_name">Admin Settings</div>
+        </div>
 
         <li>
-          <a href="../admin/doctor_list.php">
-          <i class='bx bx-user'></i>
-            <span class="links_name">Doctor List</span>
+          <a href="../admin/meeting_links.php">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Meeting Links</span>
           </a>
-          <span class="tooltip">Doctor List</span>
-        </li>
-
-        <li>
-          <a href="../admin/services_list.php">
-          <i class='bx bx-server'></i>
-            <span class="links_name">Services</span>
-          </a>
-          <span class="tooltip">Services</span>
+          <span class="tooltip">Meeting Links</span>
         </li>
 
         <li>
@@ -101,11 +99,19 @@
         </li>
 
         <li>
-          <a href="../admin/meeting_links.php">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Meeting Links</span>
+          <a href="../admin/services_list.php">
+          <i class='bx bx-server'></i>
+            <span class="links_name">Services</span>
           </a>
-          <span class="tooltip">Meeting Links</span>
+          <span class="tooltip">Services</span>
+        </li>
+
+        <li>
+          <a href="../admin/doctor_list.php">
+          <i class='bx bx-user'></i>
+            <span class="links_name">Doctor List</span>
+          </a>
+          <span class="tooltip">Doctor List</span>
         </li>
         
           <li class="profile">

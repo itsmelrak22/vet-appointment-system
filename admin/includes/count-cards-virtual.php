@@ -16,15 +16,6 @@ $cancelledAppointments = $connection->setQuery( "SELECT * FROM appointments WHER
 <div class="head-title">
     <div class="left">
         <h1>Dashboard -  Virtual Consultation</h1>
-        <ul class="breadcrumb">
-            <li>
-                <a href="../admin/dashboard.php">Dashboard</a>
-            </li>
-            <li><i class='bx bx-chevron-right' ></i></li>
-            <li>
-                <a class="active" href="../admin/dashboard.php">Home</a> 
-            </li>
-        </ul>
     </div>
 </div>
 
