@@ -1,6 +1,4 @@
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <footer id="contact-us">
     <div class="content">
       <div class="top">
@@ -324,13 +322,12 @@ footer .bottom-details .bottom_text{
 }
 
 /* STYLE TO SA MODAL AT SEND A MESSAGE */
-.send{
+/* .send{
     display: flex;
      justify-content: center; 
-    /* align-items: center; */
     align-content: center;
-}
-.wrapper{
+} */
+/* .wrapper{
     padding: 10px;
      background-color: black;
      justify-content: center;
@@ -377,15 +374,14 @@ footer .bottom-details .bottom_text{
 }
 .modal__footer {
     text-align: right;
-}
-.modal__close {
+} */
+/* .modal__close {
     position: absolute;
     top: 20px;
     right: 10px;
-    /* color: #585858; */
     size: 10rem;
     text-decoration: none;
-}
+} */
 h2{
 	margin:10px 0;
 	padding-bottom:10px;

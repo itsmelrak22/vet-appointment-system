@@ -2,7 +2,7 @@
   <div class="sidebar" >
     <ul class="nav-list">
       <li style="margin-left: -25px;">
-          <a href="index.html">
+          <a href="../index.php">
           <img src="../images/adlogo.png"></img>
           <span class="links_name">Go to Website</span>
           <span class="tooltip">Go to Website </span>
