@@ -17,7 +17,7 @@
               </div>
               <div class="col-6">
                 
-                <a href="appoint_walkin.php" class="btn btn-lg btn-outline-primary w-100" >
+                <a href="appoint_virtual.php" class="btn btn-lg btn-outline-primary w-100" >
                   <i class="fa-solid fa-video"></i> Virtual
                 </a>
               </div>

@@ -3,7 +3,18 @@
 
     <div class="container" style="height: 77vh">
         <div class="row" style="margin-top: 115px;">
-
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </symbol>
+          <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+          </symbol>
+          <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </symbol>
+        </svg>
+          
           <?php if ( isset($_SESSION['errors']) && count( $_SESSION['errors'] ) > 0 ) { ?>
             <div class="mt-4">
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -27,7 +38,7 @@
               </div>
             </div>
           <?php unset($_SESSION['success']); }  ?>
-            <h3>Walk in Appointment</h3>
+            <h3>Virtual Appointment</h3>
             <div class="row">
               <div class="col" style="margin-left: 50px;">
                   <h3 id="">PLEASE SELECT DATE: </h3>
@@ -41,8 +52,8 @@
                     <div class="card">
                       <div class="card-body">
                         <h5 class="card-title">Fill out pet information form</h5>
-                          <form action="queries/walkin/create.php" method="post"  enctype="multipart/form-data">
-                            <input type="hidden" name="appointment_type" value="walkin">
+                          <form action="queries/virtual/create.php" method="post"  enctype="multipart/form-data">
+                            <input type="hidden" name="appointment_type" value="virtual">
                             <input type="hidden" name="appointment_date" value="" id="appointment_date">
                             <div class="row">
                               <div class="mb-3">
@@ -76,15 +87,6 @@
                                   <option value="04:00">04:00</option>
                                 </select>
                               </div>
-                              <div class="col-6 mb-3" >
-                                <label for="service-select" class="form-label">Service</label>
-                                <select class="form-select client-select-service" name="service_id" id="service-select" required>
-                                  <option disabled selected>Select a service</option>
-                                </select>
-                              </div>
-                              <div class="col-12 mb-2" id="service-info">
-                                
-                              </div>
                               <div class="col-6 mb-3">
                                 <label for="petName" class="form-label">Pet name</label>
                                 <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name"required>
@@ -109,6 +111,20 @@
                               <div class="col-6 mb-3">
                                 <label for="age" class="form-label">Age</label>
                                 <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age" required>
+                              </div>
+                              <div class="col-12 mb-3">
+                                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                                  <div>
+                                    Send the Payment to: <strong>09151587882</strong>
+                                  </div>
+                                </div>
+                                <label for="age" class="form-label">Gcash Reference #:</label>
+                                <input type="text" class="form-control" id="age" name="reference_no" placeholder="Reference #" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="formFileSm" class="form-label">Upload Screenshot here</label>
+                                <input type="file" class="form-control" id="image" name="image" accept="image/*" aria-describedby="inputGroup-sizing-sm"  required>
                               </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -238,32 +254,32 @@
 </script>
 
 <script>
-var xhr = new XMLHttpRequest();
-var serviceResponse
-xhr.onreadystatechange = function() {
-  if (xhr.readyState === 4 && xhr.status === 200) {
-    serviceResponse = JSON.parse(xhr.responseText);
-    // Handle the response here
-		console.log( 'serviceResponse', serviceResponse )
+// var xhr = new XMLHttpRequest();
+// var serviceResponse
+// xhr.onreadystatechange = function() {
+//   if (xhr.readyState === 4 && xhr.status === 200) {
+//     serviceResponse = JSON.parse(xhr.responseText);
+//     // Handle the response here
+// 		console.log( 'serviceResponse', serviceResponse )
 
-    // Create select element
-    const select = document.getElementById('service-select');
-    select.addEventListener('change', handleSelectChange);
+//     // Create select element
+//     const select = document.getElementById('service-select');
+//     select.addEventListener('change', handleSelectChange);
 
-    // Create and add options
-    serviceResponse.data.forEach(item => {
-      const option = document.createElement('option');
-      option.value = item.id;
-      option.text = item.name;
-      select.appendChild(option);
-    });
-  }
+//     // Create and add options
+//     serviceResponse.data.forEach(item => {
+//       const option = document.createElement('option');
+//       option.value = item.id;
+//       option.text = item.name;
+//       select.appendChild(option);
+//     });
+//   }
 
-};
+// };
 
-xhr.open("GET", 'queries/get_services.php' , true);
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.send();
+// xhr.open("GET", 'queries/get_services.php' , true);
+// xhr.setRequestHeader("Content-Type", "application/json");
+// xhr.send();
 
 // Event handler for select change
 function handleSelectChange(event) {

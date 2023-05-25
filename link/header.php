@@ -64,11 +64,11 @@ session_start(); ?>
         <i class="fas fa-bars"></i>
     </label>
         <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#service">Services</a></li>
-        <li><a href="#contact-us">Contact</a></li>
-        <li><a href="#virtual">Virtual Consultation </a></li>
+        <li><a class="active" href="index.php">Home</a></li>
+        <li><a href="index.php#about">About</a></li>
+        <li><a href="index.php#service">Services</a></li>
+        <li><a href="index.php#contact-us">Contact</a></li>
+        <li><a href="index.php#virtual">Virtual Consultation </a></li>
         </ul>
     </div>
 </nav>
