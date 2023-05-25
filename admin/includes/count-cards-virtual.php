@@ -3,13 +3,28 @@
 spl_autoload_register(function ($class) {
     include '../models/' . $class . '.php';
 });
+date_default_timezone_set('Asia/Manila');
+
+$timestamp = strtotime(date('m/d/Y'));
+$formattedDate = date('m/d/Y', $timestamp);
 
 $connection = new Appointment;
-$todayAppointments = $connection->setQuery( 'SELECT * FROM appointments WHERE `date` = CURDATE();' )->getAll();
+$todayAppointments = $connection->setQuery( "SELECT A.*,
+                                                    B.name as service_name,
+                                                    B.price as service_price,
+                                                    B.duration_minutes as service_duration_mins
+                                                    FROM `appointments` as A
+                                                    LEFT JOIN `services` as B
+                                                    ON A.service_id = B.id
+                                                    WHERE A.appointment_type LIKE 'virtual'
+                                                    AND A.appointment_date LIKE '$formattedDate'
+                                                    ORDER BY A.created_at DESC ;" )->getAll();
 // $services_count = $connection->setQuery( 'SELECT * FROM services' )->getAll();
-$completedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'Completed'"  )->getAll();
-$confirmedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'Confirmed'"  )->getAll();
-$cancelledAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'Cancelled'"  )->getAll();
+$completedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'completed' AND `appointment_type` LIKE 'virtual'"  )->getAll();
+$confirmedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'confirmed' AND `appointment_type` LIKE 'virtual'"  )->getAll();
+$cancelledAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'cancelled' AND `appointment_type` LIKE 'virtual'"  )->getAll();
+
+$allVirtualAppointments = $connection->getDashboardVirtualData();
 
 ?>
 

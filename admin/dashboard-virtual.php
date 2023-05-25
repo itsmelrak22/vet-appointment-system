@@ -5,6 +5,7 @@
 	<main>
 	<div class="mb-10">
 		<?php require_once('includes/count-cards-virtual.php') ?> 
+		<?php require_once('modals/dashboard_modal.php') ?> 
 	</div>
 
 		<div class="card" style="height: 60vh">
@@ -21,18 +22,36 @@
 							<th>Service Type</th>
 							<th>Appointment Date</th>
 							<th>Appointment Time</th>
+							<th>Meeting Link</th>
 							<th>Status</th>
+							<th>Actions</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($todayAppointments as $key => $value) { ?>
+						<?php foreach ($allVirtualAppointments as $key => $value) {  $value = (object) $value ?>
 						<tr>
-							<td> Aila </td>
-							<td> Wellness </td>
-							<td>Aug 1 2020</td>
-							<td>10:00 AM</td>
-							<td>Done / Cancelled</td>
+							<td> <?= $value->owner_name ?> </td>
+							<td> <?= $value->service_name ?> </td>
+							<td> <?= $value->appointment_date ?> </td>
+							<td> <?= $value->time ?> </td>
+							<td> <a href="<?= $value->meeting_link ?>" class="href" target="_blank"><?= $value->meeting_link ?></a> </td>
+							<td> <?= $value->status ?> </td>
+							<td> 
+								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#assignLinkModal" onclick="toggleAssignLink(<?php echo htmlspecialchars(json_encode($value)); ?>)">
+									<i class='bx bx-pencil'></i>
+									<span class="text">Assign Link</span>
+								</button>
+								<button type="button" class="btn btn-success btn-sm">
+									<i class='bx bx-check'></i>
+									<span class="text">Confirm</span>
+								</button>
+								
+								<button type="button" class="btn btn-danger btn-sm" >
+									<i class='bx bx-trash'></i>
+									<span class="text">Cancel</span>
+								</button>
+							</td>
 						</tr>
 
 						<?php } ?>

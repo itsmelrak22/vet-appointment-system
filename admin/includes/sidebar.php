@@ -1,4 +1,14 @@
+<?php
 
+spl_autoload_register(function ($class) {
+    include '../models/' . $class . '.php';
+});
+
+$connection = new Appointment;
+$walkins = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointment_type` = 'walkin'" )->getAll();
+$virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointment_type` = 'virtual'" )->getAll();
+
+?>
   <div class="sidebar" >
     <ul class="nav-list">
       <li style="margin-left: -25px;">
@@ -28,18 +38,11 @@
           <a href="dashboard-walkin.php">
             <span class="position-relative">
                 <?php 
-                      // $select_walkin = mysqli_query($conn,"SELECT * FROM appointments WHERE status='Pending'"); 
-                      $counter_walk = 0;
-                      // if (mysqli_num_rows($select_walkin)){
-                      //     while($walk=mysqli_fetch_array($select_walkin)){
-                      //       $counter_walk = $counter_walk + 1;     
-                      //     }
-                          
-                      // }
+    
                   ?>
                 <i class='bx bx-copy-alt'></i>
                 <span id="notif_walk" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -5px;">
-                  <?php echo $counter_walk; ?>
+                  <?php echo count($walkins); ?>
                 </span>
             </span>
             <span class="links_name" >Clinic appointment</span>
@@ -50,19 +53,9 @@
         <li>
           <a href="dashboard-virtual.php">
             <span class="position-relative">
-              <?php 
-                    // $select_virtual = mysqli_query($conn,"SELECT * FROM appointments2"); 
-                    $counter_virtual = 0;
-                    // if (mysqli_num_rows($select_virtual)){
-                    //     while($vir=mysqli_fetch_array($select_virtual)){
-                    //     $counter_virtual = $counter_virtual + 1;     
-                    //     }
-                      
-                    // }
-                ?> 
                 <i class='bx bx-video'></i>
               <span  id="notif_virtual" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -5px;"> 
-                <?php echo $counter_virtual;?> 
+                  <?php echo count($virtuals); ?>
               </span>
             </span>
             <span class="links_name">Virtual appointment</span>
@@ -144,11 +137,10 @@
         <!-- NAVBAR -->
         <nav>
           <!-- <i class='bx bx-menu' ></i> -->
-          <a href="#" class="nav-link"> Circle of life Veterinary Clinic </a>
+          <a href="#" class="nav-link"> <h2>Circle of life Veterinary Clinic</h2> </a>
           <form action="#">
             <div class="form-input">
-              <input type="search" placeholder="Search...">
-              <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+              <div id="datetime"></div>
             </div>
           </form>
           <div class="name_job">
@@ -159,16 +151,10 @@
 <script>
   let sidebar = document.querySelector(".sidebar");
   let closeBtn = document.querySelector("#btn");
-  let searchBtn = document.querySelector(".bx-search");
 
   closeBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("open");
     menuBtnChange();//calling the function(optional)
-  });
-
-  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-    sidebar.classList.toggle("open");
-    menuBtnChange(); //calling the function(optional)
   });
 
   // following are the code to change sidebar button(optional)
@@ -197,4 +183,19 @@
       // }
 
   </script>
+
+<script>
+  function updateDateTime() {
+    var container = document.getElementById("datetime");
+    var now = new Date();
+    var dateTimeString = now.toLocaleString(); // Adjust the format if needed
+    container.textContent = '0'+dateTimeString;
+  }
+
+  // Call the function initially to avoid delay
+  updateDateTime();
+
+  // Call the function every second (1000 milliseconds)
+  setInterval(updateDateTime, 1000);
+</script>
 

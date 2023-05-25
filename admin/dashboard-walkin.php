@@ -20,21 +20,32 @@
 							<th>Appointment Date</th>
 							<th>Appointment Time</th>
 							<th>Status</th>
+							<th>Actions</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($todayAppointments as $key => $value) { ?>
+						<?php foreach ($allWalkinAppointments as $key => $value) {  $value = (object) $value ?>
 						<tr>
-							<td> Aila </td>
-							<td> Wellness </td>
-							<td>Aug 1 2020</td>
-							<td>10:00 AM</td>
-							<td>Done / Cancelled</td>
+							<td> <?= $value->owner_name ?> </td>
+							<td> <?= $value->service_name ?> </td>
+							<td> <?= $value->appointment_date ?> </td>
+							<td> <?= $value->time ?> </td>
+							<td> <?= $value->status ?> </td>
+							<td> 
+								<button type="button" class="btn btn-success btn-sm">
+									<i class='bx bx-check'></i>
+									<span class="text">Confirm</span>
+								</button>
+								
+								<button type="button" class="btn btn-danger btn-sm" >
+									<i class='bx bx-trash'></i>
+									<span class="text">Cancel</span>
+								</button>
+							</td>
 						</tr>
 
 						<?php } ?>
-		
 					</tbody>
 				</table>
 		</div>
