@@ -64,9 +64,9 @@ nav .menu-btn i{
   cursor: pointer;
   display: none;
 }
-input[type="checkbox"]{
+/* input[type="checkbox"]{
   display: none;
-}
+} */
 
 /* @media (max-width: 1280px) {
     nav{

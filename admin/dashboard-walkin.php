@@ -8,7 +8,7 @@
 		<div class="card" style="height: 60vh">
 			<div class="card-body">
 				<div class="head">
-					<h3>Appointment for today</h3>
+					<h3>Clinic Appointments</h3>
 					<i class='bx bx-search' ></i>
 					<i class='bx bx-filter' ></i>
 				</div>
@@ -33,15 +33,9 @@
 							<td> <?= $value->time ?> </td>
 							<td> <?= $value->status ?> </td>
 							<td> 
-								<button type="button" class="btn btn-success btn-sm">
-									<i class='bx bx-check'></i>
-									<span class="text">Confirm</span>
-								</button>
-								
-								<button type="button" class="btn btn-danger btn-sm" >
-									<i class='bx bx-trash'></i>
-									<span class="text">Cancel</span>
-								</button>
+								<a href="dashboard-walkin-confirm-app.php?id=<?=$value->id?>">
+									<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-check'></i> View</button>
+								</a>
 							</td>
 						</tr>
 

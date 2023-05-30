@@ -34,22 +34,16 @@
 							<td> <?= $value->owner_name ?> </td>
 							<td> <?= $value->service_name ?> </td>
 							<td> <?= $value->appointment_date ?> </td>
-							<td> <?= $value->time ?> </td>
+							<td> <?= "$value->start_hour:$value->start_minute $value->start_period - $value->end_hour:$value->end_minute $value->end_period" ?> </td>
 							<td> <a href="<?= $value->meeting_link ?>" class="href" target="_blank"><?= $value->meeting_link ?></a> </td>
 							<td> <?= $value->status ?> </td>
 							<td> 
+								<a href="dashboard-virtual-confirm-app.php?id=<?=$value->id?>">
+									<button type="button" class="btn btn-primary btn-sm" >View</button>
+								</a>
 								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#assignLinkModal" onclick="toggleAssignLink(<?php echo htmlspecialchars(json_encode($value)); ?>)">
 									<i class='bx bx-pencil'></i>
 									<span class="text">Assign Link</span>
-								</button>
-								<button type="button" class="btn btn-success btn-sm">
-									<i class='bx bx-check'></i>
-									<span class="text">Confirm</span>
-								</button>
-								
-								<button type="button" class="btn btn-danger btn-sm" >
-									<i class='bx bx-trash'></i>
-									<span class="text">Cancel</span>
 								</button>
 							</td>
 						</tr>

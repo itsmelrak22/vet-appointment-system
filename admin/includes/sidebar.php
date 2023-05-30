@@ -5,8 +5,9 @@ spl_autoload_register(function ($class) {
 });
 
 $connection = new Appointment;
-$walkins = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointment_type` = 'walkin'" )->getAll();
-$virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointment_type` = 'virtual'" )->getAll();
+$connection2 = new AppointmentVirtual;
+$sidebarWalkins = $connection->getDashboardData();
+$sidebarVirtuals = $connection->getDashboardData();
 
 ?>
   <div class="sidebar" >
@@ -42,7 +43,7 @@ $virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointm
                   ?>
                 <i class='bx bx-copy-alt'></i>
                 <span id="notif_walk" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -5px;">
-                  <?php echo count($walkins); ?>
+                  <?php echo count($sidebarWalkins); ?>
                 </span>
             </span>
             <span class="links_name" >Clinic appointment</span>
@@ -55,7 +56,7 @@ $virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointm
             <span class="position-relative">
                 <i class='bx bx-video'></i>
               <span  id="notif_virtual" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: -5px;"> 
-                  <?php echo count($virtuals); ?>
+                  <?php echo count($sidebarVirtuals); ?>
               </span>
             </span>
             <span class="links_name">Virtual appointment</span>
@@ -85,7 +86,7 @@ $virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointm
 
         <li>
           <a href="../admin/admin_user_list.php">
-            <i class='bx bx-user' ></i>
+            <i class='bx bx-cog' ></i>
             <span class="links_name">User list</span>
           </a>
           <span class="tooltip">User list</span>
@@ -93,7 +94,7 @@ $virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointm
 
         <li>
           <a href="../admin/services_list.php">
-          <i class='bx bx-server'></i>
+            <i class='bx bx-cog' ></i>
             <span class="links_name">Services</span>
           </a>
           <span class="tooltip">Services</span>
@@ -101,10 +102,17 @@ $virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointm
 
         <li>
           <a href="../admin/doctor_list.php">
-          <i class='bx bx-user'></i>
+            <i class='bx bx-cog' ></i>
             <span class="links_name">Doctor List</span>
           </a>
           <span class="tooltip">Doctor List</span>
+        </li>
+        <li>
+          <a href="../admin/dashboard-scheduling.php">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Schedule Settings</span>
+          </a>
+          <span class="tooltip">Schedule Settings</span>
         </li>
         
           <li class="profile">
@@ -122,10 +130,7 @@ $virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointm
                   <div class="job">CircleOflife</div>
                 </div>
               </div>
-            <form action="query_resource/logout.php" method="post">
-              <input type="hidden" name="toggle-logout" value="true">
-              <button type="submit"><i class='bx bx-log-out' id="log_out"></i></button>
-            </form>
+              <button type="button"  data-bs-toggle="modal" data-bs-target="#logoutModal"><i class='bx bx-log-out' id="log_out"></i></button>
           </li>
       </ul>
     </div>
@@ -147,6 +152,7 @@ $virtuals = $connection->setQuery( "SELECT * FROM `appointments` WHERE `appointm
               <div class="name"> Welcome <?= $_SESSION['user']['username'] ?>!</div>
           </div>
         </nav>
+
 
 <script>
   let sidebar = document.querySelector(".sidebar");

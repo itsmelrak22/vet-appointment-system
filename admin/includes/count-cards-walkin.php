@@ -9,33 +9,33 @@ $timestamp = strtotime(date('m/d/Y'));
 $formattedDate = date('m/d/Y', $timestamp);
 
 $connection = new Appointment;
-$todayAppointments = $connection->setQuery( "SELECT A.*,
-                                                    B.name as service_name,
-                                                    B.price as service_price,
-                                                    B.duration_minutes as service_duration_mins
-                                                    FROM `appointments` as A
-                                                    LEFT JOIN `services` as B
-                                                    ON A.service_id = B.id
-                                                    WHERE A.appointment_type LIKE 'walkin'
-                                                    AND A.appointment_date LIKE '$formattedDate'
-                                                    ORDER BY A.created_at DESC ;" )->getAll();
+$todayAppointments = $connection->getDashboardDataToday();
 // $services_count = $connection->setQuery( 'SELECT * FROM services' )->getAll();
-$completedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'completed' AND `appointment_type` LIKE 'walkin'"  )->getAll();
-$confirmedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'confirmed' AND `appointment_type` LIKE 'walkin'"  )->getAll();
-$cancelledAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'cancelled' AND `appointment_type` LIKE 'walkin'"  )->getAll();
+$completedAppointments = $connection->getCompletedData();
+$confirmedAppointments = $connection->getConfirmedData();
+$cancelledAppointments = $connection->getCancelledData();
 
-$allWalkinAppointments = $connection->getDashboardWalkinData();
+$allWalkinAppointments = $connection->getDashboardData();
 ?>
 
 <div class="head-title">
     <div class="left">
-        <h1>Dashboard -  Walk in</h1>
+        <h1>Dashboard -  Clinic Consultation</h1>
     </div>
 </div>
 
 <ul class="box-info" >
-    <li>
-        <a href="../admin/dashboard-walkin.php">
+    <li >
+        <a href="../admin/dashboard-walkin.php" >
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="text">
+                <h3> <?= count( $allWalkinAppointments ) ?> </h3>
+                <p>ALL</p>
+            </span>
+        </a>
+    </li>
+    <li >
+        <a href="../admin/dashboard-walkin-today.php" >
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $todayAppointments ) ?> </h3>
@@ -43,8 +43,8 @@ $allWalkinAppointments = $connection->getDashboardWalkinData();
             </span>
         </a>
     </li>
-    <li>
-        <a href="../admin/dashboard-walkin-confirmed.php">
+    <li >
+        <a href="../admin/dashboard-walkin-confirmed.php" >
             <i class='bx bx-check-circle'></i>
             <span class="text">
                 <h3> <?= count( $confirmedAppointments ) ?> </h3>
@@ -52,8 +52,8 @@ $allWalkinAppointments = $connection->getDashboardWalkinData();
             </span>
         </a>
     </li>
-    <li>
-        <a href="../admin/dashboard-walkin-completed.php">
+    <li >
+        <a href="../admin/dashboard-walkin-completed.php" >
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $completedAppointments ) ?> </h3>
@@ -62,8 +62,8 @@ $allWalkinAppointments = $connection->getDashboardWalkinData();
         </a>
     </li>
    
-    <li>
-        <a href="../admin/dashboard-walkin-cancelled.php">
+    <li >
+        <a href="../admin/dashboard-walkin-cancelled.php" >
             <i class='bx bx-x-circle' ></i>
             <span class="text">
                 <h3> <?= count( $cancelledAppointments ) ?> </h3>

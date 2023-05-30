@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
     include '../../models/' . $class . '.php';
 });
 
-// header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json; charset=utf-8');
 
 $today = date('Y-m-d H:i:s');
 $instance = new Appointment;
@@ -20,7 +20,6 @@ $success = false;
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Sanitize and validate the input fields
-    $appointment_type = $_POST["appointment_type"];
     $appointment_date = $_POST["appointment_date"];
     $owner_name = sanitizeInput($_POST["owner_name"]);
     $phone = sanitizeInput($_POST["phone"]);
@@ -35,6 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $pet_age = sanitizeInput($_POST["pet_age"]);
     $reference_no = sanitizeInput($_POST["reference_no"]);
     $appointment_code = "COLC-". time();
+    $last_normal = sanitizeInput($_POST["last_normal"]);
+    $progress = sanitizeInput($_POST["progress"]);
+    $symptoms_remarks = isset($_POST["symptoms_remarks"]) ? sanitizeInput($_POST["symptoms_remarks"]) : null;
+    $is_coughing = isset($_POST["is_coughing"]) ? 1 : 0;
+    $is_sneezing = isset($_POST["is_sneezing"]) ? 1 : 0;
+    $is_vomiting = isset($_POST["is_vomiting"]) ? 1 : 0;
+    $has_diarrhea = isset($_POST["has_diarrhea"]) ? 1 : 0;
 
     // Perform validation for each field
     if (empty($owner_name)) {
@@ -110,8 +116,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         
         try {
-            $instance->setQuery(" INSERT INTO `appointments`( `pet_name`, `owner_name`, `pet_type`, `pet_breed`, `pet_height`, `pet_weight`, `pet_age`, `email`, `phone`, `appointment_date`, `time`, `service_id`, `appointment_type`, `appointment_code`, `status`, `upload_path`, `reference_no`, `created_at`, `updated_at`) 
-                                        VALUES ('$pet_name','$owner_name','$pet_type','$pet_breed','$pet_height','$pet_weight','$pet_age','$email','$phone','$appointment_date','$time','$service_id','$appointment_type','$appointment_code','pending','$upload_path', '$reference_no', '$today','$today') ");
+            // $instance->setQuery(" INSERT INTO `appointments`( `pet_name`, `owner_name`, `pet_type`, `pet_breed`, `pet_height`, `pet_weight`, `pet_age`, `email`, `phone`, `appointment_date`, `time`, `service_id`, `appointment_type`, `appointment_code`, `status`, `upload_path`, `reference_no`, `created_at`, `updated_at`) 
+            //                             VALUES ('$pet_name','$owner_name','$pet_type','$pet_breed','$pet_height','$pet_weight','$pet_age','$email','$phone','$appointment_date','$time','$service_id','$appointment_type','$appointment_code','pending','$upload_path', '$reference_no', '$today','$today') ");
+            $instance->setQuery("  INSERT INTO `appointments_virtual`(`pet_name`, `owner_name`, `pet_type`, `pet_breed`, `pet_height`, `pet_weight`, `pet_age`, `email`, `phone`, `appointment_date`, `service_id`, `schedule_id`, `appointment_code`, `status`, `last_normal`, `symptoms_remarks`, `progress`, `is_coughing`, `is_sneezing`, `is_vomiting`, `has_diarrhea`, `upload_path`, `reference_no`, `created_at`, `updated_at`) 
+                                                                VALUES ('$pet_name', '$owner_name', '$pet_type', '$pet_breed', '$pet_height', '$pet_weight', '$pet_age', '$email', '$phone', '$appointment_date', '$service_id', '$time',  '$appointment_code', 'pending', '$last_normal', '$symptoms_remarks', '$progress', '$is_coughing', '$is_sneezing','$is_vomiting','$has_diarrhea','$upload_path','$reference_no','$today','$today')");
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
         }

@@ -29,7 +29,7 @@ try {
 
 
 if(count($user) == 0){
-    header('Location: ../login.php');
+    header('Location: ../../login.php');
     exit(0);
 }else{
 

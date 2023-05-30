@@ -85,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // If there are no errors, the form is successfully submitted
     if (empty($errors)) {
         try {
-            $instance->setQuery(" INSERT INTO `appointments`( `pet_name`, `owner_name`, `pet_type`, `pet_breed`, `pet_height`, `pet_weight`, `pet_age`, `email`, `phone`, `appointment_date`, `time`, `service_id`, `appointment_type`, `appointment_code`, `status`, `created_at`, `updated_at`, `deleted_at`) 
-                                        VALUES ('$pet_name','$owner_name','$pet_type','$pet_breed','$pet_height','$pet_weight','$pet_age','$email','$phone','$appointment_date','$time','$service_id','$appointment_type','$appointment_code','pending','$today','$today','$today') ");
+            $instance->setQuery(" INSERT INTO `appointments`( `pet_name`, `owner_name`, `pet_type`, `pet_breed`, `pet_height`, `pet_weight`, `pet_age`, `email`, `phone`, `appointment_date`, `time`, `service_id`, `appointment_type`, `appointment_code`, `status`, `created_at`, `updated_at`) 
+                                        VALUES ('$pet_name','$owner_name','$pet_type','$pet_breed','$pet_height','$pet_weight','$pet_age','$email','$phone','$appointment_date','$time','$service_id','$appointment_type','$appointment_code','pending','$today','$today') ");
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
         }

@@ -20,21 +20,26 @@
 							<th>Appointment Date</th>
 							<th>Appointment Time</th>
 							<th>Status</th>
+							<th>Action</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($completedAppointments as $key => $value) { ?>
+						<?php foreach ($completedAppointments as $key => $value) {  $value = (object) $value ?>
 						<tr>
-							<td> Aila </td>
-							<td> Wellness </td>
-							<td>Aug 1 2020</td>
-							<td>10:00 AM</td>
-							<td>Done / Cancelled</td>
+							<td> <?= $value->owner_name ?> </td>
+							<td> <?= $value->service_name ?> </td>
+							<td> <?= $value->appointment_date ?> </td>
+							<td> <?= $value->time ?> </td>
+							<td> <?= $value->status ?> </td>
+							<td> 
+								<a href="dashboard-walkin-confirm-app.php?id=<?=$value->id?>">
+									<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-check'></i> View</button>
+								</a>
+							</td>
 						</tr>
 
 						<?php } ?>
-		
 					</tbody>
 				</table>
 		</div>

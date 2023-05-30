@@ -10,7 +10,7 @@ spl_autoload_register(function ($class) {
 $today = date('Y-m-d H:i:s');
 $instance = new Service;
 
-$services = $instance->all();
+$services = $instance->allWithOutTrash();
 http_response_code(200);
 echo json_encode(array('message' => 'Success', 'data' => $services ));
 exit();

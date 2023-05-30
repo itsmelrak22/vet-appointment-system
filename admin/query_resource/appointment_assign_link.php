@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // If there are no errors, the form is successfully submitted
     if (empty($errors)) {
         try {
-            $instance->setQuery(" UPDATE `appointments` SET `meeting_link_id`='$selected_link', `updated_at`='$today' WHERE id = $id");
+            $instance->setQuery(" UPDATE `appointments_virtual` SET `meeting_link_id`='$selected_link', `updated_at`='$today' WHERE id = $id");
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
         }

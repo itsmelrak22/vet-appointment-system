@@ -8,23 +8,13 @@ date_default_timezone_set('Asia/Manila');
 $timestamp = strtotime(date('m/d/Y'));
 $formattedDate = date('m/d/Y', $timestamp);
 
-$connection = new Appointment;
-$todayAppointments = $connection->setQuery( "SELECT A.*,
-                                                    B.name as service_name,
-                                                    B.price as service_price,
-                                                    B.duration_minutes as service_duration_mins
-                                                    FROM `appointments` as A
-                                                    LEFT JOIN `services` as B
-                                                    ON A.service_id = B.id
-                                                    WHERE A.appointment_type LIKE 'virtual'
-                                                    AND A.appointment_date LIKE '$formattedDate'
-                                                    ORDER BY A.created_at DESC ;" )->getAll();
-// $services_count = $connection->setQuery( 'SELECT * FROM services' )->getAll();
-$completedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'completed' AND `appointment_type` LIKE 'virtual'"  )->getAll();
-$confirmedAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'confirmed' AND `appointment_type` LIKE 'virtual'"  )->getAll();
-$cancelledAppointments = $connection->setQuery( "SELECT * FROM appointments WHERE `status` = 'cancelled' AND `appointment_type` LIKE 'virtual'"  )->getAll();
+$connection = new AppointmentVirtual;
+$todayAppointments = $connection->getDashboardDataToday();
+$completedAppointments = $connection->getCompletedData();
+$confirmedAppointments = $connection->getConfirmedData();
+$cancelledAppointments = $connection->getCancelledData();
 
-$allVirtualAppointments = $connection->getDashboardVirtualData();
+$allVirtualAppointments = $connection->getDashboardData();
 
 ?>
 
@@ -35,8 +25,17 @@ $allVirtualAppointments = $connection->getDashboardVirtualData();
 </div>
 
 <ul class="box-info" >
+    <li >
+        <a href="../admin/dashboard-virtual.php" >
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="text">
+                <h3> <?= count( $allVirtualAppointments ) ?> </h3>
+                <p>ALL</p>
+            </span>
+        </a>
+    </li>
     <li>
-        <a href="../admin/dashboard-virtual.php">
+        <a href="../admin/dashboard-virtual-today.php">
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $todayAppointments ) ?> </h3>
