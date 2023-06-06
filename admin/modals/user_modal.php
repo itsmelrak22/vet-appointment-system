@@ -50,7 +50,7 @@
             <div class="input-group input-group-sm mb-3">
               <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 146px">Category</span>
               <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category" required>
-                <option selected>...</option>
+                <option disabled >--select category--</option>
                 <option value="Staff">Staff</option>
                 <option value="Admin">Admin</option>
               </select>

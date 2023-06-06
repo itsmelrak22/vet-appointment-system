@@ -16,6 +16,7 @@ $confirmedAppointments = $connection->getConfirmedData();
 $cancelledAppointments = $connection->getCancelledData();
 
 $allWalkinAppointments = $connection->getDashboardData();
+$pendingAppointments = $connection->getPendingAppointments();
 ?>
 
 <div class="head-title">

@@ -99,7 +99,11 @@
 <script>
       document.addEventListener('DOMContentLoaded', function() {
         var selectedDateElement = document.getElementById('selected-date');
-        var currentDate = new Date().toLocaleDateString();
+        var currentDate = new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: 'numeric'
+        });
         selectedDateElement.textContent = 'SELECTED DATE: ' + currentDate;
 
         var hourSelect = document.getElementById('hour-select');

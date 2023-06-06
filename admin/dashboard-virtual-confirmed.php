@@ -38,10 +38,7 @@
 								<a href="dashboard-virtual-confirm-app.php?id=<?=$value->id?>">
 									<button type="button" class="btn btn-primary btn-sm" >View</button>
 								</a>
-								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#assignLinkModal" onclick="toggleAssignLink(<?php echo htmlspecialchars(json_encode($value)); ?>)">
-									<i class='bx bx-pencil'></i>
-									<span class="text">Assign Link</span>
-								</button>
+								
 							</td>
 						</tr>
 

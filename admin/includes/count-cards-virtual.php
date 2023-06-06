@@ -15,12 +15,18 @@ $confirmedAppointments = $connection->getConfirmedData();
 $cancelledAppointments = $connection->getCancelledData();
 
 $allVirtualAppointments = $connection->getDashboardData();
+$pendingAppointments = $connection->getPendingAppointments();
 
 ?>
 
 <div class="head-title">
     <div class="left">
         <h1>Dashboard -  Virtual Consultation</h1>
+    </div>
+    <div class="right">
+    <a href="../admin/dashboard-scheduling.php">
+			<button class="btn btn-primary"> <i class='bx bx-cog' ></i> Add Schedule</button>
+		</a>
     </div>
 </div>
 

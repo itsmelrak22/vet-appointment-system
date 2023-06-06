@@ -96,6 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         
         $_SESSION['success'] = "User has been Edited!";
+        // $user = $userClass->find($id);
+        // $_SESSION['user'] = $user;
         header('Location: ../admin_user_list.php');
     }
 }

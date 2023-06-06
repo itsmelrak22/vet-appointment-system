@@ -39,8 +39,6 @@
             </div>
             <div class="modal-body">
             <input type="hidden" name="id" id="id" value="<?=$data->id ?>">
-            <input type="hidden" name="receiver_name"  value="<?=$data->owner_name ?>">
-            <input type="hidden" name="receiver_email"  value="<?=$data->email ?>">
             <input type="hidden" name="appointment-type"  value="walkin">
 
             <div class="modal-body">

@@ -105,8 +105,7 @@ $jsonData = json_encode($data);
 				</div>
 				<div class="card-footer" style="display: flex; justify-content: center;">
 					<button style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal">Update Status</button>
-					<button style="width: 135px;" type="button" class="mx-2 btn btn-danger btn-sm" >Cancel</button>
-					<button  style="width: 135px;" type="button" class="mx-2 btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
+					<button style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
 					<a href="dashboard.php">
 						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back to Dashboard</button>
 					</a>

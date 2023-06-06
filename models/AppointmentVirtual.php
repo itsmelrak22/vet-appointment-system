@@ -170,5 +170,32 @@ Class AppointmentVirtual extends Model {
                                     ->getAll();
     }
 
+    public function getPendingAppointments(){
+        return $this->setQuery("SELECT
+                                    A.*,
+                                    B.name as service_name,
+                                    B.price as service_price,
+                                    B.duration_minutes as service_duration_mins,
+                                    C.start_hour,
+                                    C.start_minute,
+                                    C.start_period,
+                                    C.end_hour,
+                                    C.end_minute,
+                                    C.end_period,
+                                    D.link as meeting_link
+                                    FROM `appointments_virtual` as A
+                                    LEFT JOIN `services` as B
+                                    ON A.service_id = B.id
+                                    LEFT JOIN `schedules` as C
+                                    ON A.schedule_id = C.id
+                                    LEFT JOIN `meeting_links` as D
+                                    ON A.meeting_link_id = D.id
+                                    WHERE A.status = 'pending'
+                                    AND  A.deleted_at IS NULL
+                                    ORDER BY A.created_at DESC
+                                    ")
+                                    ->getAll();
+    }
+
 
 }

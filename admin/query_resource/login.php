@@ -20,7 +20,7 @@ if(base64_decode($token) != 'CircleOfLife2023'){
 
 try {
     $conn = new User;
-    $user = $conn->setQuery("SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password'")->getAll();
+    $user = $conn->setQuery("SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password' AND `deleted_at` IS NULL")->getAll();
 
 } catch (\Exception $e) {
     echo $e->getMessage();

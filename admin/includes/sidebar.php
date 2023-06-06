@@ -6,11 +6,11 @@ spl_autoload_register(function ($class) {
 
 $connection = new Appointment;
 $connection2 = new AppointmentVirtual;
-$sidebarWalkins = $connection->getDashboardData();
-$sidebarVirtuals = $connection->getDashboardData();
+$sidebarWalkins = $connection->getPendingAppointments();
+$sidebarVirtuals = $connection2->getPendingAppointments();
 
 ?>
-  <div class="sidebar" >
+  <div class="sidebar">
     <ul class="nav-list">
       <li style="margin-left: -25px;">
           <a href="../index.php">
@@ -78,7 +78,7 @@ $sidebarVirtuals = $connection->getDashboardData();
 
         <li>
           <a href="../admin/meeting_links.php">
-            <i class='bx bx-cog' ></i>
+            <i class='bx bx-calendar-event' ></i>
             <span class="links_name">Meeting Links</span>
           </a>
           <span class="tooltip">Meeting Links</span>
@@ -86,7 +86,7 @@ $sidebarVirtuals = $connection->getDashboardData();
 
         <li>
           <a href="../admin/admin_user_list.php">
-            <i class='bx bx-cog' ></i>
+            <i class='bx bx-user-circle' ></i>
             <span class="links_name">User list</span>
           </a>
           <span class="tooltip">User list</span>
@@ -94,7 +94,7 @@ $sidebarVirtuals = $connection->getDashboardData();
 
         <li>
           <a href="../admin/services_list.php">
-            <i class='bx bx-cog' ></i>
+            <i class='bx bx-book-add' ></i>
             <span class="links_name">Services</span>
           </a>
           <span class="tooltip">Services</span>
@@ -102,36 +102,25 @@ $sidebarVirtuals = $connection->getDashboardData();
 
         <li>
           <a href="../admin/doctor_list.php">
-            <i class='bx bx-cog' ></i>
+            <i class='bx bx-user-voice' ></i>
             <span class="links_name">Doctor List</span>
           </a>
           <span class="tooltip">Doctor List</span>
         </li>
         <li>
+          <a href="../admin/client_settings.php">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Client Settings</span>
+          </a>
+          <span class="tooltip">Client Settings</span>
+        </li>
+        <!-- <li>
           <a href="../admin/dashboard-scheduling.php">
             <i class='bx bx-cog' ></i>
             <span class="links_name">Schedule Settings</span>
           </a>
           <span class="tooltip">Schedule Settings</span>
-        </li>
-        
-          <li class="profile">
-              <div class="profile-details">
-                    <?php if( $_SESSION['user']['avatar'] ) { ?>
-                      <img src="<?= $_SESSION['user']['avatar'] ?>" alt="profileImg">
-
-                    <?php }else{ ?>
-                      <img src="../images/admin.png" alt="profileImg">
-                    <?php } ?>
-
-
-                <div class="name_job">
-                  <div class="name"> <?= $_SESSION['user']['username'] ?> </div>
-                  <div class="job">CircleOflife</div>
-                </div>
-              </div>
-              <button type="button"  data-bs-toggle="modal" data-bs-target="#logoutModal"><i class='bx bx-log-out' id="log_out"></i></button>
-          </li>
+        </li> -->
       </ul>
     </div>
   </ul>
@@ -140,19 +129,39 @@ $sidebarVirtuals = $connection->getDashboardData();
       <!-- CONTENT -->
       <section id="content">
         <!-- NAVBAR -->
-        <nav>
-          <!-- <i class='bx bx-menu' ></i> -->
-          <a href="#" class="nav-link"> <h2>Circle of life Veterinary Clinic</h2> </a>
-          <form action="#">
-            <div class="form-input">
-              <div id="datetime"></div>
-            </div>
-          </form>
-          <div class="name_job">
-              <div class="name"> Welcome <?= $_SESSION['user']['username'] ?>!</div>
-          </div>
-        </nav>
-
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><h2>Circle of life Veterinary Clinic</h2></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+        <span id="datetime"></span>
+        
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img src="<?= $_SESSION['user']['avatar'] ?>" alt="profileImg" class="avatar" style="height: 50px; width: 50px;  border-radius: 6px;">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mt-3" href="#"><strong>Welcome! <?= $_SESSION['user']['username'] ?> </strong> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mt-3" href="#">|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mt-3" type="button" data-bs-toggle="modal" data-bs-target="#logoutModal"><strong><i class="bx bx-log-out mt-1" ></i> Logout</strong></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <script>
   let sidebar = document.querySelector(".sidebar");

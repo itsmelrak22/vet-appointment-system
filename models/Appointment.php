@@ -22,6 +22,22 @@ Class Appointment extends Model {
                             ->getFirst();
     }
 
+    public function getPendingAppointments(){
+        return $this->setQuery("SELECT
+                                    A.*,
+                                    B.name as service_name,
+                                    B.price as service_price,
+                                    B.duration_minutes as service_duration_mins
+                                    FROM `appointments` as A
+                                    LEFT JOIN `services` as B
+                                    ON A.service_id = B.id
+                                    WHERE  A.deleted_at IS NULL
+                                    AND A.status = 'pending'
+                                    ORDER BY A.created_at DESC
+                                    ")
+                                    ->getAll();
+    }
+
     public function getDashboardData(){
         return $this->setQuery("SELECT
                                     A.*,

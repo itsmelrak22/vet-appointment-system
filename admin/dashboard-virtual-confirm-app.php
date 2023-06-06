@@ -17,11 +17,27 @@ if(!isset($data->id)) {
 
 $jsonData = json_encode($data);
 
+// echo "<pre>";
+print_r($data);
+// echo "</pre>";
 ?>
+<style>
+  .image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
 
+  .image-wrapper img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+</style>
 <body>
 	<?php require_once('includes/sidebar.php') ?> 
 	<?php  require_once('modals/virtual_confirm_modal.php') ?> 
+		<?php //require_once('modals/dashboard_modal.php') ?> 
 	<main>
 			<div class="card" >
 				<div class="card-body">
@@ -78,10 +94,51 @@ $jsonData = json_encode($data);
 								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Appointment Status</span>
 								<input type="text" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->status ?>">
 							</div>
+							<?php if (isset($data->meeting_link) && $data->meeting_link) { ?>
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Meeting Link</span>
+									<input type="text" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->meeting_link ?>">
+								</div>
+							<?php } ?>
+
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Payment Details</span>
+								<input type="text" class="form-control" name="symptoms_remarks" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->reference_no ?>">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Payment receipt</span>
+								<button type="button" class="btn btn-primary btn-small" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									View receipt
+								</button>
+								  <!-- Modal -->
+								  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-xl">
+										<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Receipt Image</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="input-group input-group-sm mb-3 modal-body image-wrapper" id="imageWrapper">
+											<a href="../<?=$data->upload_path?>" target="_blank" rel="noopener noreferrer">
+												<img src="../<?=$data->upload_path?>" alt="Modal Image" id="modalImage" class="img-thumbnail" style="max-height: 300px">
+											</a>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										</div>
+										</div>
+									</div>
+									</div>
+
+							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="alert alert-info" role="alert">
 								<h5>Pet Info</h5>
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Name</span>
+								<input type="text" class="form-control" name="pet_name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->pet_name ?>">
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Type</span>
@@ -96,6 +153,44 @@ $jsonData = json_encode($data);
 								<input type="text" class="form-control" name="pet_age" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->pet_age ?>">
 							</div>
 							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Last Normal</span>
+								<input type="text" class="form-control" name="last_normal" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->last_normal ?>">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Symptoms</span>
+								<input type="text" class="form-control" name="symptoms_remarks" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->symptoms_remarks ?>">
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Progess</span>
+                                <select class="form-select" id="progress" disabled name="progress" value="<?= $data->progress ?>">
+                                  <option value="same">Stayed the same</option>
+                                  <option value="worsened">Worsened</option>
+                                  <option value="improved">Improved</option>
+                                </select>
+							</div>
+
+							<div class="input-group mb-3">
+								<form>
+									<label for="otherSymptoms" class="form-label">Have you noticed any of the following?</label>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="coughing" name="is_coughing" disabled <?php if((int) $data->is_coughing )  echo "checked" ; ?>>
+										<label class="form-check-label" for="coughing">Coughing</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="sneezing" name="is_sneezing" disabled <?php if((int) $data->is_sneezing )  echo "checked" ; ?>>
+										<label class="form-check-label" for="sneezing">Sneezing</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="vomiting" name="is_vomiting" disabled <?php if((int) $data->is_vomiting )  echo "checked" ; ?>>
+										<label class="form-check-label" for="vomiting">Vomiting</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="diarrhea" name="has_diarrhea" disabled <?php if((int) $data->has_diarrhea )  echo "checked" ; ?>>
+										<label class="form-check-label" for="diarrhea">Diarrhea</label>
+									</div>
+								</form>
+							</div>
+							<div class="input-group mb-3">
 								<span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px">Service Needed</span>
 								<input type="text" class="form-control" name="pet_height" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly value="<?= $data->service_name ?>">
 							</div>
@@ -103,12 +198,16 @@ $jsonData = json_encode($data);
 					</div>
 				</div>
 				<div class="card-footer" style="display: flex; justify-content: center;">
-					<button style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal">Update Status</button>
-					<button style="width: 135px;" type="button" class="mx-2 btn btn-danger btn-sm" >Cancel</button>
-					<button style="width: 135px;" type="button" class="mx-2 btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
+					<button style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal" onClick="toggleLinkSelect()">Update Status</button>
+					<!-- <button style="width: 135px;" type="button" class="mx-2 btn btn-danger btn-sm" >Cancel</button> -->
+					<button style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
 					<a href="dashboard.php">
 						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back to Dashboard</button>
 					</a>
+						<!-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#assignLinkModal">
+							<i class='bx bx-pencil'></i>
+							<span class="text">Assign Link</span>
+						</button> -->
 				</div>
 			</div>
 
@@ -121,5 +220,55 @@ $jsonData = json_encode($data);
 		var select = document.getElementById('status');
 		select.value = jsonString.status;
 	</script>
+
+	
 <?php require_once('includes/scripts.php') ?> 
 <?php require_once('includes/footer.php') ?> 
+<script>
+
+var xhr = new XMLHttpRequest();
+var serviceResponse
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    serviceResponse = JSON.parse(xhr.responseText);
+    // Handle the response here
+		console.log( 'serviceResponse', serviceResponse )
+
+    // Create select element
+    const select = document.getElementById('select-link');
+
+    // Create and add options
+    serviceResponse.data.forEach(item => {
+      const option = document.createElement('option');
+      option.value = item.id;
+      option.text = item.link;
+      select.appendChild(option);
+    });
+  }
+
+};
+
+xhr.open("GET", 'query_resource/meeting_link_get.php' , true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.send();
+
+</script>
+
+<script>
+    function toggleLinkSelect() {
+        var status = document.getElementById("status").value;
+        var linkSelectDiv = document.getElementById("link-select");
+        
+        if (status === "confirmed") {
+            linkSelectDiv.style.display = "";
+        } else {
+            linkSelectDiv.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function setModalImage(imageSrc) {
+      document.getElementById('modalImage').src = imageSrc;
+    }
+  </script>

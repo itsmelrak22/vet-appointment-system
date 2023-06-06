@@ -47,7 +47,7 @@ $virtuals = $conn2->getDashboardDataToday();
 						<th>Service Type</th>
 						<th>Appointment Date</th>
 						<th>Appointment Time</th>
-						<th>Status</th>
+						<th>Pet Name</th>
 						<th>Actions</th>
 						</tr>
 					</thead>
@@ -58,13 +58,10 @@ $virtuals = $conn2->getDashboardDataToday();
 						<td><?= $value->service_name ?></td>
 						<td><?= $value->appointment_date ?></td>
 						<td><?= $value->time ?></td>
-						<td><?= $value->status ?></td>
+						<td><?= $value->pet_name ?></td>
 						<td>
 							<a href="dashboard-walkin-confirm-app.php?id=<?=$value->id?>">
 								<button type="button" class="btn btn-primary btn-sm" >View</button>
-							</a>
-							<a href="#">
-							<button type="button" class="btn btn-sm btn-danger" >Delete</button>
 							</a>
 						</td>
 						</tr>
@@ -87,7 +84,7 @@ $virtuals = $conn2->getDashboardDataToday();
 							<th>Service Type</th>
 							<th>Appointment Date</th>
 							<th>Appointment Time</th>
-							<th>Status</th>
+							<th>Pet Name</th>
 							<th>Actions</th>
 
 						</tr>
@@ -99,13 +96,10 @@ $virtuals = $conn2->getDashboardDataToday();
 							<td> <?= $virtual->service_name ?> </td>
 							<td> <?= $virtual->appointment_date ?> </td>
 							<td> <?= "$virtual->start_hour:$virtual->start_minute $virtual->start_period - $virtual->end_hour:$virtual->end_minute $virtual->end_period" ?> </td>
-							<td> <?= $virtual->status ?> </td>
+							<td> <?= $virtual->pet_name ?> </td>
 							<td>
 								<a href="dashboard-virtual-confirm-app.php?id=<?=$virtual->id?>">
 									<button type="button" class="btn btn-primary btn-sm" >View</button>
-								</a>
-								<a href="#">
-								<button type="button" class="btn btn-sm btn-danger" >Delete</button>
 								</a>
 							</td>
 						</tr>

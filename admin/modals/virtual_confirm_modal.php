@@ -11,12 +11,25 @@
 
             <div class="modal-body">
                 <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 175px">APPOINTMENT STATUS </span>
-                <select name="status" id="status" class="form-select form-select-sm">
-                    <option value="pending">pending</option>
-                    <option value="confirmed">confirmed</option>
-                    <option value="cancelled">cancelled</option>
-                </select>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 175px">APPOINTMENT STATUS </span>
+                    <select name="status" id="status" class="form-select form-select-sm" onchange="toggleLinkSelect()">
+                        <option value="pending">pending</option>
+                        <option value="confirmed">confirmed</option>
+                        <option value="cancelled">cancelled</option>
+                    </select>
+                 </div>
+                 <div class="input-group input-group-sm mb-3" id="link-select" style="display: none;">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"  >Choose Link</span>
+                    <select name="selected_link" id="select-link" class="form-select" name="name" aria-describedby="inputGroup-sizing-sm" required>
+                        <option disabled>...</option>
+                    </select>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <label for="otherSymptoms" class="form-label">By checking the checkbox below will send email to the client.</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" >
+                        <label class="form-check-label" for="is_to_send_email">send email to the client</label>
+                    </div>
                 </div>
             </div>
             </div>
@@ -39,8 +52,6 @@
             </div>
             <div class="modal-body">
             <input type="hidden" name="id" id="id" value="<?=$data->id ?>">
-            <input type="hidden" name="receiver_name"  value="<?=$data->owner_name ?>">
-            <input type="hidden" name="receiver_email"  value="<?=$data->email ?>">
             <input type="hidden" name="appointment-type"  value="virtual">
 
             <div class="modal-body">

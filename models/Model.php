@@ -89,7 +89,7 @@ class Model
     }
 
     public function find($primaryKey){
-        $data = $this->setQuery("SELECT * FROM $this->table WHERE id = $primaryKey")->getFirst();
+        $data = $this->setQuery("SELECT * FROM $this->table WHERE id = $primaryKey AND `deleted_at` IS NULL")->getFirst();
         return  $data; 
     }
 

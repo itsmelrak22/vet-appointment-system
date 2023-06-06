@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
             // Specify the destination directory to save the uploaded image
             $destination = "../../img_uploads/gcash/" . $upload_image;
-            $upload_path = "mg_uploads/gcash/" . $upload_image;
+            $upload_path = "img_uploads/gcash/" . $upload_image;
         
             // Move the uploaded file to the desired location
             if (move_uploaded_file($tmp_name, $destination)) {

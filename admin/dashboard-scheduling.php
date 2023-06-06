@@ -91,9 +91,13 @@
 
 	document.addEventListener('DOMContentLoaded', function() {
 	var selectedDateElement = document.getElementById('selected-date');
-	var currentDate = new Date().toLocaleDateString();
-	selectedDateElement.textContent = 'SELECTED DATE: ' + '0'+currentDate;
-	selectedDate = '0'+currentDate;
+	var currentDate = new Date().toLocaleDateString('en-US', {
+			month: '2-digit',
+			day: '2-digit',
+			year: 'numeric'
+		});
+	selectedDateElement.textContent = 'SELECTED DATE: ' + currentDate;
+	selectedDate = currentDate;
 	getTimeslot()
 
 	});
@@ -107,7 +111,6 @@
         onSelect: function(dateText, inst) {
 			selectedDate = dateText;
           $("#selected-date").text("SELECTED DATE: " + dateText);
-			console.log(selectedDate)
 			getTimeslot()
         }
       });
@@ -116,9 +119,12 @@
 
 	document.addEventListener('DOMContentLoaded', function() {
         var selectedDateElement = document.getElementById('selected-date');
-        var currentDate = new Date().toLocaleDateString();
+        var currentDate = new Date().toLocaleDateString('en-US', {
+			month: '2-digit',
+			day: '2-digit',
+			year: 'numeric'
+		});
         selectedDateElement.textContent = 'SELECTED DATE: ' + currentDate;
-
         var startHourSelect = document.getElementById('start-hour-select');
         var startPeriodSelect = document.getElementById('start-period-select');
         var endHourSelect = document.getElementById('end-hour-select');

@@ -13,7 +13,7 @@
                 <input type="hidden" name="id" id="appointment" value="">
               <span class="input-group-text" id="inputGroup-sizing-sm"  >Choose Link</span>
               <select name="selected_link" id="select-link" class="form-select" name="name" aria-describedby="inputGroup-sizing-sm" required>
-                <option disabled selected>...</option>
+                <option disabled>...</option>
               </select>
             </div>
           </div>
