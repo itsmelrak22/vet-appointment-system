@@ -5,7 +5,7 @@
     <title>Services</title>
     <!-- Font Awesome CDN-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="../circleoflife/css/serv.css">
+    <link rel="stylesheet" href="css/serv.css">
   </head>
     <section id="service">
       <div class="row">
