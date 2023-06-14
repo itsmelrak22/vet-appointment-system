@@ -1,4 +1,3 @@
-
 <?php
 
 spl_autoload_register(function ($class) {
@@ -16,12 +15,26 @@ $doctors = $instance->allWithOutTrash();
 <main>
 	<div class="head-title">
 		<div class="left">
-			<h1>Doctor list</h1>
+			<h1>Doctors</h1>
+			
+			<!-- <ul class="breadcrumb">
+				<li>
+					<a class="active" href="../admin/services_list.php">Service list</a>
+				</li>
+				<li><i class='bx bx-chevron-right' ></i></li>
+				<li>
+					<a  href="../admin/doctor_list.php"> Doctor's Information </a> 
+				</li>
+			</ul> -->
 		</div>
+		<!-- <a href="../admin/add_user.php" class="add">
+			<i class='bx bx-plus'></i>
+			<span class="text">Add new account</span>
+		</a> -->
 		<!-- Button trigger modal -->
 		<button type="button" class="add" data-bs-toggle="modal" data-bs-target="#createModal">
 			<i class='bx bx-plus'></i>
-			<span class="text">Add doctor</span>
+			<span class="text">Add new Doctor</span>
 		</button>
 	</div>
 
@@ -51,8 +64,8 @@ $doctors = $instance->allWithOutTrash();
 
 
 
-	<div class="card" style="height: 75vh">
-	<div class="card-body">
+	<div class="card">
+		<div class="card-body" style="height: 75vh">
 			<table id="example" class="table table-striped">
 				<thead>
 					<tr>
@@ -86,7 +99,6 @@ $doctors = $instance->allWithOutTrash();
 		</div>
 	</div>
 </main>
-
 <?php require_once('includes/scripts.php') ?> 
 <script>
 	$(document).ready(function () {
