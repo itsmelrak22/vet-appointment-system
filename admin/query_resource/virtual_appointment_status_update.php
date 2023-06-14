@@ -63,6 +63,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die('Database connection error: ' . $e->getMessage());
         }
 
+        if( !isset($_POST['is_to_send_email']) ){
+            header('Location: ../dashboard-virtual-confirm-app.php?id='.$ID);
+        }
+
+
     }else{
         $_SESSION['errors'] = $errors;;
         header('Location: ../dashboard-virtual-confirm-app.php?id='.$id);

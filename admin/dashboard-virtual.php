@@ -28,7 +28,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($pendingAppointments as $key => $value) {  $value = (object) $value ?>
+						<?php foreach ($allVirtualAppointments as $key => $value) {  $value = (object) $value ?>
 						<tr>
 							<td> <?= $value->owner_name ?> </td>
 							<td> <?= $value->service_name ?> </td>

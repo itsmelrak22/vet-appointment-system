@@ -17,9 +17,7 @@ if(!isset($data->id)) {
 
 $jsonData = json_encode($data);
 
-// echo "<pre>";
-print_r($data);
-// echo "</pre>";
+
 ?>
 <style>
   .image-wrapper {
@@ -198,9 +196,14 @@ print_r($data);
 					</div>
 				</div>
 				<div class="card-footer" style="display: flex; justify-content: center;">
-					<button style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal" onClick="toggleLinkSelect()">Update Status</button>
+					<?php if($data->status == 'cancelled' ||  $data->status == 'completed') {?>
+						<button disabled style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal" onClick="toggleLinkSelect()">Update Status</button>
+						<button disabled style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
+					<?php } else {?>
+						<button style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal" onClick="toggleLinkSelect()">Update Status</button>
+						<button style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
+					<?php }?>
 					<!-- <button style="width: 135px;" type="button" class="mx-2 btn btn-danger btn-sm" >Cancel</button> -->
-					<button style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
 					<a href="dashboard.php">
 						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back to Dashboard</button>
 					</a>
