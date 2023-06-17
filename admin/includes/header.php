@@ -29,11 +29,16 @@ if( !isset($_SESSION['token']) || !isset($_SESSION['user'])) {
             .card-footer button {
                 font-size: 14px;
             }
-            }
+        }
 
-            @media (max-width: 576px) {
+        @media (max-width: 576px) {
             .card-footer button {
                 font-size: 12px;
             }
-            }
+        }
+
+        .active-card{
+            background: #3691e3a6 !important;
+        }
+
     </style>

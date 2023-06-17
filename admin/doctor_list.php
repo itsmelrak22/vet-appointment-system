@@ -66,36 +66,42 @@ $doctors = $instance->allWithOutTrash();
 
 	<div class="card">
 		<div class="card-body" style="height: 75vh">
-			<table id="example" class="table table-striped">
-				<thead>
+		<table id="example" class="table table-striped">
+			<thead>
+				<tr>
+					<th>Doctor's Name</th>
+					<th>Age</th>
+					<th>Description</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($doctors as $key => $doctor) { ?>
 					<tr>
-						<th>Doctor's Name</th>
-						<th>Age</th>
-						<th>Description</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($doctors as $key => $doctor) { ?>
-						<tr>
-							<td> <?= $doctor['name'] ?> </td>
-							<td> <?= $doctor['age'] ?> </td>
-							<td> <?= $doctor['description'] ?> </td>
-							<td> 
-								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
-									<i class='bx bx-pencil'></i>
-									<span class="text">Edit</span>
-								</button>
+						<td><?= $doctor['name'] ?></td>
+						<td><?= $doctor['age'] ?></td>
+						<td>
+							<span class="description-truncated"><?= substr($doctor['description'], 0, 100) ?>...</span>
+							<span class="description-full" style="display: none"><?= $doctor['description'] ?></span>
+							<a href="#" class="see-more-link">See more</a>
+						</td>
 
-								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
-									<i class='bx bx-trash'></i>
-									<span class="text">Delete</span>
-								</button>
-							</td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+						<td>
+							<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
+								<i class='bx bx-pencil'></i>
+								<span class="text">Edit</span>
+							</button>
+
+							<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
+								<i class='bx bx-trash'></i>
+								<span class="text">Delete</span>
+							</button>
+						</td>
+					</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+
 		</div>
 	</div>
 </main>
@@ -119,6 +125,37 @@ $doctors = $instance->allWithOutTrash();
 	function deleteRow(row) {
         document.getElementById('delete-id').value = row.id;
 	}
+
+</script>
+
+<script>
+$(document).ready(function() {
+  $(document).on('click', '.see-more-link', function(e) {
+    e.preventDefault();
+    var $truncatedDesc = $(this).siblings('.description-truncated');
+    var $fullDesc = $(this).siblings('.description-full');
+    var $seeMoreLink = $(this);
+
+    $truncatedDesc.hide();
+    $fullDesc.show();
+    $seeMoreLink.text('See less');
+    $seeMoreLink.removeClass('see-more-link');
+    $seeMoreLink.addClass('see-less-link');
+  });
+
+  $(document).on('click', '.see-less-link', function(e) {
+    e.preventDefault();
+    var $truncatedDesc = $(this).siblings('.description-truncated');
+    var $fullDesc = $(this).siblings('.description-full');
+    var $seeLessLink = $(this);
+
+    $fullDesc.hide();
+    $truncatedDesc.show();
+    $seeLessLink.text('See more');
+    $seeLessLink.removeClass('see-less-link');
+    $seeLessLink.addClass('see-more-link');
+  });
+});
 
 </script>
 <?php require_once('includes/footer.php') ?> 

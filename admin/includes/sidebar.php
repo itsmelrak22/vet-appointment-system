@@ -15,6 +15,22 @@ $filename = pathinfo($requestURI, PATHINFO_FILENAME);
 $trimmedFilename = trim($filename);
 $url = "$trimmedFilename.php";
 
+$allowedLinksWalkin = [ 
+  "dashboard-walkin.php",
+  "dashboard-walkin-today.php",
+  "dashboard-walkin-confirmed.php",
+  "dashboard-walkin-completed.php",
+  "dashboard-walkin-cancelled.php"
+];
+
+$allowedLinksVirtual = [ 
+  "dashboard-virtual.php",
+  "dashboard-virtual-today.php",
+  "dashboard-virtual-confirmed.php",
+  "dashboard-virtual-completed.php",
+  "dashboard-virtual-cancelled.php"
+];
+
 ?>
   <div class="sidebar">
     <ul class="nav-list">
@@ -46,7 +62,7 @@ $url = "$trimmedFilename.php";
         </li>
 
         <li>
-          <?php if($url == 'dashboard-walkin.php'){ ?>
+          <?php if( in_array($url, $allowedLinksVirtual) ){ ?>
               <a href="../admin/dashboard-walkin.php" class="active">
           <?php }else{ ?>
             <a href="dashboard-walkin.php">
@@ -66,7 +82,7 @@ $url = "$trimmedFilename.php";
         </li>
 
         <li>
-          <?php if($url == 'dashboard-virtual.php'){ ?>
+          <?php if( in_array($url, $allowedLinksWalkin) ){ ?>
               <a href="../admin/dashboard-virtual.php" class="active">
           <?php }else{ ?>
             <a href="dashboard-virtual.php">

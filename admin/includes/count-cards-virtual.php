@@ -32,7 +32,11 @@ $pendingAppointments = $connection->getPendingAppointments();
 
 <ul class="box-info" >
     <li >
-        <a href="../admin/dashboard-virtual.php" >
+        <?php if($url == 'dashboard-virtual.php'){ ?>
+            <a href="../admin/dashboard-virtual.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-virtual.php">
+        <?php } ?>
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $allVirtualAppointments ) ?> </h3>
@@ -41,7 +45,11 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
     <li>
-        <a href="../admin/dashboard-virtual-today.php">
+        <?php if($url == 'dashboard-virtual-today.php'){ ?>
+            <a href="../admin/dashboard-virtual-today.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-virtual-today.php">
+        <?php } ?>
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $todayAppointments ) ?> </h3>
@@ -50,7 +58,11 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
     <li>
-        <a href="../admin/dashboard-virtual-confirmed.php">
+        <?php if($url == 'dashboard-virtual-confirmed.php'){ ?>
+            <a href="../admin/dashboard-virtual-confirmed.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-virtual-confirmed.php">
+        <?php } ?>
             <i class='bx bx-check-circle'></i>
             <span class="text">
                 <h3> <?= count( $confirmedAppointments ) ?> </h3>
@@ -59,7 +71,11 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
     <li>
-        <a href="../admin/dashboard-virtual-completed.php">
+        <?php if($url == 'dashboard-virtual-completed.php'){ ?>
+            <a href="../admin/dashboard-virtual-completed.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-virtual-completed.php">
+        <?php } ?>
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $completedAppointments ) ?> </h3>
@@ -69,7 +85,11 @@ $pendingAppointments = $connection->getPendingAppointments();
     </li>
    
     <li>
-        <a href="../admin/dashboard-virtual-cancelled.php">
+        <?php if($url == 'dashboard-virtual-cancelled.php'){ ?>
+            <a href="../admin/dashboard-virtual-cancelled.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-virtual-cancelled.php">
+        <?php } ?>
             <i class='bx bx-x-circle' ></i>
             <span class="text">
                 <h3> <?= count( $cancelledAppointments ) ?> </h3>

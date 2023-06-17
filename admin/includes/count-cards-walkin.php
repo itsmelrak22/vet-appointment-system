@@ -27,7 +27,11 @@ $pendingAppointments = $connection->getPendingAppointments();
 
 <ul class="box-info" >
     <li >
-        <a href="../admin/dashboard-walkin.php" >
+        <?php if($url == 'dashboard-walkin.php'){ ?>
+            <a href="../admin/dashboard-walkin.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-walkin.php">
+        <?php } ?>
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $allWalkinAppointments ) ?> </h3>
@@ -36,7 +40,11 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
     <li >
-        <a href="../admin/dashboard-walkin-today.php" >
+        <?php if($url == 'dashboard-walkin-today.php'){ ?>
+            <a href="../admin/dashboard-walkin-today.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-walkin-today.php">
+        <?php } ?>
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $todayAppointments ) ?> </h3>
@@ -45,7 +53,11 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
     <li >
-        <a href="../admin/dashboard-walkin-confirmed.php" >
+        <?php if($url == 'dashboard-walkin-confirmed.php'){ ?>
+            <a href="../admin/dashboard-walkin-confirmed.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-walkin-confirmed.php">
+        <?php } ?>
             <i class='bx bx-check-circle'></i>
             <span class="text">
                 <h3> <?= count( $confirmedAppointments ) ?> </h3>
@@ -54,7 +66,11 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
     <li >
-        <a href="../admin/dashboard-walkin-completed.php" >
+        <?php if($url == 'dashboard-walkin-completed.php'){ ?>
+            <a href="../admin/dashboard-walkin-completed.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-walkin-completed.php">
+        <?php } ?>
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $completedAppointments ) ?> </h3>
@@ -64,7 +80,11 @@ $pendingAppointments = $connection->getPendingAppointments();
     </li>
    
     <li >
-        <a href="../admin/dashboard-walkin-cancelled.php" >
+        <?php if($url == 'dashboard-walkin-cancelled.php'){ ?>
+            <a href="../admin/dashboard-walkin-cancelled.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-walkin-cancelled.php">
+        <?php } ?>
             <i class='bx bx-x-circle' ></i>
             <span class="text">
                 <h3> <?= count( $cancelledAppointments ) ?> </h3>

@@ -13,10 +13,10 @@
 </style>
 
 <!-- Create Modal -->
+<form action="query_resource/doctor_create.php" method="post"  enctype="multipart/form-data">
 <div class="modal fade" id="createModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
-      <form action="query_resource/doctor_create.php" method="post"  enctype="multipart/form-data">
         <div class="modal-header">
           <h5 class="modal-title" id="testModalLabel">Create Doctor Info</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -51,18 +51,18 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Add Doctor</button>
         </div>
-      </form>
     </div>
   </div>
 </div>
+</form>
 
 <!-- Edit Modal -->
+<form action="query_resource/doctor_edit.php" method="post"  enctype="multipart/form-data">
 <div class="modal fade" id="editModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
-      <form action="query_resource/doctor_edit.php" method="post"  enctype="multipart/form-data">
         <div class="modal-header">
-          <h5 class="modal-title" id="testModalLabel">Edit User</h5>
+          <h5 class="modal-title" id="testModalLabel">Edit Doctor Info</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         
@@ -98,10 +98,10 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Edit Doctor</button>
         </div>
-      </form>
     </div>
   </div>
 </div>
+</form>
 
 
 <!-- Delete Modal -->
