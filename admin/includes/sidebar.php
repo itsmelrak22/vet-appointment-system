@@ -17,6 +17,7 @@ $url = "$trimmedFilename.php";
 
 $allowedLinksWalkin = [ 
   "dashboard-walkin.php",
+  "dashboard-walkin-pending.php",
   "dashboard-walkin-today.php",
   "dashboard-walkin-confirmed.php",
   "dashboard-walkin-completed.php",
@@ -25,6 +26,7 @@ $allowedLinksWalkin = [
 
 $allowedLinksVirtual = [ 
   "dashboard-virtual.php",
+  "dashboard-virtual-pending.php",
   "dashboard-virtual-today.php",
   "dashboard-virtual-confirmed.php",
   "dashboard-virtual-completed.php",
@@ -63,9 +65,9 @@ $allowedLinksVirtual = [
 
         <li>
           <?php if( in_array($url, $allowedLinksVirtual) ){ ?>
-              <a href="../admin/dashboard-walkin.php" class="active">
+              <a href="../admin/dashboard-walkin-pending.php" class="active">
           <?php }else{ ?>
-            <a href="dashboard-walkin.php">
+            <a href="dashboard-walkin-pending.php">
           <?php } ?>
             <span class="position-relative">
                 <?php 
@@ -83,9 +85,9 @@ $allowedLinksVirtual = [
 
         <li>
           <?php if( in_array($url, $allowedLinksWalkin) ){ ?>
-              <a href="../admin/dashboard-virtual.php" class="active">
+              <a href="../admin/dashboard-virtual-pending.php" class="active">
           <?php }else{ ?>
-            <a href="dashboard-virtual.php">
+            <a href="dashboard-virtual-pending.php">
           <?php } ?>
             <span class="position-relative">
                 <i class='bx bx-video'></i>

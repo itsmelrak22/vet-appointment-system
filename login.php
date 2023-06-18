@@ -82,7 +82,7 @@ if( isset($_SESSION['token']) || isset($_SESSION['username'])) {
     
 <main class="form-signin">
   <form method="post" action="admin/query_resource/login.php">
-    <img class="mb-4" src="images/adlogo.png" alt="" width="150" height="100">
+    <img class="mb-4" src="images/colclogo.png" alt="" width="150" height="100">
     <h1 class="h3 mb-3 fw-normal">Online Veterinary Appointment System</h1>
 	<input type="hidden" name="token" value="<?= base64_encode('CircleOfLife2023') ?>">
 

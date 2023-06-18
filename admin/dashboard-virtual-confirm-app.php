@@ -205,7 +205,7 @@ $jsonData = json_encode($data);
 					<?php }?>
 					<!-- <button style="width: 135px;" type="button" class="mx-2 btn btn-danger btn-sm" >Cancel</button> -->
 					<a href="dashboard.php">
-						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back to Dashboard</button>
+						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back in View</button>
 					</a>
 						<!-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#assignLinkModal">
 							<i class='bx bx-pencil'></i>

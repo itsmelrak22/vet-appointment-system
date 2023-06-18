@@ -32,6 +32,19 @@ $pendingAppointments = $connection->getPendingAppointments();
 
 <ul class="box-info" >
     <li >
+        <?php if($url == 'dashboard-virtual-pending.php'){ ?>
+            <a href="../admin/dashboard-virtual-pending.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-virtual-pending.php">
+        <?php } ?>
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="text">
+                <h3> <?= count( $sidebarVirtuals ) ?> </h3>
+                <p>PENDINGS</p>
+            </span>
+        </a>
+    </li>
+    <li >
         <?php if($url == 'dashboard-virtual.php'){ ?>
             <a href="../admin/dashboard-virtual.php" class="active-card">
         <?php }else{ ?>

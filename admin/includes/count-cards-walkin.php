@@ -27,6 +27,19 @@ $pendingAppointments = $connection->getPendingAppointments();
 
 <ul class="box-info" >
     <li >
+        <?php if($url == 'dashboard-walkin-pending.php'){ ?>
+            <a href="../admin/dashboard-walkin-pending.php" class="active-card">
+        <?php }else{ ?>
+            <a href="../admin/dashboard-walkin-pending.php">
+        <?php } ?>
+            <i class='bx bxs-calendar-check' ></i>
+            <span class="text">
+                <h3> <?= count( $sidebarWalkins ) ?> </h3>
+                <p>PENDING</p>
+            </span>
+        </a>
+    </li>
+    <li >
         <?php if($url == 'dashboard-walkin.php'){ ?>
             <a href="../admin/dashboard-walkin.php" class="active-card">
         <?php }else{ ?>

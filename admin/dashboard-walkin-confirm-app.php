@@ -112,7 +112,7 @@ $jsonData = json_encode($data);
 						<button style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
 					<?php }?>
 					<a href="dashboard.php">
-						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back to Dashboard</button>
+						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back in View</button>
 					</a>
 				</div>
 			</div>
