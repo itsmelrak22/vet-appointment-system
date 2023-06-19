@@ -113,6 +113,7 @@ Class Appointment extends Model {
                                     LEFT JOIN `services` as B
                                     ON A.service_id = B.id
                                     WHERE A.appointment_date LIKE '$formattedDate'
+                                    WHERE A.status = 'completed'
                                     AND  A.deleted_at IS NULL
                                     ORDER BY A.created_at DESC
                                     ")

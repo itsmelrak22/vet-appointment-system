@@ -164,6 +164,7 @@ Class AppointmentVirtual extends Model {
                                     LEFT JOIN `meeting_links` as D
                                     ON A.meeting_link_id = D.id
                                     WHERE A.appointment_date LIKE '$formattedDate'
+                                    AND A.status = 'confirmed'
                                     AND  A.deleted_at IS NULL
                                     ORDER BY A.created_at DESC
                                     ")
