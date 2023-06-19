@@ -8,6 +8,12 @@ $instance = new Doctor;
 $doctors = $instance->allWithOutTrash();
 ?>
 <?php require_once('includes/header.php') ?>
+<?php
+
+if( $_SESSION['user']['category'] != 'Admin' ) {
+	header('Location: dashboard.php');
+}
+?>
 <?php require_once('includes/sidebar.php') ?> 
 <body>
 <?php require_once('modals/doctor_modal.php') ?>    
@@ -81,9 +87,13 @@ $doctors = $instance->allWithOutTrash();
 						<td><?= $doctor['name'] ?></td>
 						<td><?= $doctor['age'] ?></td>
 						<td>
-							<span class="description-truncated"><?= substr($doctor['description'], 0, 100) ?>...</span>
-							<span class="description-full" style="display: none"><?= $doctor['description'] ?></span>
-							<a href="#" class="see-more-link">See more</a>
+							<?php if (strlen($doctor['description']) <= 100): ?>
+								<?= $doctor['description'] ?>
+							<?php else: ?>
+								<span class="description-truncated"><?= substr($doctor['description'], 0, 100) ?>...</span>
+								<span class="description-full" style="display: none"><?= $doctor['description'] ?></span>
+								<a href="#" class="see-more-link">See more</a>
+							<?php endif; ?>
 						</td>
 
 						<td>

@@ -21,8 +21,8 @@
 
                         <?php } else if( $data->status == 'confirmed' ) {?>
                             <option value="pending" disabled >pending</option>
-                            <option value="confirmed">confirmed</option>
-                            <option value="cancelled">cancelled</option>
+                            <option value="confirmed" disabled>confirmed</option>
+                            <option value="cancelled" disabled>cancelled</option>
                             <option value="completed" >completed</option>
 
                         <?php } else if( $data->status == 'cancelled' ) {?>
@@ -33,19 +33,22 @@
                         <?php } ?>
                     </select>
                  </div>
-                 <div class="input-group input-group-sm mb-3" id="link-select" style="display: none;">
-                    <span class="input-group-text" id="inputGroup-sizing-sm"  >Choose Link</span>
-                    <select name="selected_link" id="select-link" class="form-select" name="name" aria-describedby="inputGroup-sizing-sm" required>
-                        <option disabled>...</option>
-                    </select>
-                </div>
-                <div class="input-group input-group-sm mb-3">
-                    <label for="otherSymptoms" class="form-label">By checking the checkbox below will send email to the client.</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" >
-                        <label class="form-check-label" for="is_to_send_email">send email to the client</label>
+                <?php if( $data->status == 'pending' ) { ?>
+                    <div class="input-group input-group-sm mb-3" id="link-select" style="display: none;">
+                        <span class="input-group-text" id="inputGroup-sizing-sm"  >Choose Link</span>
+                        <select name="selected_link" id="select-link" class="form-select" name="name" aria-describedby="inputGroup-sizing-sm" required>
+                            <option disabled>...</option>
+                        </select>
                     </div>
-                </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <label for="otherSymptoms" class="form-label">By checking the checkbox below will send email to the client.</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" >
+                            <label class="form-check-label" for="is_to_send_email">send email to the client</label>
+                        </div>
+                    </div>
+                <?php }?>
+
             </div>
             </div>
             <div class="modal-footer">
@@ -62,22 +65,22 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="testModalLabel">Email Confirmation</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <input type="hidden" name="id" id="id" value="<?=$data->id ?>">
-            <input type="hidden" name="appointment-type"  value="virtual">
+                    <h5 class="modal-title" id="testModalLabel">Email Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <input type="hidden" name="id" id="id" value="<?=$data->id ?>">
+                    <input type="hidden" name="appointment-type"  value="virtual">
 
-            <div class="modal-body">
-                <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 175px">Send Email Confirmation? </span>
-                </div>
-            </div>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary btn-sm">Send</button>
+                    <div class="modal-body">
+                        <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 175px">Send Email Confirmation? </span>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Send</button>
             </div>
         </div>
         </div>

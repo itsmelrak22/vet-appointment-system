@@ -95,13 +95,13 @@ if( (int) $virtualSettings->is_disabled ){
           <?php unset($_SESSION['success']); }  ?>
             <h3>Virtual Appointment</h3>
             <div class="row">
-              <div class="col" style="margin-left: 50px;">
+              <div class="col ">
                   <h3 id="">PLEASE SELECT DATE: </h3>
                   <div id="datepicker-container">
                   <div id="datepicker"></div>
                   </div>
               </div>
-              <div class="col table-minutes">
+              <div class="col  table-minutes">
                   <h3 id="selected-date">SELECTED DATE: </h3>
                   <div class="container" id="selected_date_col" style="display: none">
                     <div class="card">
@@ -122,36 +122,36 @@ if( (int) $virtualSettings->is_disabled ){
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
                               </div>
-                              <div class="col-6 mb-3">
+                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
                                 <label for="time-slot" class="form-label">Time</label>
                                 <select class="form-select client-select-time" name="time" id="time-slot" required></select>
                               </div>
-                              <div class="col-6 mb-3">
+                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
                                 <label for="breed" class="form-label">Service</label>
                                 <input type="text" class="form-control" value="Animal Wellness" readonly placeholder="Enter the type of breed" required>
                               </div>
-                              <div class="col-6 mb-3">
+                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
                                 <label for="petName" class="form-label">Pet name</label>
                                 <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name"required>
                               </div>
-                              <div class="col-6 mb-3">
+                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
                                 <label for="petType" class="form-label">Type of pet or animal</label>
                                 <input type="text" class="form-control" id="petType" name="pet_type" placeholder="Enter the type of pet or animal" required>
                               </div>
-                              <div class="col-6 mb-3">
+                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
                                 <label for="breed" class="form-label">Type of breed</label>
                                 <input type="text" class="form-control" id="breed" name="pet_breed" placeholder="Enter the type of breed" required>
                               </div>
                             
-                              <div class="col-6 mb-3">
+                              <div class="col-6  col-sm-12 col-xs-12 mb-3">
                                 <label for="height" class="form-label">Height</label>
                                 <input type="text" class="form-control" id="height" name="pet_height" placeholder="Enter the height in cm" required>
                               </div>
-                              <div class="col-6 mb-3">
+                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
                                 <label for="weight" class="form-label">Weight</label>
                                 <input type="text" class="form-control" id="weight" name="pet_weight" placeholder="Enter the weight in kg" required>
                               </div>
-                              <div class="col-6 mb-3">
+                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
                                 <label for="age" class="form-label">Age</label>
                                 <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age" required>
                               </div>

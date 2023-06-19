@@ -79,8 +79,24 @@ if( isset($_SESSION['token']) || isset($_SESSION['username'])) {
 
   </head>
   <body class="text-center">
+
     
 <main class="form-signin">
+
+<?php if ( isset($_SESSION['errors']) && count( $_SESSION['errors'] ) > 0 ) { ?>
+		<div class="mt-4">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<ul>
+						<?php foreach ($_SESSION['errors'] as $key => $value) { ?>
+							<strong> Notice! </strong> <?= $value ?>
+						<?php  } ?>
+					</ul>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div>
+	<?php unset($_SESSION['errors']); }  ?>
+
+
   <form method="post" action="admin/query_resource/login.php">
     <img class="mb-4" src="images/colclogo.png" alt="" width="150" height="100">
     <h1 class="h3 mb-3 fw-normal">Online Veterinary Appointment System</h1>
@@ -106,7 +122,8 @@ if( isset($_SESSION['token']) || isset($_SESSION['username'])) {
   </form>
 </main>
 
-
+<script src="js/bootstrap.bundle.min.js"></script>
+<?php include('link/scripts.php') ?> 
     
   </body>
 </html>

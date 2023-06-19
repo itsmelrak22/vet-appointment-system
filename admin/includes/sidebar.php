@@ -32,7 +32,6 @@ $allowedLinksVirtual = [
   "dashboard-virtual-completed.php",
   "dashboard-virtual-cancelled.php"
 ];
-
 ?>
   <div class="sidebar">
     <ul class="nav-list">
@@ -64,7 +63,7 @@ $allowedLinksVirtual = [
         </li>
 
         <li>
-          <?php if( in_array($url, $allowedLinksVirtual) ){ ?>
+          <?php if( in_array($url, $allowedLinksWalkin) ){ ?>
               <a href="../admin/dashboard-walkin-pending.php" class="active">
           <?php }else{ ?>
             <a href="dashboard-walkin-pending.php">
@@ -84,7 +83,7 @@ $allowedLinksVirtual = [
         </li>
 
         <li>
-          <?php if( in_array($url, $allowedLinksWalkin) ){ ?>
+          <?php if( in_array($url, $allowedLinksVirtual) ){ ?>
               <a href="../admin/dashboard-virtual-pending.php" class="active">
           <?php }else{ ?>
             <a href="dashboard-virtual-pending.php">
@@ -99,6 +98,8 @@ $allowedLinksVirtual = [
           </a>
           <span class="tooltip">Virtual list</span>
         </li>
+
+        <?php if( $_SESSION['user']['category'] == 'Admin' ) { ?>
       
         <hr style="color: white">
         <div class="logo-details">
@@ -164,6 +165,7 @@ $allowedLinksVirtual = [
           </a>
           <span class="tooltip">Client Settings</span>
         </li>
+        <?php }?>
         <!-- <li>
           <a href="../admin/dashboard-scheduling.php">
             <i class='bx bx-cog' ></i>

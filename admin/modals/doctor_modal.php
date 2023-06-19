@@ -42,8 +42,10 @@
           </div>
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Description</span>
-            <textarea type="text" class="form-control" name="description" aria-label="Description" aria-describedby="inputGroup-sizing-sm" required></textarea>
+            <textarea type="text" class="form-control" name="description" id="description" aria-label="Description" aria-describedby="inputGroup-sizing-sm" required oninput="checkCharacterLimit()"></textarea>
           </div>
+          <div id="char-count"></div>
+
 
         </div>
 
@@ -89,8 +91,9 @@
           </div>
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Description</span>
-            <textarea type="text" class="form-control" name="description" id="edit-description" aria-label="Description" aria-describedby="inputGroup-sizing-sm" required></textarea>
+            <textarea type="text" class="form-control" name="description" id="edit-description" aria-label="Description" aria-describedby="inputGroup-sizing-sm" required oninput="checkCharacterLimitEdit()"></textarea>
           </div>
+          <div id="edit-char-count"></div>
 
         </div>
 
@@ -182,4 +185,37 @@
     }
   }
 
+</script>
+<script>
+function checkCharacterLimit() {
+  var textarea = document.getElementById("description");
+  var description = textarea.value;
+  var remainingChars = 400 - description.length;
+  var charCountElement = document.getElementById("char-count");
+  
+  if (remainingChars >= 0) {
+    charCountElement.textContent = remainingChars + " characters remaining";
+  } else {
+    alert("Description Character limit exceeded!")
+    charCountElement.textContent = "Description Character limit exceeded!";
+    textarea.value = description.substring(0, 400);
+  }
+} 
+
+function checkCharacterLimitEdit() {
+  console.log("here")
+
+  var textarea = document.getElementById("edit-description");
+  var description = textarea.value;
+  var remainingChars = 400 - description.length;
+  var charCountElement = document.getElementById("edit-char-count");
+  
+  if (remainingChars >= 0) {
+    charCountElement.textContent = remainingChars + " characters remaining";
+  } else {
+    alert("Description Character limit exceeded!")
+    charCountElement.textContent = "Description Character limit exceeded!";
+    textarea.value = description.substring(0, 400);
+  }
+}
 </script>

@@ -1,6 +1,7 @@
 
 <?php
 
+
 spl_autoload_register(function ($class) {
     include '../models/' . $class . '.php';
 });
@@ -9,6 +10,12 @@ $instance = new MeetingLink;
 $links = $instance->allWithOutTrash();
 ?>
 <?php require_once('includes/header.php') ?>
+<?php
+
+if( $_SESSION['user']['category'] != 'Admin' ) {
+	header('Location: dashboard.php');
+}
+?>
 <?php require_once('includes/sidebar.php') ?> 
 <body>
 <?php require_once('modals/meeting_link_modal.php') ?>    

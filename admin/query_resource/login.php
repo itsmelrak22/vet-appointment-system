@@ -29,6 +29,7 @@ try {
 
 
 if(count($user) == 0){
+    $_SESSION['errors'] = ["Credentials is invalid!"];
     header('Location: ../../login.php');
     exit(0);
 }else{
