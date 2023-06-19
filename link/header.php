@@ -14,9 +14,9 @@ session_start(); ?>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <link rel="stylesheet" href="./css/homepages.css">
   <style>
@@ -55,7 +55,7 @@ session_start(); ?>
   </style>
 
 <body>
-<nav class="fixed-top d-flex p-1"> 
+<!-- <nav class="fixed-top d-flex p-1"> 
     <div class="d-flex justify-content-between align-items-center m-2">
     <img src="images/colclogo.png" alt="Site Logo" class="brand-image img-circle ">
     <div class="logo">Circle of life Veterinary Clinic </div>
@@ -69,5 +69,37 @@ session_start(); ?>
         <li><a href="index.php#contact-us">Contact</a></li>
         <li><a href="index.php#virtual">Virtual Consultation </a></li>
         </ul>
+    </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="images/colclogo.png" alt="Site Logo" class="brand-image img-circle">
+            Circle of Life Veterinary Clinic
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#service">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#contact-us">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php#virtual">Virtual Consultation</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
