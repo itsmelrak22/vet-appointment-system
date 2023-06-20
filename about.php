@@ -35,7 +35,7 @@ $doctors = $instance->allWithOutTrash();
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="admin\<?=$value->avatar?>" alt="card image"></p>
+                                        <p><img class="img-fluid" src="admin\<?=$value->avatar?>" alt="card image"></p>
                                         <h6 class="card-title">CLVC</h6>
                                         <p class="card-text"> <?=$value->name?> </p>
                                     </div>
@@ -330,6 +330,5 @@ section .section-title {
 .frontside .card .card-body img {
     width: 120px;
     height: 120px;
-    border-radius: 50%;
 }
 </style>

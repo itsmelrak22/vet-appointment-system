@@ -199,7 +199,9 @@ $jsonData = json_encode($data);
 					<?php if($data->status == 'cancelled' ||  $data->status == 'completed') {?>
 						<button disabled style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal" onClick="toggleLinkSelect()">Update Status</button>
 						<button disabled style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
-					<?php } else {?>
+						<?php } else if( $data->status == 'confirmed' ) {?>
+							<button  style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#markAsDone">Mark as Complete</button>
+						<?php } else {?>
 						<button style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal" onClick="toggleLinkSelect()">Update Status</button>
 						<button style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button>
 					<?php }?>

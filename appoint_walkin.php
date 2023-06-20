@@ -56,130 +56,124 @@ if( (int) $walkinSettings->is_disabled ){
 
 
 ?>
-<div class=" pt-5 mt-10 w-100" >
-    <div class="container" style="height: 77vh">
-        <div class="row" style="margin-top: 115px;">
-          <?php if ( isset($_SESSION['errors']) && count( $_SESSION['errors'] ) > 0 ) { ?>
-            <div class="mt-4">
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <ul>
-                    <?php foreach ($_SESSION['errors'] as $key => $value) { ?>
-                      <li>
-                        <strong> Notice! </strong> <?= $value ?>
-                      </li>
-                    <?php  } ?>
-                  </ul>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            </div>
-          <?php unset($_SESSION['errors']); }  ?>
+<div class="container">
+    <?php if ( isset($_SESSION['errors']) && count( $_SESSION['errors'] ) > 0 ) { ?>
+        <div class="mt-4">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <ul>
+                <?php foreach ($_SESSION['errors'] as $key => $value) { ?>
+                  <li>
+                    <strong> Notice! </strong> <?= $value ?>
+                  </li>
+                <?php  } ?>
+              </ul>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        </div>
+      <?php unset($_SESSION['errors']); }  ?>
 
-          <?php if ( isset($_SESSION['success']) ) { ?>
-            <div class="mt-4">
-              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong> Success! </strong> <?= $_SESSION['success'] ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            </div>
-          <?php unset($_SESSION['success']); }  ?>
-            <h3>Walk in Appointment</h3>
-            <div class="row">
-              <div class="col " >
-                  <h3 id="">PLEASE SELECT DATE: </h3>
-                  <div id="datepicker-container">
-                  <div id="datepicker"></div>
-                  </div>
-              </div>
-              <div class="col table-minutes">
-                  <h3 id="selected-date">SELECTED DATE: </h3>
-                  <div class="container" id="selected_date_col" style="display: none">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">Fill out pet information form</h5>
-                          <form action="queries/walkin/create.php" method="post"  enctype="multipart/form-data">
-                            <input type="hidden" name="appointment_type" value="walkin">
-                            <input type="hidden" name="appointment_date" value="" id="appointment_date">
-                            <div class="row">
-                              <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="owner_name" placeholder="Enter your name" required>
-                              </div>
-                              <div class="mb-3">
-                                <label for="phone" class="form-label">Phone number</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
-                              </div>
-                              <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
-                              </div>
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
-                                <label for="time-slot" class="form-label">Time</label>
-                                <select class="form-select client-select-time" name="time" id="time-slot" required>
-                                  <option disabled selected>Select a time slot</option>
-                                  <option value="09:00">09:00</option>
-                                  <option value="09:30">09:30</option>
-                                  <option value="10:00">10:00</option>
-                                  <option value="10:30">10:30</option>
-                                  <option value="11:00">11:00</option>
-                                  <option value="11:30">11:30</option>
-                                  <option value="01:00">01:00</option>
-                                  <option value="01:30">01:30</option>
-                                  <option value="02:00">02:00</option>
-                                  <option value="02:30">02:30</option>
-                                  <option value="03:00">03:00</option>
-                                  <option value="03:30">03:30</option>
-                                  <option value="04:00">04:00</option>
-                                </select>
-                              </div>
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3" >
-                                <label for="service-select" class="form-label">Service</label>
-                                <select class="form-select client-select-service" name="service_id" id="service-select" required>
-                                  <option disabled selected>Select a service</option>
-                                </select>
-                              </div>
-                              <div class="col-12 mb-2" id="service-info">
-                                
-                              </div>
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
-                                <label for="petName" class="form-label">Pet name</label>
-                                <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name"required>
-                              </div>
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
-                                <label for="petType" class="form-label">Type of pet or animal</label>
-                                <input type="text" class="form-control" id="petType" name="pet_type" placeholder="Enter the type of pet or animal" required>
-                              </div>
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
-                                <label for="breed" class="form-label">Type of breed</label>
-                                <input type="text" class="form-control" id="breed" name="pet_breed" placeholder="Enter the type of breed" required>
-                              </div>
-                            
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
-                                <label for="height" class="form-label">Height</label>
-                                <input type="text" class="form-control" id="height" name="pet_height" placeholder="Enter the height in cm" required>
-                              </div>
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
-                                <label for="weight" class="form-label">Weight</label>
-                                <input type="text" class="form-control" id="weight" name="pet_weight" placeholder="Enter the weight in kg" required>
-                              </div>
-                              <div class="col-6 col-sm-12 col-xs-12 mb-3">
-                                <label for="age" class="form-label">Age</label>
-                                <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age" required>
-                              </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                          </form>
+      <?php if ( isset($_SESSION['success']) ) { ?>
+        <div class="mt-4">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong> Success! </strong> <?= $_SESSION['success'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        </div>
+      <?php unset($_SESSION['success']); }  ?>
+  <div class="row">
+      <div class="col">
+        <h3 id="">PLEASE SELECT DATE: </h3>
+        <div id="datepicker-container">
+          <div id="datepicker"></div>
+        </div>
+      </div>
+      <div class="col table-minutes">
+          <h3 id="selected-date">SELECTED DATE: </h3>
+          <div class="container" id="selected_date_col" style="display: none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Fill out pet information form</h5>
+                  <form action="queries/walkin/create.php" method="post"  enctype="multipart/form-data">
+                    <input type="hidden" name="appointment_type" value="walkin">
+                    <input type="hidden" name="appointment_date" value="" id="appointment_date">
+                    <div class="row">
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="owner_name" placeholder="Enter your name" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="phone" class="form-label">Phone number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
+                      </div>
+                      <div class="col-6 col-sm-12 col-xs-12 mb-3">
+                        <label for="time-slot" class="form-label">Time</label>
+                        <select class="form-select client-select-time" name="time" id="time-slot" required>
+                          <option disabled selected>Select a time slot</option>
+                          <option value="09:00">09:00</option>
+                          <option value="09:30">09:30</option>
+                          <option value="10:00">10:00</option>
+                          <option value="10:30">10:30</option>
+                          <option value="11:00">11:00</option>
+                          <option value="11:30">11:30</option>
+                          <option value="01:00">01:00</option>
+                          <option value="01:30">01:30</option>
+                          <option value="02:00">02:00</option>
+                          <option value="02:30">02:30</option>
+                          <option value="03:00">03:00</option>
+                          <option value="03:30">03:30</option>
+                          <option value="04:00">04:00</option>
+                        </select>
+                      </div>
+                      <div class="col-6 col-sm-12 col-xs-12 mb-3" >
+                        <label for="service-select" class="form-label">Service</label>
+                        <select class="form-select client-select-service" name="service_id" id="service-select" required>
+                          <option disabled selected>Select a service</option>
+                        </select>
+                      </div>
+                      <div class="col-12 mb-2" id="service-info">
+                        
+                      </div>
+                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
+                        <label for="petName" class="form-label">Pet name</label>
+                        <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name"required>
+                      </div>
+                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
+                        <label for="petType" class="form-label">Type of pet or animal</label>
+                        <input type="text" class="form-control" id="petType" name="pet_type" placeholder="Enter the type of pet or animal" required>
+                      </div>
+                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
+                        <label for="breed" class="form-label">Type of breed</label>
+                        <input type="text" class="form-control" id="breed" name="pet_breed" placeholder="Enter the type of breed" required>
+                      </div>
+                    
+                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
+                        <label for="height" class="form-label">Height</label>
+                        <input type="text" class="form-control" id="height" name="pet_height" placeholder="Enter the height in cm" required>
+                      </div>
+                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="text" class="form-control" id="weight" name="pet_weight" placeholder="Enter the weight in kg" required>
+                      </div>
+                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age" required>
                       </div>
                     </div>
-
-                  </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
               </div>
             </div>
-        </div>
 
-
-    </div>
-
+          </div>
+      </div>
+  </div>
+  
 </div>
+
 <?php include('link/scripts.php') ?> 
 </body>
 </html>

@@ -72,3 +72,31 @@
         </div>
     </div>
 </form>
+
+<form action="query_resource/appointment_status_update.php" method="post">
+    <div class="modal fade" id="markAsDone" data-bs-keyboard="false" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="testModalLabel">Confirm Completion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id" value="<?=$data->id ?>">
+                    <input type="hidden" name="appointment-type" value="walkin">
+                    <input type="hidden" name="status" value="completed">
+
+                    <div class="modal-body">
+                        <div class="input-group input-group-sm mb-3">
+                            <span id="inputGroup-sizing-sm">Mark as "Completed"?</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

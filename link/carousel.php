@@ -94,7 +94,7 @@ $bookingSettings = $instance->getBooking();
 
 </div>
 
-<div>
+<!-- <div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -103,7 +103,7 @@ $bookingSettings = $instance->getBooking();
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> -->
 
 
             

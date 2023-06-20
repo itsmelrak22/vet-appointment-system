@@ -4,20 +4,21 @@ a, a:hover{
 }
 
 nav{
-  display: flex;
+  /* display: flex; */
   /* height: 70px; */
-  /* width: 100%; */
+  width: 100%;
   background-color: #0C375A;
   align-items: center;
   justify-content: space-between;
   align-items: center;
-  /* padding: 120px 50px 0 20px; */
+  padding: 120px 50px 0 20px;
   flex-wrap: wrap;
 }
 
 nav img{
    /* opacity: .8; */
    width: 4%;
+
 }
 nav .logo{
   color: white;
@@ -25,6 +26,7 @@ nav .logo{
   letter-spacing: 5px;
   font-weight: 600;
 }
+/* 
 nav ul{
   display: flex;
   align-items: center;
@@ -50,20 +52,14 @@ nav ul li a{
   border-radius: 5px;
   letter-spacing: 1px;
   transition: all 0.3s ease;
- 
-}
-nav ul li a.active,
-nav ul li a:hover{
-  color: white;
-  background:#0b528a;
-  /* opacity: 0.5; */
-}
-nav .menu-btn i{
+} */
+
+/* nav .menu-btn i{
   color: #fff;
   font-size: 22px;
   cursor: pointer;
   display: none;
-}
+} */
 /* input[type="checkbox"]{
   display: none;
 } */
@@ -74,17 +70,17 @@ nav .menu-btn i{
         background: #000;
     }
 } */
-.nav-link.active:hover {
+/* .nav-link.active:hover {
     color: white;
   background:#0b528a;
-  }
+  } */
 @media only screen and (max-width: 1280px) {
     nav img{
         visibility: hidden;
     }
 }
 
-@media only screen and (max-width: 627px) {
+/* @media only screen and (max-width: 627px) {
     .logo{
         justify-content: center;
      }
@@ -104,8 +100,8 @@ nav .menu-btn i{
         padding: 0 40px 0 50px;
         background-color: #0c375a;
     }
-}
-@media (max-width: 920px) {
+} */
+/* @media (max-width: 920px) {
     .logo{
         text-align: center;
     }
@@ -162,4 +158,4 @@ nav .menu-btn i{
         color: cyan;
 
     }
-}
+} */

@@ -5,16 +5,8 @@ $servicesAll = $services->allWithOutTrash();
 // print_r($servicesAll);
 
 ?>
+    <link rel="stylesheet" href="./css/serv.css">
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services</title>
-    <!-- Font Awesome CDN-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="css/serv.css">
-  </head>
     <section id="service">
       <div class="row">
         <h2 class="section-heading">Our Services</h2>
@@ -46,4 +38,3 @@ $servicesAll = $services->allWithOutTrash();
         <button class="SeeMore" id="seemore">See More</button>
 			</div>
     </section>
-</html>

@@ -18,9 +18,9 @@ class Model
     protected $qry;
 
     public function __construct(){
-        // $this->connect();
+        $this->connect();
 
-        $this->connectToStage();
+        // $this->connectToStage();
     }
 
     public function connect(){

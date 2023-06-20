@@ -64,13 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         if( !isset($_POST['is_to_send_email']) ){
-            header('Location: ../dashboard-virtual-confirm-app.php?id='.$ID);
+            header('Location: ../dashboard-virtual-confirm-app.php?id='.$id);
         }
 
 
     }else{
         $_SESSION['errors'] = $errors;;
-        header('Location: ../dashboard-virtual-confirm-app.php?id='.$id);
+        header('Location: ../dashboard-virtual-confirm-app.php?id='. $id);
     }
 
 
