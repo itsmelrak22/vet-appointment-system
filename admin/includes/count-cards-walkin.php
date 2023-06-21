@@ -26,7 +26,7 @@ $pendingAppointments = $connection->getPendingAppointments();
 </div>
 
 <ul class="box-info" >
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-walkin-pending.php'){ ?>
             <a href="../admin/dashboard-walkin-pending.php" class="active-card">
         <?php }else{ ?>
@@ -39,7 +39,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-walkin.php'){ ?>
             <a href="../admin/dashboard-walkin.php" class="active-card">
         <?php }else{ ?>
@@ -52,7 +52,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-walkin-today.php'){ ?>
             <a href="../admin/dashboard-walkin-today.php" class="active-card">
         <?php }else{ ?>
@@ -65,7 +65,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-walkin-confirmed.php'){ ?>
             <a href="../admin/dashboard-walkin-confirmed.php" class="active-card">
         <?php }else{ ?>
@@ -78,7 +78,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-walkin-completed.php'){ ?>
             <a href="../admin/dashboard-walkin-completed.php" class="active-card">
         <?php }else{ ?>
@@ -92,7 +92,7 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
    
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-walkin-cancelled.php'){ ?>
             <a href="../admin/dashboard-walkin-cancelled.php" class="active-card">
         <?php }else{ ?>

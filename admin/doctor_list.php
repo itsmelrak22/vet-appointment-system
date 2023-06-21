@@ -99,12 +99,10 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 						<td>
 							<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
 								<i class='bx bx-pencil'></i>
-								<span class="text">Edit</span>
 							</button>
 
 							<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
 								<i class='bx bx-trash'></i>
-								<span class="text">Delete</span>
 							</button>
 						</td>
 					</tr>

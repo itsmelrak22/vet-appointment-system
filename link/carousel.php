@@ -14,7 +14,7 @@ $bookingSettings = $instance->getBooking();
 
 ?>
 
-<div id="home" class="content-wrapper pt-5 mt-3 w-100" style="box-shadow: rgba(0, 0, 0, .1) 0px 25px 30px -30px; height: 100vh">
+<div id="home" class="content-wrapper w-100" style="box-shadow: rgba(0, 0, 0, .1) 0px 25px 30px -30px; height: 100vh">
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <?php if ( (int) $bookingSettings->is_disabled ) { ?>
         <div class="carousel-inner" style="height: 95vh;">

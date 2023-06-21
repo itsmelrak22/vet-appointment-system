@@ -31,7 +31,7 @@ $pendingAppointments = $connection->getPendingAppointments();
 </div>
 
 <ul class="box-info" >
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-virtual-pending.php'){ ?>
             <a href="../admin/dashboard-virtual-pending.php" class="active-card">
         <?php }else{ ?>
@@ -44,7 +44,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li >
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-virtual.php'){ ?>
             <a href="../admin/dashboard-virtual.php" class="active-card">
         <?php }else{ ?>
@@ -57,7 +57,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li>
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-virtual-today.php'){ ?>
             <a href="../admin/dashboard-virtual-today.php" class="active-card">
         <?php }else{ ?>
@@ -70,7 +70,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li>
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-virtual-confirmed.php'){ ?>
             <a href="../admin/dashboard-virtual-confirmed.php" class="active-card">
         <?php }else{ ?>
@@ -83,7 +83,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             </span>
         </a>
     </li>
-    <li>
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-virtual-completed.php'){ ?>
             <a href="../admin/dashboard-virtual-completed.php" class="active-card">
         <?php }else{ ?>
@@ -97,7 +97,7 @@ $pendingAppointments = $connection->getPendingAppointments();
         </a>
     </li>
    
-    <li>
+    <li style="margin-bottom: 50px;">
         <?php if($url == 'dashboard-virtual-cancelled.php'){ ?>
             <a href="../admin/dashboard-virtual-cancelled.php" class="active-card">
         <?php }else{ ?>
