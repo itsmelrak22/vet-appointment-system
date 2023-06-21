@@ -292,6 +292,8 @@ section .section-title {
     -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     height: 400px !important;
+    width: 400px !important;
+
 }
 
 .frontside,
