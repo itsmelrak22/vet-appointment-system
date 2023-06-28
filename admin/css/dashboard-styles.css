@@ -92,12 +92,24 @@
 		color:  #3C91E6;
 	}
 	#content main .box-info li:nth-child(2) .bx {
-		background:  #FFF2C6;
-		color: #FFCE26;
+		background:  #CFE8FF;
+		color: #3C91E6;
 	}
 	#content main .box-info li:nth-child(3) .bx {
-		background: #FFE0D3;
-		color:  #FD7238;
+		background: #CFE8FF;
+		color:  #3C91E6;
+	}
+	#content main .box-info li:nth-child(4) .bx {
+		background:  #CFE8FF;
+		color: #3C91E6;
+	}
+	#content main .box-info li:nth-child(5) .bx {
+		background: #CFE8FF;
+		color:  #3C91E6;
+	}
+	#content main .box-info li:nth-child(6) .bx {
+		background: #CFE8FF;
+		color:  #3C91E6;
 	}
 	#content main .box-info li .text h3 {
 		font-size: 24px;

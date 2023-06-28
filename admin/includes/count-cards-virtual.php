@@ -76,7 +76,7 @@ $pendingAppointments = $connection->getPendingAppointments();
         <?php }else{ ?>
             <a href="../admin/dashboard-virtual-confirmed.php">
         <?php } ?>
-            <i class='bx bx-check-circle'></i>
+            <i class='bx bxs-check-circle'></i>
             <span class="text">
                 <h3> <?= count( $confirmedAppointments ) ?> </h3>
                 <p>Confirmed</p>
@@ -103,7 +103,7 @@ $pendingAppointments = $connection->getPendingAppointments();
         <?php }else{ ?>
             <a href="../admin/dashboard-virtual-cancelled.php">
         <?php } ?>
-            <i class='bx bx-x-circle' ></i>
+            <i class='bx bxs-x-circle' ></i>
             <span class="text">
                 <h3> <?= count( $cancelledAppointments ) ?> </h3>
                 <p>Cancelled</p>
