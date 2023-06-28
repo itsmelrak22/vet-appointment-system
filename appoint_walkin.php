@@ -112,20 +112,20 @@ if( (int) $walkinSettings->is_disabled ){
                       <div class="col-6 col-sm-12 col-xs-12 mb-3">
                         <label for="time-slot" class="form-label">Time</label>
                         <select class="form-select client-select-time" name="time" id="time-slot" required>
-                          <option disabled selected>Select a time slot</option>
-                          <option value="09:00">09:00</option>
-                          <option value="09:30">09:30</option>
-                          <option value="10:00">10:00</option>
-                          <option value="10:30">10:30</option>
-                          <option value="11:00">11:00</option>
-                          <option value="11:30">11:30</option>
-                          <option value="01:00">01:00</option>
-                          <option value="01:30">01:30</option>
-                          <option value="02:00">02:00</option>
-                          <option value="02:30">02:30</option>
-                          <option value="03:00">03:00</option>
-                          <option value="03:30">03:30</option>
-                          <option value="04:00">04:00</option>
+                          <option disabled selected></option>
+                          <option value="09:00 AM">09:00 AM</option>
+                          <option value="09:30 AM">09:30 AM</option>
+                          <option value="10:00 AM">10:00 AM</option>
+                          <option value="10:30 AM">10:30 AM</option>
+                          <option value="11:00 AM">11:00 AM</option>
+                          <option value="11:30 AM">11:30 AM</option>
+                          <option value="01:00 PM">01:00 PM</option>
+                          <option value="01:30 PM">01:30 PM</option>
+                          <option value="02:00 PM">02:00 PM</option>
+                          <option value="02:30 PM">02:30 PM</option>
+                          <option value="03:00 PM">03:00 PM</option>
+                          <option value="03:30 PM">03:30 PM</option>
+                          <option value="04:00 PM">04:00 PM</option>
                         </select>
                       </div>
                       <div class="col-6 col-sm-12 col-xs-12 mb-3" >
@@ -178,6 +178,12 @@ if( (int) $walkinSettings->is_disabled ){
 </body>
 </html>
 
+
+<script>
+
+
+</script>
+
 <script>
       let selectedDate = '';
 
@@ -209,6 +215,40 @@ if( (int) $walkinSettings->is_disabled ){
               for (let i = 0; i < options.length; i++) {
                 if (options[i].disabled) {
                   options[i].disabled = false; // Remove the disabled attribute
+                }
+              }
+
+              // Get the current time
+              var currentTime = new Date();
+
+              // Add 1 hour to the current time
+              var oneHourAhead = new Date(currentTime.getTime() + 60 * 60 * 1000);
+
+              // Disable options with a value in the past
+              var selectElement2 = document.getElementById('time-slot');
+              var options2 = selectElement2.getElementsByTagName('option');
+
+              for (var i = 0; i < options2.length; i++) {
+                var option = options2[i];
+                var optionValue = option.value;
+                var optionTime = optionValue.split(" ")[0]; // Extract the time part from the option value
+                var optionPeriod = optionValue.split(" ")[1]; // Extract the AM/PM part from the option value
+
+                // Parse the option time
+                var optionTimeParts = optionTime.split(":");
+                var optionHour = parseInt(optionTimeParts[0]);
+                var optionMinute = parseInt(optionTimeParts[1]);
+
+                // Adjust the hour value if it is in PM
+                if (optionPeriod === "PM" && optionHour !== 12) {
+                  optionHour += 12;
+                }
+
+                // Create a Date object for the option time
+                var optionDateTime = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), optionHour, optionMinute);
+
+                if (optionDateTime <= oneHourAhead) {
+                  option.disabled = true;
                 }
               }
               

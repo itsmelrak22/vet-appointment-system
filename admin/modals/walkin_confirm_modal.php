@@ -11,28 +11,39 @@
 
             <div class="modal-body">
                 <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 175px">APPOINTMENT STATUS </span>
-                <select name="status" id="status" class="form-select form-select-sm">
-                    <?php if( $data->status == 'pending' ) {?>
-                        <option value="pending">pending</option>
-                        <option value="confirmed">confirmed</option>
-                        <option value="cancelled">cancelled</option>
-                        <option value="completed" disabled>completed</option>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 175px">APPOINTMENT STATUS </span>
+                    <select name="status" id="status" class="form-select form-select-sm">
+                        <?php if( $data->status == 'pending' ) {?>
+                            <option value="pending">pending</option>
+                            <option value="confirmed">confirmed</option>
+                            <option value="cancelled">cancelled</option>
+                            <option value="completed" disabled>completed</option>
 
-                    <?php } else if( $data->status == 'confirmed' ) {?>
-                        <option value="pending" disabled >pending</option>
-                        <option value="confirmed" disabled>confirmed</option>
-                        <option value="cancelled" disabled>cancelled</option>
-                        <option value="completed" >completed</option>
+                        <?php } else if( $data->status == 'confirmed' ) {?>
+                            <option value="pending" disabled >pending</option>
+                            <option value="confirmed" disabled>confirmed</option>
+                            <option value="cancelled" disabled>cancelled</option>
+                            <option value="completed" >completed</option>
 
-                    <?php } else if( $data->status == 'cancelled' ) {?>
-                        <option value="pending" disabled >pending</option>
-                        <option value="confirmed" disabled>confirmed</option>
-                        <option value="cancelled" disabled>cancelled</option>
-                        <option value="completed" disabled>completed</option>
-                    <?php } ?>
+                        <?php } else if( $data->status == 'cancelled' ) {?>
+                            <option value="pending" disabled >pending</option>
+                            <option value="confirmed" disabled>confirmed</option>
+                            <option value="cancelled" disabled>cancelled</option>
+                            <option value="completed" disabled>completed</option>
+                        <?php } ?>
 
-                </select>
+                    </select>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Remarks ( Optional )</span>
+                    <textarea type="text" class="form-control" name="remarks" id="remarks" aria-label="Remarks" aria-describedby="inputGroup-sizing-sm"></textarea>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <label  class="form-label">By checking the checkbox below will send email to the client.</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" >
+                        <label class="form-check-label" for="is_to_send_email">Send email to the client</label>
+                    </div>
                 </div>
             </div>
             </div>

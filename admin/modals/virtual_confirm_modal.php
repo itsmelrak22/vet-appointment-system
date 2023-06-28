@@ -41,10 +41,14 @@
                         </select>
                     </div>
                     <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Remarks ( Optional )</span>
+                        <textarea type="text" class="form-control" name="remarks" id="remarks" aria-label="Remarks" aria-describedby="inputGroup-sizing-sm"></textarea>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
                         <label for="otherSymptoms" class="form-label">By checking the checkbox below will send email to the client.</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" >
-                            <label class="form-check-label" for="is_to_send_email">send email to the client</label>
+                            <label class="form-check-label" for="is_to_send_email">Send email to the client</label>
                         </div>
                     </div>
                 <?php }?>

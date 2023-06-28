@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Sanitize and validate the input fields
     $id = $_POST["id"];
     $status = $_POST["status"];
+    $remarks = $_POST["remarks"];
     $selected_link_id = $status == 'confirmed' ? $_POST["selected_link"] : 0;
 
 
@@ -31,13 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // exit();
 
     // Perform validation for each field
-    if (empty($status)) {
+    if (empty($status) || $status == 'pending') {
         $errors[] = "Please Select Status.";
     }
+
     if (empty($errors)) {
 
         try {
-            $instance->setQuery(" UPDATE `appointments_virtual` SET `status`='$status',  `meeting_link_id`= $selected_link_id , `updated_at`='$today' WHERE id = $id");
+            $instance->setQuery(" UPDATE `appointments_virtual` SET `status`='$status', `remarks`='$remarks',   `meeting_link_id`= $selected_link_id , `updated_at`='$today' WHERE id = $id");
 
             $appointment = $instance->getAppointmentInfo($id);
             if(isset($_POST['is_to_send_email']) && $status == 'confirmed'){
@@ -47,7 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         $appointment->appointment_date, 
                         "$appointment->start_hour:$appointment->start_minute $appointment->start_period - $appointment->end_hour:$appointment->end_minute $appointment->end_period", 
                         $appointment->meeting_link,
-                        $id);
+                        $id,
+                        $appointment->remarks,
+                    );
 
             }
     
@@ -57,7 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         $appointment->status, 
                         $appointment->appointment_date, 
                         "$appointment->start_hour:$appointment->start_minute $appointment->start_period - $appointment->end_hour:$appointment->end_minute $appointment->end_period", 
-                        $id);
+                        $id,
+                        $appointment->remarks,
+                    );
             }
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
@@ -85,13 +91,18 @@ function sanitizeInput($data) {
 }
 
 
-function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $MEETING_LINK, $ID){
+function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $MEETING_LINK, $ID, $REMARKS = null){
     $mailTo = $MAIL_TO;
     $body = " <p>Hello $MAIL_TO,</p>
                 <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME is $STATUS.</p>  <br> <hr> Your meeting link is $MEETING_LINK <br> <hr>
                 <p>Note: Please be there 10 minutes before your appointment time. Thank you. </p>
                <p> Best regard, </p>
             <p>Circle of life Veterinary Clinic</p> ";
+
+    if ( $REMARKS ) {
+        $body .= "<hr> <p>Clinic remarks:</p>
+                    <p>$REMARKS</p>";
+    }
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     // $mail->SMTPDebug = 3;
@@ -127,11 +138,16 @@ function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, 
 
 }
 
-function sendCancelEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $ID){
+function sendCancelEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $ID, $REMARKS = null){
     $mailTo = $MAIL_TO;
     $body = " <p>Hello $MAIL_TO,</p>
                 <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME is $STATUS, you can contact us via email in admin@clvc.online </p>
             <p>Circle of life Veterinary Clinic</p> ";
+
+    if ( $REMARKS ) {
+        $body .= "<hr> <p>Clinic remarks:</p>
+                    <p>$REMARKS</p>";
+    }
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     // $mail->SMTPDebug = 3;
