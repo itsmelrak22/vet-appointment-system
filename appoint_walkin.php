@@ -218,39 +218,20 @@ if( (int) $walkinSettings->is_disabled ){
                 }
               }
 
-              // Get the current time
-              var currentTime = new Date();
+                // Get the current time
+                var currentTime = new Date();
 
-              // Add 1 hour to the current time
-              var oneHourAhead = new Date(currentTime.getTime() + 60 * 60 * 1000);
+              // Get the select element
+              var timeSelect = document.getElementById("time-slot");
 
-              // Disable options with a value in the past
-              var selectElement2 = document.getElementById('time-slot');
-              var options2 = selectElement2.getElementsByTagName('option');
-
-              for (var i = 0; i < options2.length; i++) {
-                var option = options2[i];
-                var optionValue = option.value;
-                var optionTime = optionValue.split(" ")[0]; // Extract the time part from the option value
-                var optionPeriod = optionValue.split(" ")[1]; // Extract the AM/PM part from the option value
-
-                // Parse the option time
-                var optionTimeParts = optionTime.split(":");
-                var optionHour = parseInt(optionTimeParts[0]);
-                var optionMinute = parseInt(optionTimeParts[1]);
-
-                // Adjust the hour value if it is in PM
-                if (optionPeriod === "PM" && optionHour !== 12) {
-                  optionHour += 12;
-                }
-
-                // Create a Date object for the option time
-                var optionDateTime = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), optionHour, optionMinute);
-
-                if (optionDateTime <= oneHourAhead) {
-                  option.disabled = true;
+              // Disable past time options
+              for (var i = 0; i < timeSelect.options.length; i++) {
+                var optionTime = new Date(currentTime.toDateString() + " " + timeSelect.options[i].value);
+                if (optionTime < currentTime) {
+                  timeSelect.options[i].disabled = true;
                 }
               }
+
               
               getDateSchedules(selectedDate)
             }
