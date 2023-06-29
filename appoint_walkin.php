@@ -218,20 +218,22 @@ if( (int) $walkinSettings->is_disabled ){
                 }
               }
 
-                // Get the current time
-                var currentTime = new Date();
+              // Get the current date and time
+              var currentTime = new Date();
+
+              // Parse the selected date and set the time to 12:00 AM
+              var selectedDateTime = new Date(selectedDate + " 12:00 AM");
 
               // Get the select element
               var timeSelect = document.getElementById("time-slot");
 
-              // Disable past time options
+              // Disable past and current time options
               for (var i = 0; i < timeSelect.options.length; i++) {
-                var optionTime = new Date(currentTime.toDateString() + " " + timeSelect.options[i].value);
-                if (optionTime < currentTime) {
+                var optionTime = new Date(selectedDate + " " + timeSelect.options[i].value);
+                if (optionTime <= currentTime || optionTime < selectedDateTime) {
                   timeSelect.options[i].disabled = true;
                 }
               }
-
               
               getDateSchedules(selectedDate)
             }
