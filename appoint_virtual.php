@@ -119,33 +119,33 @@ if( (int) $virtualSettings->is_disabled ){
                     <input type="hidden" name="appointment_date" value="" id="appointment_date">
                     <div class="row">
                       <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="name" name="owner_name" placeholder="Enter your name" required>
                       </div>
                       <div class="mb-3">
-                        <label for="phone" class="form-label">Phone number</label>
+                        <label for="phone" class="form-label">Phone number <span class="text-danger">*</span></label>
                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
                       </div>
                       <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
                       </div>
                       <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="time-slot" class="form-label">Time</label>
+                        <label for="time-slot" class="form-label">Time <span class="text-danger">*</span></label>
                         <select class="form-select client-select-time" name="time" id="time-slot" required placeholder="Select Timeslot">
                           <option value="" selected>Select Time</option>
                         </select>
                       </div>
                       <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="breed" class="form-label">Service</label>
+                        <label for="breed" class="form-label">Service <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" value="Animal Wellness" readonly placeholder="Enter the type of breed" required>
                       </div>
                       <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="petName" class="form-label">Pet name</label>
+                        <label for="petName" class="form-label">Pet name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name"required>
                       </div>
                       <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="petType" class="form-label">Type of pet or animal</label>
+                        <label for="petType" class="form-label">Type of pet or animal <span class="text-danger">*</span></label>
                         <select class="form-select" id="petType" name="pet_type" required>
                           <option value="" selected disabled hidden>Select an option</option>
                           <option value="dog">Dog</option>
@@ -153,7 +153,7 @@ if( (int) $virtualSettings->is_disabled ){
                         </select>
                       </div>
                       <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="breed" class="form-label">Type of breed</label>
+                        <label for="breed" class="form-label">Type of breed <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="breed" name="pet_breed" placeholder="Enter the type of breed" required>
                       </div>
                     
@@ -170,15 +170,15 @@ if( (int) $virtualSettings->is_disabled ){
                         <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age" >
                       </div>
                       <div class="mb-3">
-                        <label for="lastNormal" class="form-label">When was your pet last normal?</label>
+                        <label for="lastNormal" class="form-label">When was your pet last normal? <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="last_normal" id="lastNormal" placeholder="Last Normal Date" required>
                       </div>
                       <div class="mb-3">
-                        <label for="symptoms" class="form-label">What symptoms have brought you here today?</label>
+                        <label for="symptoms" class="form-label">What symptoms have brought you here today? <span class="text-danger">*</span></label>
                         <textarea class="form-control" id="symptoms" rows="3" required name="symptoms_remarks"></textarea>
                       </div>
                       <div class="mb-3">
-                        <label for="progress" class="form-label">Since I first noticed the problem, it has:</label>
+                        <label for="progress" class="form-label">Since I first noticed the problem, it has: <span class="text-danger">*</span></label>
                         <select class="form-select" id="progress" required name="progress">
                           <option value="same">Stayed the same</option>
                           <option value="worsened">Worsened</option>
@@ -186,7 +186,7 @@ if( (int) $virtualSettings->is_disabled ){
                         </select>
                       </div>
                       <div class="mb-3">
-                        <label for="otherSymptoms" class="form-label">Have you noticed any of the following?</label>
+                        <label for="otherSymptoms" class="form-label">Have you noticed any of the following? </label>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="coughing" name="is_coughing">
                           <label class="form-check-label" for="coughing">Coughing</label>
@@ -212,11 +212,11 @@ if( (int) $virtualSettings->is_disabled ){
                             Payment Cost : <strong>350 php</strong>
                           </div>
                         </div>
-                        <label for="age" class="form-label">Gcash Reference #:</label>
+                        <label for="age" class="form-label">Gcash Reference #: <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="age" name="reference_no" placeholder="Reference #" required>
                       </div>
                       <div class="mb-3">
-                        <label for="formFileSm" class="form-label">Upload Screenshot here</label>
+                        <label for="formFileSm" class="form-label">Upload Screenshot here <span class="text-danger">*</span></label>
                         <input type="file" class="form-control" id="image" name="image" accept="image/*" aria-describedby="inputGroup-sizing-sm"  required>
                       </div>
                     </div>

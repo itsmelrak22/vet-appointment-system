@@ -111,19 +111,19 @@ if( (int) $walkinSettings->is_disabled ){
                       <input type="hidden" name="appointment_date" value="" id="appointment_date">
                       <div class="row">
                         <div class="mb-3">
-                          <label for="name" class="form-label">Name</label>
+                          <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                           <input type="text" class="form-control" id="name" name="owner_name" placeholder="Enter your name" required>
                         </div>
                         <div class="mb-3">
-                          <label for="phone" class="form-label">Phone number</label>
+                          <label for="phone" class="form-label">Phone number <span class="text-danger">*</span></label>
                           <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
                         </div>
                         <div class="mb-3">
-                          <label for="email" class="form-label">Email</label>
+                          <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                           <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
                         </div>
                         <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                          <label for="time-slot" class="form-label">Time</label>
+                          <label for="time-slot" class="form-label">Time <span class="text-danger">*</span></label>
                           <select class="form-select client-select-time" name="time" id="time-slot" required>
                             <option disabled selected hidden value="">Select Time</option>
                             <option value="09:00 AM">09:00 AM</option>
@@ -142,7 +142,7 @@ if( (int) $walkinSettings->is_disabled ){
                           </select>
                         </div>
                         <div class="col-12 col-sm-12 col-xs-12 mb-3" >
-                          <label for="service-select" class="form-label">Service</label>
+                          <label for="service-select" class="form-label">Service <span class="text-danger">*</span></label>
                           <select class="form-select client-select-service" name="service_id" id="service-select" required>
                             <option disabled selected>Select a service</option>
                           </select>
@@ -151,29 +151,33 @@ if( (int) $walkinSettings->is_disabled ){
                           
                         </div>
                         <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                          <label for="petName" class="form-label">Pet name</label>
+                          <label for="petName" class="form-label">Pet name <span class="text-danger">*</span></label>
                           <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name"required>
                         </div>
                         <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                          <label for="petType" class="form-label">Type of pet or animal</label>
-                          <input type="text" class="form-control" id="petType" name="pet_type" placeholder="Enter the type of pet or animal" required>
+                          <label for="petType" class="form-label">Type of pet or animal <span class="text-danger">*</span></label>
+                          <select class="form-select" id="petType" name="pet_type" required>
+                            <option value="" selected disabled hidden>Select an option</option>
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                          </select>
                         </div>
                         <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                          <label for="breed" class="form-label">Type of breed</label>
+                          <label for="breed" class="form-label">Type of breed <span class="text-danger">*</span></label>
                           <input type="text" class="form-control" id="breed" name="pet_breed" placeholder="Enter the type of breed" required>
                         </div>
                       
                         <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                          <label for="height" class="form-label">Height</label>
-                          <input type="text" class="form-control" id="height" name="pet_height" placeholder="Enter the height in cm" required>
+                          <label for="height" class="form-label">Height ( Optional )</label>
+                          <input type="text" class="form-control" id="height" name="pet_height" placeholder="Enter the height in cm">
                         </div>
                         <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                          <label for="weight" class="form-label">Weight</label>
-                          <input type="text" class="form-control" id="weight" name="pet_weight" placeholder="Enter the weight in kg" required>
+                          <label for="weight" class="form-label">Weight ( Optional )</label>
+                          <input type="text" class="form-control" id="weight" name="pet_weight" placeholder="Enter the weight in kg">
                         </div>
                         <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                          <label for="age" class="form-label">Age</label>
-                          <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age" required>
+                          <label for="age" class="form-label">Age ( Optional )</label>
+                          <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age">
                         </div>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
