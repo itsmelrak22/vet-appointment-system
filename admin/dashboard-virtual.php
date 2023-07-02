@@ -8,10 +8,10 @@
 		<?php require_once('includes/count-cards-virtual.php') ?> 
 	</div>
 
-		<div class="card" style="height: 60vh">
+		<div class="card" style="min-height: 60vh">
 			<div class="card-body">
 				<div class="head">
-					<h3>Appointment for today</h3>
+					<h3>ALL APPOINTMENTS</h3>
 				</div>
 	
 				<table id="example" class="table table-striped" >

@@ -1,4 +1,10 @@
-<?php require_once('includes/header.php') ?>
+<?php require_once('includes/header.php');
+// Initialize variables
+$errors = [];
+$success = false;
+
+?>
+
 
 <body>
 	<?php require_once('includes/sidebar.php') ?> 
@@ -8,10 +14,18 @@
 		<?php require_once('includes/count-cards-virtual.php') ?> 
 	</div>
 
-		<div class="card" style="height: 60vh">
+		<div class="card" style="min-height: 60vh">
 			<div class="card-body">
 				<div class="head">
-					<h3>Appointment for today</h3>
+					<h3>PENDING APPOINTMENTS</h3>
+					<?php if ( isset($_SESSION['success']) ) { ?>
+						<div class="mt-4">
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong> Success! </strong> <?= $_SESSION['success'] ?>
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+						</div>
+					<?php unset($_SESSION['success']); }  ?>
 				</div>
 	
 				<table id="example" class="table table-striped" >

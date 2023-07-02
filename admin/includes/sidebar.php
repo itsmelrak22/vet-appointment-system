@@ -99,7 +99,6 @@ $allowedLinksVirtual = [
           <span class="tooltip">Virtual list</span>
         </li>
 
-        <?php if( $_SESSION['user']['category'] == 'Admin' ) { ?>
       
         <hr style="color: white">
         <div class="logo-details">
@@ -117,6 +116,7 @@ $allowedLinksVirtual = [
             <span class="tooltip">Meeting Links</span>
           </a>
         </li>
+        <?php if( $_SESSION['user']['category'] == 'Admin' ) { ?>
 
         <li>
           <?php if($url == 'admin_user_list.php'){ ?>
@@ -182,38 +182,87 @@ $allowedLinksVirtual = [
       <section id="content">
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><h2>Circle of life Veterinary Clinic</h2></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-        <span id="datetime"></span>
-        
-        </li>
-      </ul>
-      
-      <ul class="navbar-nav">
-      <li class="nav-item">
-          <a class="nav-link" href="#">
-            <img src="<?= $_SESSION['user']['avatar'] ?>" alt="profileImg" class="avatar" style="height: 50px; width: 50px;  border-radius: 6px;">
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mt-3" href="#"><strong>Welcome! <?= $_SESSION['user']['username'] ?> </strong> </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mt-3" href="#">|</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mt-3" type="button" data-bs-toggle="modal" data-bs-target="#logoutModal"><strong><i class="bx bx-log-out mt-1" ></i> Logout</strong></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h2>Circle of Life Veterinary Clinic</h2></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <span id="datetime"></span>
+                </li>
+              </ul>
+
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <img src="<?= $_SESSION['user']['avatar'] ?>" alt="profileImg" class="avatar" style="height: 50px; width: 50px; border-radius: 6px;">
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mt-3" href="#"><strong><?= $_SESSION['user']['name'] ?></strong></a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link mt-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <strong><i class="bx bx-cog mt-1"></i></strong>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#editProfile" onClick="previewEditProfileImage('<?=$_SESSION['user']['avatar']?>')">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Edit Modal -->
+            <form action="query_resource/user_edit.php" method="post"  enctype="multipart/form-data">
+              <div class="modal fade" id="editProfile" data-bs-keyboard="false" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="testModalLabel">Edit Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      
+                      <div class="modal-body">
+
+                        <input type="hidden" name="id" id="user-edit-profile-id" value="<?=$_SESSION['user']['id']?>">
+                        <input type="hidden" name="category" id="user-edit-profile-category" value="<?=$_SESSION['user']['category']?>">
+                        <input type="hidden" name="old_username" id="user-edit-profile-old_username" value="<?=$_SESSION['user']['username']?>">
+                        <input type="hidden" name="is_edit_profile" value="true">
+
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Avatar</span>
+                          <input type="file" class="form-control" id="image" name="image" accept="image/*" aria-describedby="inputGroup-sizing-sm" onchange="previewSelectedProfileImage(event)">
+                        </div>
+
+                        <div class="input-group input-group-sm mb-3 image-wrapper" id="imageWrapperEditProfile">
+                            <img id="preview-edit-profile" class="img-thumbnail" alt="Preview Image" style="max-height:250px">
+                        </div>
+
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Fullname</span>
+                          <input type="text" class="form-control" id="user-edit-profile-fullname" name="fullname" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required value="<?= $_SESSION['user']['name'] ?>">
+                        </div>
+
+                        <div class="input-group input-group-sm mb-3">
+                          <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Username</span>
+                          <input type="text" class="form-control" id="user-edit-profile-username" name="username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required value="<?= $_SESSION['user']['username'] ?>">
+                        </div>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
 
 <script>
   let sidebar = document.querySelector(".sidebar");
@@ -264,5 +313,38 @@ $allowedLinksVirtual = [
 
   // Call the function every second (1000 milliseconds)
   setInterval(updateDateTime, 1000);
+
+  function previewEditProfileImage(imageUrl) {
+    const imageWrapperEditProfile = document.getElementById('imageWrapperEditProfile');
+    const previewEdit = document.getElementById('preview-edit-profile');
+
+    if (imageUrl) {
+      previewEdit.src = imageUrl;
+      imageWrapperEditProfile.style.display = 'flex';
+    } else {
+      previewEdit.src = '';
+      imageWrapperEditProfile.style.display = 'none';
+    }
+  }
+
+  function previewSelectedProfileImage(event) {
+    const input = event.target;
+    const imageWrapper = document.getElementById('imageWrapperEditProfile');
+    const preview = document.getElementById('preview-edit-profile');
+
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        imageWrapper.style.display = 'flex';
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      preview.src = '';
+      imageWrapper.style.display = 'none';
+    }
+  }
 </script>
 

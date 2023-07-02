@@ -95,9 +95,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         
-        $_SESSION['success'] = "User has been Edited!";
         // $user = $userClass->find($id);
         // $_SESSION['user'] = $user;
+
+        if (isset($_POST['is_edit_profile'])) {
+            $_SESSION['user']['username'] = $username;
+            $_SESSION['user']['name'] = $fullname;
+            if($path){
+                $_SESSION['user']['avatar'] = $path;
+            }
+            session_write_close();
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+            exit(); 
+        }
+
+        $_SESSION['success'] = "User has been Edited!";
         header('Location: ../admin_user_list.php');
     }
 }

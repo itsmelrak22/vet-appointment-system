@@ -6,11 +6,11 @@
           <span class="logo_name">Contact Us</span>
         </div>
         <div class="media-icons">
-          <a href="#"><ion-icon name="logo-facebook"></ion-icon></i></a>
-          <a href="#"><ion-icon name="logo-twitter"></ion-icon></i></a>
+          <a href="https://www.facebook.com/circleoflifedvm" target="_blank"><ion-icon name="logo-facebook"></ion-icon></i></a>
+          <!-- <a href="#"><ion-icon name="logo-twitter"></ion-icon></i></a>
           <a href="#"><ion-icon name="logo-instagram"></ion-icon></i></a>
           <a href="#"><ion-icon name="logo-linkedin"></ion-icon></i></a>
-          <a href="#"><ion-icon name="logo-youtube"></ion-icon></i></a>
+          <a href="#"><ion-icon name="logo-youtube"></ion-icon></i></a> -->
         </div>
       </div>
       <div class="link-boxes">
@@ -24,16 +24,23 @@
           <li><a href="#"><ion-icon name="mail-outline"></ion-icon> circleoflifedvm@gmail.com</a></li>
           <li><a href="#"><ion-icon name="location-outline"></ion-icon>2/F Conwell Bulding, San Agustin, Daang Amaya 3, Tanza, Cavite, Tanza, Philippines, 4108
 Address</a></li>
-          <li><a href="admin/login.php">Log in</a></li>
+          
+          <?php
+            if( isset($_SESSION['token']) || isset($_SESSION['username'])) {
+               echo '<li><a href="admin/dashboard.php">Dashboard</a></li>';
+            }else{
+              echo '<li><a href="login.php">Log in</a></li>';
+            }
+          ?>
         </ul>
 
         <ul class="box input-box">
-          <li class="link_name">Message us</li>
-          <li><p class="mes"> Your feedback and inquiries is appreciated</p>
+          <!-- <li class="link_name">Message us</li>
+          <li><p class="mes"> Your feedback and inquiries is appreciated</p> -->
           
           <!-- SEND A MESSAGE BUTTON TO -->
           <li><div class="send"> 
-            <a class="wrapper" href="#open" accesskey="a"> Send a Message </a>
+            <!-- <a class="wrapper" href="#open" accesskey="a"> Send a Message </a> -->
         </div>
         </li>
         </ul>
@@ -80,10 +87,6 @@ Address</a></li>
                 </div>
                 </div>
             </footer>
-
-</body>
-</html>
-
 <style>
 footer{
   background: #0C375A;

@@ -5,10 +5,10 @@
 	<main>
 		<?php require_once('includes/count-cards-walkin.php') ?> 
 
-		<div class="card" style="height: 60vh">
+		<div class="card" style="min-height: 60vh">
 			<div class="card-body">
 				<div class="head">
-					<h3>Cancelled appointment</h3>
+					<h3>CANCELLED APPOINTMENTS</h3>
 					<i class='bx bx-search' ></i>
 					<i class='bx bx-filter' ></i>
 				</div>

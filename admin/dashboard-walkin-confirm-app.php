@@ -113,7 +113,7 @@ $jsonData = json_encode($data);
 						<button  style="width: 135px;" type="button" class="mx-2 btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#confirmModal">Update Status</button>
 						<!-- <button style="width: 135px;" type="button" class="mx-2 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#sendEmailModal" >Email</button> -->
 					<?php }?>
-					<a href="dashboard.php">
+					<a href="<?=$_SERVER['HTTP_REFERER']?>">
 						<button style="width: 135px;" type="button" class="mx-2 btn btn-secondary btn-sm" >Back in View</button>
 					</a>
 				</div>

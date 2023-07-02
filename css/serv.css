@@ -117,7 +117,7 @@ section {
   
   .SeeMore:disabled {
     /* background-color: #FAFBFC; */
-    background-color: ;
+    /* background-color: ; */
     border-color: rgba(27, 31, 35, 0.15);
     color: #959DA5;
     cursor: default;
@@ -140,6 +140,7 @@ section {
   .SeeMore:-webkit-details-marker {
     display: none;
   }
+
   @media screen and (min-width: 768px) {
     section {
       padding: 0 2em;

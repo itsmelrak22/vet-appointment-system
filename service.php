@@ -34,7 +34,7 @@ $servicesAll = $services->allWithOutTrash();
       </div>
 
         <!-- </div> -->
-			<div style="display: flex; justify-content: center; align-content: center;">
+			<!-- <div style="display: flex; justify-content: center; align-content: center;">
         <button class="SeeMore" id="seemore">See More</button>
-			</div>
+			</div> -->
     </section>

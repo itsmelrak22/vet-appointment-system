@@ -12,9 +12,9 @@ $links = $instance->allWithOutTrash();
 <?php require_once('includes/header.php') ?>
 <?php
 
-if( $_SESSION['user']['category'] != 'Admin' ) {
-	header('Location: dashboard.php');
-}
+// if( $_SESSION['user']['category'] != 'Admin' ) {
+// 	header('Location: dashboard.php');
+// }
 ?>
 <?php require_once('includes/sidebar.php') ?> 
 <body>

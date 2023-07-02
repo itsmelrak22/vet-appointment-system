@@ -1,16 +1,4 @@
-<style>
-  .image-wrapper {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-  }
 
-  .image-wrapper img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-</style>
 
 <!-- Create Modal -->
 <form action="query_resource/user_create.php" method="post"  enctype="multipart/form-data">

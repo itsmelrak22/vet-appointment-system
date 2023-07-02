@@ -40,5 +40,17 @@ if( !isset($_SESSION['token']) || !isset($_SESSION['user'])) {
         .active-card{
             background: #3691e3a6 !important;
         }
+        
+        .image-wrapper {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+        }
+
+        .image-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            }
 
     </style>

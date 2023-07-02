@@ -64,15 +64,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die('Database connection error: ' . $e->getMessage());
         }
 
+        if( !isset($_POST['is_to_send_email']) ){
+            // header('Location: ../dashboard-virtual-confirm-app.php?id='.$id);
+            $_SESSION['success'] = "Appointment has been updated !";
+            header('Location: ../dashboard-walkin-pending.php');
+        }
+
         
         // $_SESSION['success'] = "Appointment has been updated!";
         // header('Location: ../dashboard-walkin-confirm-app.php?id='.$id);
     }else{
-        // $_SESSION['errors'] = $errors;
-        // header('Location: ../dashboard-walkin-confirm-app.php?id='.$id);
-        echo "Error";
-        print_r($errors);
-        exit();
+        $_SESSION['errors'] = $errors;
+        header('Location: ../dashboard-walkin-confirm-app.php?id='.$id);
+        // echo "Error";
+        // print_r($errors);
+        // exit();
     }
 
 
@@ -132,7 +138,8 @@ function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, 
     }else{
         echo "Message Sent";
         $_SESSION['success'] = "Appointment has been updated and Email has been Sent!!";
-        header('Location: ../dashboard-walkin-confirm-app.php?id='.$ID);
+        // header('Location: ../dashboard-walkin-confirm-app.php?id='.$ID);
+        header('Location: ../dashboard-walkin-pending.php');
         
     }
 
@@ -178,7 +185,9 @@ function sendCancelEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $
     }else{
         echo "Message Sent";
         $_SESSION['success'] = "Appointment has been updated and Email has been Sent!!";
-        header('Location: ../dashboard-walkin-confirm-app.php?id='.$ID);
+        // header('Location: ../dashboard-walkin-confirm-app.php?id='.$ID);
+        header('Location: ../dashboard-walkin-pending.php');
+
         
     }
 
