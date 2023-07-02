@@ -29,7 +29,7 @@ $doctors = $instance->allWithOutTrash();
     <div class="container about2">
         <div class="row">
             <?php foreach ($doctors as $key => $value) { $value = (object) $value?>
-                <div class="col-xs-12 col-sm-12 col-md-6 column">
+                <div class="col-xs-12 col-sm-12 col-md-6 flip-column">
                     <div class="image-flip" >
                         <div class="mainflip flip-0">
                             <div class="frontside">
@@ -128,6 +128,15 @@ about{
     align-content: center;
     border-radius: 0  12px 12px 0;
     color: #fff;
+}
+
+.flip-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
 }
 
 .about_content .first{
