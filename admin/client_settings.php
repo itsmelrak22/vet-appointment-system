@@ -53,7 +53,7 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 
 
 
-	<div class="card" style="height: 75vh">
+	<div class="card" style="min-height: 75vh">
 		<div class="card-body">
 			<table id="example" class="table table-striped" style="width:100%;">
 				<thead>

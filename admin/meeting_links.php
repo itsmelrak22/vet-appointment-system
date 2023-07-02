@@ -58,7 +58,7 @@ $links = $instance->allWithOutTrash();
 
 
 
-	<div class="card" style="height: 75vh">
+	<div class="card" style="min-height: 75vh">
 		<div class="card-body">
 			<table id="example" class="table table-striped">
 				<thead>

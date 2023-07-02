@@ -10,7 +10,7 @@ $success = false;
 	<main>
 	<?php require_once('includes/count-cards-walkin.php') ?> 
 
-		<div class="card" style="min-min-height: 60vh">
+		<div class="card" style="min-height: 60vh">
 			<div class="card-body">
 				<div class="head">
 					<h3>PENDING APPOINTMENTS</h3>

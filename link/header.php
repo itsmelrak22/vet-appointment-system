@@ -25,15 +25,35 @@ session_start(); ?>
 		height: 80vh;
 		margin: 50px auto;
     } */
-	#datepicker-container {
-      /* width: 40%; */
-    }
 
 
     #datepicker {
-        font-size: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; 
+        font-size: 45px;
         flex: 1;
     }
+
+
+    /* .date-picker-row {
+    display: flex;
+    justify-content: center;
+    } */
+
+    /* #datepicker-container {
+        width: 100vw; 
+        display: flex;
+        justify-content: center;
+        font-size: 45px;
+
+    }
+
+    #datepicker {
+        width: 100%; 
+        max-width: 100vw; 
+    } */
 
     @media (max-width: 768px) {
         #datepicker {
@@ -67,7 +87,8 @@ session_start(); ?>
 
     nav img{
     /* opacity: .8; */
-    width: 4%;
+    width: 7%;
+    margin-right: 5px;
 
     }
     nav .logo{
@@ -94,22 +115,46 @@ session_start(); ?>
     flex-wrap: wrap; */
     }
 
+    @media (max-width: 991.98px) {
+        .navbar-collapse {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            background-color: #0C375A;
+        }
+
+        .navbar-toggler {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+        }
+    }
+
+    @media (max-width: 390px) {
+        .nav-text {
+            /* Add any additional styling for "CLVC" here */
+        }
+    }
+
   </style>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="index.php">
-            <img src="images/colclogo.png" alt="Site Logo" class="brand-image img-circle">
-            Circle of Life Veterinary Clinic
+            <img id="logo-image" src="images/colclogo.png" alt="Site Logo" class="brand-image img-circle">
+            <span id="nav-text"> Circle of Life Veterinary Clinic </span>
         </a>
+
         <button
             class="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse" 
-            data-bs-target="#navmenu" 
-            aria-controls="#navmenu" 
-            aria-expanded="false" 
+            data-bs-toggle="collapse"
+            data-bs-target="#navmenu"
+            aria-controls="navmenu"
+            aria-expanded="false"
             aria-label="Toggle navigation"
         >
             <span class="navbar-toggler-icon"></span>
@@ -135,4 +180,25 @@ session_start(); ?>
             </ul>
         </div>
     </div>
-</nav>    
+</nav>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    const navbarBrand = document.getElementById('nav-text');
+
+    function updateNavbarBrand() {
+        if (window.innerWidth < 390) {
+            navbarBrand.textContent = 'CLVC';
+        } else {
+            navbarBrand.textContent = 'Circle of Life Veterinary Clinic';
+        }
+    }
+
+    // Update the navbar brand initially
+    updateNavbarBrand();
+
+    // Update the navbar brand when the window is resized
+    window.addEventListener('resize', updateNavbarBrand);
+});
+
+
+</script>
