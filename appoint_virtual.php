@@ -121,7 +121,7 @@ if( (int) $virtualSettings->is_disabled ){
                   </div>
                   <div class="col-12 col-sm-12 col-xs-12 mb-3">
                     <label for="time-slot" class="form-label">Time</label>
-                    <select class="form-select client-select-time" name="time" id="time-slot" required></select>
+                    <select class="form-select client-select-time" name="time" id="time-slot" required placeholder="Select Timeslot"></select>
                   </div>
                   <div class="col-12 col-sm-12 col-xs-12 mb-3">
                     <label for="breed" class="form-label">Service</label>
@@ -226,31 +226,63 @@ if( (int) $virtualSettings->is_disabled ){
         selectedDate = '0'+currentDate;
         var appointmentDateInput = document.getElementById("appointment_date");
         appointmentDateInput.value = selectedDate
-        getTimeSlot()
         
+
       });
+
+      function loadDates() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "queries/get_all_schedules.php", true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var allowedDates = response.data.map(function(res) {
+              return $.datepicker.formatDate("mm-dd-yy", new Date(res.date));
+            });
+            console.log('allowedDates', allowedDates)
+            initializeDatepicker(allowedDates);
+          }
+        };
+        xhr.send();
+      }
+
+      // Function to initialize the datepicker with fetched allowedDates
+        function initializeDatepicker(allowedDates) {
+            $("#datepicker").datepicker({
+              minDate: new Date(),
+              beforeShowDay: function(date) {
+                  // Disable dates that are not in the allowedDates array
+                  return [!isDateDisabled(date, allowedDates)];
+                },
+              onSelect: function(dateText, inst) {
+                selectedDate = dateText;
+                $("#selected-date").text("SELECTED DATE: " + dateText);
+                $("#selected_date_col").show();
+                var appointmentDateInput = document.getElementById("appointment_date");
+                appointmentDateInput.value = selectedDate
+
+                let selectElement = document.querySelector('.client-select-time');
+                let options = selectElement.options;
+
+                for (let i = 0; i < options.length; i++) {
+                  if (options[i].disabled) {
+                    options[i].disabled = false; // Remove the disabled attribute
+                  }
+                }
+                getTimeSlot()
+              },
+              dateFormat: "mm/dd/yy" // Set the date format
+            });
+          }
+
+          function isDateDisabled(date, allowedDates) {
+            var dateString = $.datepicker.formatDate("mm-dd-yy", date);
+            return allowedDates.indexOf(dateString) === -1;
+          }
       
       $(function() {
-        $("#datepicker").datepicker({
-          minDate: new Date(),
-          onSelect: function(dateText, inst) {
-            selectedDate = dateText;
-            $("#selected-date").text("SELECTED DATE: " + dateText);
-            $("#selected_date_col").show();
-            var appointmentDateInput = document.getElementById("appointment_date");
-            appointmentDateInput.value = selectedDate
+          loadDates();
 
-            let selectElement = document.querySelector('.client-select-time');
-            let options = selectElement.options;
-
-            for (let i = 0; i < options.length; i++) {
-              if (options[i].disabled) {
-                options[i].disabled = false; // Remove the disabled attribute
-              }
-            }
-            getTimeSlot()
-          }
-        });
       });
 
        function getTimeSlot(){
@@ -262,6 +294,7 @@ if( (int) $virtualSettings->is_disabled ){
           xhr.onload = function() {
             if (xhr.status === 200) {
                 dataGathered = JSON.parse(xhr.responseText)
+                console.log(dataGathered)
                 const select = document.getElementById('time-slot');
                 while (select.options.length > 0) {
                   select.remove(0);
@@ -302,7 +335,8 @@ if( (int) $virtualSettings->is_disabled ){
                     const option = document.createElement('option');
                     option.value = item.id;
                     option.text = `${item.start_hour}:${item.start_minute} ${item.start_period} - ${item.end_hour}:${item.end_minute} ${item.end_period}`;
-
+                    // console.log('startTime', startTime)
+                    // console.log('currentTime', currentTime)
                     // Disable options with past time values
                     if (startTime < currentTime) {
                       option.disabled = true;
