@@ -25,13 +25,6 @@
           <li><a href="#"><ion-icon name="location-outline"></ion-icon>2/F Conwell Bulding, San Agustin, Daang Amaya 3, Tanza, Cavite, Tanza, Philippines, 4108
 Address</a></li>
           
-          <?php
-            if( isset($_SESSION['token']) || isset($_SESSION['username'])) {
-               echo '<li><a href="admin/dashboard.php">Dashboard</a></li>';
-            }else{
-              echo '<li><a href="login.php">Log in</a></li>';
-            }
-          ?>
         </ul>
 
         <ul class="box input-box">

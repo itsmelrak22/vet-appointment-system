@@ -60,6 +60,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         $appointment->remarks
                     );
             }
+
+            if(isset($_POST['is_to_send_email']) && $status == 'completed'){
+                sendCompleteEmail($appointment->email, 
+                        $appointment->owner_name, 
+                        $appointment->status, 
+                        $appointment->appointment_date, 
+                        $appointment->time, 
+                        $appointment->id,
+                        $appointment->remarks
+                    );
+            }
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
         }
@@ -100,6 +111,58 @@ function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, 
                 <br> 
                 <hr> 
                 <p>Note: Please be there 10 minutes before your appointment time. Thank you. </p>
+               <p> Best regard, </p>
+            <p>Circle of life Veterinary Clinic</p> ";
+
+    if ($REMARKS) {
+        $body .= "<hr> <p>Clinic remarks:</p>
+                    <p>$REMARKS</p>";
+    }
+        
+
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    // $mail->SMTPDebug = 3;
+    $mail->isSMTP();
+    $mail->Host = "mail.smtp2go.com";
+    $mail->SMTPAuth = true;
+
+    $mail->Username = "admin.clvc";
+    $mail->Password = "password";
+    $mail->SMTPSecure = "tls";
+
+    $mail->Port = "2525";
+    $mail->From = "admin@clvc.online";
+    $mail->FromName = "Circle Of Life Clinic";
+    $mail->addAddress($mailTo, $RECEIVER_NAME );
+
+    $mail->isHTML('true');
+    $mail->Subject = "Appointment $STATUS";
+    $mail->Body = $body;
+    $mail->AltBody = "Test Alt Body";
+
+    if(!$mail->send()){
+        // echo "Mailer Error :". $mail->ErrorInfo;
+        // $_SESSION['errors'] = ["Someting Went wrong, email not sent"];
+        // header('Location: ../dashboard-'.$_POST['appointment-type'].'-confirm-app.php?id='.$_POST['id']);
+        $_SESSION['errors'] = ["Someting Went wrong, email not sent"];
+        header('Location: ../dashboard-walkin-confirm-app.php?id='.$ID);
+    }else{
+        echo "Message Sent";
+        $_SESSION['success'] = "Appointment has been updated and Email has been Sent!!";
+        // header('Location: ../dashboard-walkin-confirm-app.php?id='.$ID);
+        header('Location: ../dashboard-walkin-pending.php');
+        
+    }
+
+}
+
+function sendCompleteEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $ID, $REMARKS = null){
+    $mailTo = $MAIL_TO;
+    $body = " <p>Hello $MAIL_TO,</p>
+                <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME has been completed .</p>  
+                <br> 
+                <hr> 
+                <p>Thanks for trusting our service! </p>
                <p> Best regard, </p>
             <p>Circle of life Veterinary Clinic</p> ";
 

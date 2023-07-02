@@ -32,7 +32,7 @@ session_start(); ?>
         justify-content: center;
         align-items: center;
         width: 100%; 
-        font-size: 45px;
+        font-size: 50px;
         flex: 1;
     }
 

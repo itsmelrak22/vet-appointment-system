@@ -47,7 +47,7 @@
                     <div class="input-group input-group-sm mb-3">
                         <label for="otherSymptoms" class="form-label">By checking the checkbox below will send email to the client.</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" >
+                            <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" checked>
                             <label class="form-check-label" for="is_to_send_email">Send email to the client</label>
                         </div>
                     </div>

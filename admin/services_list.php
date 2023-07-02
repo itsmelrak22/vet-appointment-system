@@ -63,7 +63,7 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 				<thead>
 					<tr>
 						<th>Service Name </th>
-						<th>Info</th>
+						<th width="70%">Info</th>
 						<th>Cost</th>
 						<th>Duration (Minutes)</th>
 						<th>Action</th>
@@ -121,5 +121,37 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 	}
 
 </script>
+
+<script>
+$(document).ready(function() {
+  $(document).on('click', '.see-more-link', function(e) {
+    e.preventDefault();
+    var $truncatedDesc = $(this).siblings('.description-truncated');
+    var $fullDesc = $(this).siblings('.description-full');
+    var $seeMoreLink = $(this);
+
+    $truncatedDesc.hide();
+    $fullDesc.show();
+    $seeMoreLink.text('See less');
+    $seeMoreLink.removeClass('see-more-link');
+    $seeMoreLink.addClass('see-less-link');
+  });
+
+  $(document).on('click', '.see-less-link', function(e) {
+    e.preventDefault();
+    var $truncatedDesc = $(this).siblings('.description-truncated');
+    var $fullDesc = $(this).siblings('.description-full');
+    var $seeLessLink = $(this);
+
+    $fullDesc.hide();
+    $truncatedDesc.show();
+    $seeLessLink.text('See more');
+    $seeLessLink.removeClass('see-less-link');
+    $seeLessLink.addClass('see-more-link');
+  });
+});
+
+</script>
+
 
 <?php require_once('includes/footer.php') ?> 

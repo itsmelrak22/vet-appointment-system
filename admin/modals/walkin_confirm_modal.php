@@ -41,7 +41,7 @@
                 <div class="input-group input-group-sm mb-3">
                     <label  class="form-label">By checking the checkbox below will send email to the client.</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" >
+                        <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" checked>
                         <label class="form-check-label" for="is_to_send_email">Send email to the client</label>
                     </div>
                 </div>
@@ -100,6 +100,56 @@
                     <div class="modal-body">
                         <div class="input-group input-group-sm mb-3">
                             <span id="inputGroup-sizing-sm">Mark as "Completed"?</span>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Remarks ( Optional )</span>
+                            <textarea type="text" class="form-control" name="remarks" id="remarks" aria-label="Remarks" aria-describedby="inputGroup-sizing-sm"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <label  class="form-label">By checking the checkbox below will send email to the client.</label>
+                            <div class="form-check">
+                                <label class="form-check-label" for="is_to_send_email">Send email to the client</label>
+                                <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" checked>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form action="query_resource/appointment_status_update.php" method="post">
+    <div class="modal fade" id="markAsCancel" data-bs-keyboard="false" tabindex="-1" aria-labelledby="testModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="testModalLabel">Confirm Cancellation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id" value="<?=$data->id ?>">
+                    <input type="hidden" name="appointment-type" value="walkin">
+                    <input type="hidden" name="status" value="cancelled">
+
+                    <div class="modal-body">
+                        <div class="input-group input-group-sm mb-3">
+                            <span id="inputGroup-sizing-sm">Are you sure you want to cancel this schedule?</span>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Remarks ( Optional )</span>
+                            <textarea type="text" class="form-control" name="remarks" id="remarks" aria-label="Remarks" aria-describedby="inputGroup-sizing-sm"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <label  class="form-label">By checking the checkbox below will send email to the client.</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="is_to_send_email" name="is_to_send_email" checked>
+                                <label class="form-check-label" for="is_to_send_email">Send email to the client</label>
+                            </div>
                         </div>
                     </div>
                 </div>
