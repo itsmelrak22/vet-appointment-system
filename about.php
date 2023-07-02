@@ -36,7 +36,6 @@ $doctors = $instance->allWithOutTrash();
                                 <div class="card">
                                     <div class="card-body text-center">
                                         <p><img class="img-fluid" src="admin\<?=$value->avatar?>" alt="card image"></p>
-                                        <h6 class="card-title">CLVC</h6>
                                         <p class="card-text"> <?=$value->name?> </p>
                                     </div>
                                 </div>
