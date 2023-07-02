@@ -300,47 +300,66 @@ if( (int) $virtualSettings->is_disabled ){
                   select.remove(0);
                 } 
 
-                  // Get the current time
-                  var currentTime = new Date();
-                  currentTime.setHours(currentTime.getHours() + 1);
-                  
-                  // Create and add options
-                  dataGathered.data.forEach(item => {
-                    // Extract start and end time information
-                    var startHour = item.start_hour;
-                    var startMinute = item.start_minute;
-                    var startPeriod = item.start_period;
-                    var endHour = item.end_hour;
-                    var endMinute = item.end_minute;
-                    var endPeriod = item.end_period;
+               // Get the current time
+                var currentTime = new Date();
+                currentTime.setHours(currentTime.getHours() + 1);
 
-                    // Convert start and end time to 24-hour format
-                    if (startPeriod === 'PM' && startHour !== 12) {
-                      startHour = parseInt(startHour) + 12;
-                    } else if (startPeriod === 'AM' && startHour === 12) {
-                      startHour = 0;
-                    }
-                    if (endPeriod === 'PM' && endHour !== 12) {
-                      endHour = parseInt(endHour) + 12;
-                    } else if (endPeriod === 'AM' && endHour === 12) {
-                      endHour = 0;
-                    }
+                // Create and add options
+                dataGathered.data.forEach(item => {
+                  // Extract start and end time information
+                  var startHour = item.start_hour;
+                  var startMinute = item.start_minute;
+                  var startPeriod = item.start_period;
+                  var endHour = item.end_hour;
+                  var endMinute = item.end_minute;
+                  var endPeriod = item.end_period;
 
-                    // Create Date objects for start and end times
-                    var startTime = new Date();
-                    startTime.setHours(startHour, startMinute);
-                    var endTime = new Date();
-                    endTime.setHours(endHour, endMinute);
+                  // Convert start and end time to 24-hour format
+                  if (startPeriod === 'PM' && startHour !== 12) {
+                    startHour = parseInt(startHour) + 12;
+                  } else if (startPeriod === 'AM' && startHour === 12) {
+                    startHour = 0;
+                  }
+                  if (endPeriod === 'PM' && endHour !== 12) {
+                    endHour = parseInt(endHour) + 12;
+                  } else if (endPeriod === 'AM' && endHour === 12) {
+                    endHour = 0;
+                  }
 
-                    const option = document.createElement('option');
-                    option.value = item.id;
-                    option.text = `${item.start_hour}:${item.start_minute} ${item.start_period} - ${item.end_hour}:${item.end_minute} ${item.end_period}`;
-                    console.log('startTime', startTime)
-                    console.log('currentTime', currentTime)
-                    // Disable options with past time values
+                  // Create Date objects for start and end times
+                  var startTime = new Date();
+                  startTime.setHours(startHour, startMinute);
+                  var endTime = new Date();
+                  endTime.setHours(endHour, endMinute);
+
+                  // Combine selectedDate and currentTime
+                  var combinedDateTime = new Date(selectedDate);
+                  combinedDateTime.setHours(startTime.getHours(), startTime.getMinutes());
+
+                  const option = document.createElement('option');
+                  option.value = item.id;
+                  option.text = `${item.start_hour}:${item.start_minute} ${item.start_period} - ${item.end_hour}:${item.end_minute} ${item.end_period}`;
+                  // console.log('startTime', startTime);
+                  // console.log('combinedDateTime', combinedDateTime);
+
+                  // Check if selectedDate is in the future
+                  console.log('combinedDateTime', combinedDateTime)
+                  console.log('currentDatetime', new Date())
+                  if (combinedDateTime >= new Date()) {
+                    console.log('future')
+                    
+                    option.disabled = false; 
+
+                  } else {
+                    console.log('past')
                     if (startTime < currentTime) {
-                      option.disabled = true;
+                      option.disabled = true; 
+                    } else {
+                      option.disabled = false; 
                     }
+                  }
+                  console.log('---------------')
+
                     
                     select.appendChild(option);
                   });
