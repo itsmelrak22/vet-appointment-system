@@ -335,8 +335,8 @@ if( (int) $virtualSettings->is_disabled ){
                     const option = document.createElement('option');
                     option.value = item.id;
                     option.text = `${item.start_hour}:${item.start_minute} ${item.start_period} - ${item.end_hour}:${item.end_minute} ${item.end_period}`;
-                    // console.log('startTime', startTime)
-                    // console.log('currentTime', currentTime)
+                    console.log('startTime', startTime)
+                    console.log('currentTime', currentTime)
                     // Disable options with past time values
                     if (startTime < currentTime) {
                       option.disabled = true;
