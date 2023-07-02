@@ -29,7 +29,7 @@ $doctors = $instance->allWithOutTrash();
     <div class="container about2">
         <div class="row">
             <?php foreach ($doctors as $key => $value) { $value = (object) $value?>
-                <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="col-xs-12 col-sm-12 col-md-6 column">
                     <div class="image-flip" >
                         <div class="mainflip flip-0">
                             <div class="frontside">
@@ -276,6 +276,8 @@ section .section-title {
     z-index: 2;
     margin-bottom: 30px;
     height: 400px !important;
+    width: 400px !important;
+
 }
 
 .backside {
@@ -330,7 +332,7 @@ section .section-title {
 }
 
 .frontside .card .card-body img {
-    width: 120px;
-    height: 120px;
+    width: 210px;
+    height: 210px;
 }
 </style>
