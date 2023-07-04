@@ -55,27 +55,29 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 
 	<div class="card" style="min-height: 75vh">
 		<div class="card-body">
-			<table id="example" class="table table-striped" style="width:100%;">
-				<thead>
-					<tr>
-						<th>Button </th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($settings as $key => $value) { ?>
+			<div class="table-responsive">
+				<table id="example" class="table table-striped" style="width:100%;">
+					<thead>
 						<tr>
-							<td> <?= $value['btn'] ?> </td>
-							<td> 								
-								<button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($value)); ?>)">
-									<i class='bx bx-pencil'></i>
-									<span class="text">Actions</span>
-								</button>
-							</td>
+							<th>Button </th>
+							<th>Action</th>
 						</tr>
-					<?php  } ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<?php foreach ($settings as $key => $value) { ?>
+							<tr>
+								<td> <?= $value['btn'] ?> </td>
+								<td> 								
+									<button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($value)); ?>)">
+										<i class='bx bx-pencil'></i>
+										<span class="text">Actions</span>
+									</button>
+								</td>
+							</tr>
+						<?php  } ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </main>

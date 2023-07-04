@@ -72,34 +72,36 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 
 	<div class="card">
 		<div class="card-body" style="min-height: 75vh">
-			<table id="example" class="table table-striped">
-				<thead>
-					<tr>
-						<th> Name </th>
-						<th> Username </th>
-						<th> User Type </th>
-						<th> Actions </th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($users as $key => $user) { ?>
+			<div class="table-reponsive">
+				<table id="example" class="table table-striped">
+					<thead>
 						<tr>
-							<td> <?= $user['name'] ?> </td>
-							<td> <?= $user['username'] ?> </td>
-							<td> <?= $user['category'] ?> </td>
-							<td> 
-								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editUser(<?php echo htmlspecialchars(json_encode($user)); ?>)">
-									<i class='bx bx-pencil'></i>
-								</button>
-
-								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteUser(<?php echo htmlspecialchars(json_encode($user)); ?>)">
-									<i class='bx bx-trash'></i>
-								</button>
-							</td>
+							<th> Name </th>
+							<th> Username </th>
+							<th> User Type </th>
+							<th> Actions </th>
 						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<?php foreach ($users as $key => $user) { ?>
+							<tr>
+								<td> <?= $user['name'] ?> </td>
+								<td> <?= $user['username'] ?> </td>
+								<td> <?= $user['category'] ?> </td>
+								<td> 
+									<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editUser(<?php echo htmlspecialchars(json_encode($user)); ?>)">
+										<i class='bx bx-pencil'></i>
+									</button>
+
+									<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteUser(<?php echo htmlspecialchars(json_encode($user)); ?>)">
+										<i class='bx bx-trash'></i>
+									</button>
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </main>

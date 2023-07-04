@@ -60,32 +60,34 @@ $links = $instance->allWithOutTrash();
 
 	<div class="card" style="min-height: 75vh">
 		<div class="card-body">
-			<table id="example" class="table table-striped">
-				<thead>
-					<tr>
-						<th>Link</th>
-						<th>Status</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($links as $key => $row) { ?>
+			<div class="table-responsive">
+				<table id="example" class="table table-striped">
+					<thead>
 						<tr>
-							<td> <?= $row['link'] ?> </td>
-							<td> <?= $row['status'] ?> </td>
-							<td> 
-								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
-									<i class='bx bx-pencil'></i>
-								</button>
-
-								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
-									<i class='bx bx-trash'></i>
-								</button>
-							</td>
+							<th>Link</th>
+							<th>Status</th>
+							<th>Action</th>
 						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<?php foreach ($links as $key => $row) { ?>
+							<tr>
+								<td> <?= $row['link'] ?> </td>
+								<td> <?= $row['status'] ?> </td>
+								<td> 
+									<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
+										<i class='bx bx-pencil'></i>
+									</button>
+
+									<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
+										<i class='bx bx-trash'></i>
+									</button>
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </main>

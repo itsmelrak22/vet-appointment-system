@@ -10,3 +10,23 @@
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+    const navbarBrand = document.getElementById('nav-text');
+
+    function updateNavbarBrand() {
+        if (window.innerWidth < 390) {
+            navbarBrand.textContent = 'CLVC';
+        } else {
+            navbarBrand.textContent = 'Circle of Life Veterinary Clinic';
+        }
+    }
+
+    // Update the navbar brand initially
+    updateNavbarBrand();
+
+    // Update the navbar brand when the window is resized
+    window.addEventListener('resize', updateNavbarBrand);
+});
+</script>

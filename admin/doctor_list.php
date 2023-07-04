@@ -72,43 +72,45 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 
 	<div class="card">
 		<div class="card-body" style="min-height: 75vh">
-		<table id="example" class="table table-striped">
-			<thead>
-				<tr>
-					<th>Doctor's Name</th>
-					<th>Age</th>
-					<th>Description</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($doctors as $key => $doctor) { ?>
+			<div class="table-responsive">
+				<table id="example" class="table table-striped">
+				<thead>
 					<tr>
-						<td><?= $doctor['name'] ?></td>
-						<td><?= $doctor['age'] ?></td>
-						<td>
-							<?php if (strlen($doctor['description']) <= 100): ?>
-								<?= $doctor['description'] ?>
-							<?php else: ?>
-								<span class="description-truncated"><?= substr($doctor['description'], 0, 100) ?>...</span>
-								<span class="description-full" style="display: none"><?= $doctor['description'] ?></span>
-								<a href="#" class="see-more-link">See more</a>
-							<?php endif; ?>
-						</td>
-
-						<td>
-							<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
-								<i class='bx bx-pencil'></i>
-							</button>
-
-							<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
-								<i class='bx bx-trash'></i>
-							</button>
-						</td>
+						<th>Doctor's Name</th>
+						<th>Age</th>
+						<th>Description</th>
+						<th>Action</th>
 					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php foreach ($doctors as $key => $doctor) { ?>
+						<tr>
+							<td><?= $doctor['name'] ?></td>
+							<td><?= $doctor['age'] ?></td>
+							<td>
+								<?php if (strlen($doctor['description']) <= 100): ?>
+									<?= $doctor['description'] ?>
+								<?php else: ?>
+									<span class="description-truncated"><?= substr($doctor['description'], 0, 100) ?>...</span>
+									<span class="description-full" style="display: none"><?= $doctor['description'] ?></span>
+									<a href="#" class="see-more-link">See more</a>
+								<?php endif; ?>
+							</td>
+
+							<td>
+								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
+									<i class='bx bx-pencil'></i>
+								</button>
+
+								<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
+									<i class='bx bx-trash'></i>
+								</button>
+							</td>
+						</tr>
+					<?php } ?>
+				</tbody>
+			</table>
+			</div>
 
 		</div>
 	</div>

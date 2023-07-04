@@ -7,8 +7,17 @@ spl_autoload_register(function ($class) {
 });
 
 header('Content-Type: application/json; charset=utf-8');
-$username = htmlspecialchars($_POST['username'], ENT_QUOTES) ?? '';
-$password = htmlspecialchars($_POST['password'], ENT_QUOTES) ?? '';
+// $username = htmlspecialchars($_POST['username'], ENT_QUOTES) ?? '';
+// $password = htmlspecialchars($_POST['password'], ENT_QUOTES) ?? '';
+
+$username = sanitizeInput($_POST['username'] ?? '');
+$password = sanitizeInput($_POST['password'] ?? '');
+
+function sanitizeInput($input) {
+    $sanitizedInput = htmlspecialchars($input, ENT_QUOTES);
+    $sanitizedInput = parse_url($sanitizedInput, PHP_URL_PATH);
+    return $sanitizedInput;
+}
 $token = $_POST['token'];
 
 

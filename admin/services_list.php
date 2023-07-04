@@ -59,39 +59,41 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 
 	<div class="card" style="min-height: 75vh">
 		<div class="card-body">
-			<table id="example" class="table table-striped" style="width:100%;">
-				<thead>
-					<tr>
-						<th>Service Name </th>
-						<th width="70%">Info</th>
-						<th>Cost</th>
-						<th>Duration (Minutes)</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($services as $key => $service) { ?>
+			<div class="table-responsive">
+				<table id="example" class="table table-striped" >
+					<thead>
 						<tr>
-							<td> <?= $service['name'] ?> </td>
-							<td> <?= $service['info'] ?> </td>
-							<td> <?= $service['price'] ?> </td>
-							<td> <?= $service['duration_minutes'] == '61' ? 
-										'60 mins and up' : 
-										($service['duration_minutes'] ? $service['duration_minutes'] . ' mins' : 
-										'') ?>  </td>
-							<td> 
-								<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
-									<i class='bx bx-pencil'></i>
-								</button>
-
-								<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
-									<i class='bx bx-trash'></i>
-								</button>
-							</td>
+							<th>Service Name </th>
+							<th >Info</th>
+							<th>Cost</th>
+							<th>Duration (Minutes)</th>
+							<th>Action</th>
 						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<?php foreach ($services as $key => $service) { ?>
+							<tr>
+								<td> <?= $service['name'] ?> </td>
+								<td> <?= $service['info'] ?> </td>
+								<td> <?= $service['price'] ?> </td>
+								<td> <?= $service['duration_minutes'] == '61' ? 
+											'60 mins and up' : 
+											($service['duration_minutes'] ? $service['duration_minutes'] . ' mins' : 
+											'') ?>  </td>
+								<td> 
+									<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
+										<i class='bx bx-pencil'></i>
+									</button>
+
+									<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRow(<?php echo htmlspecialchars(json_encode($service)); ?>)">
+										<i class='bx bx-trash'></i>
+									</button>
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </main>

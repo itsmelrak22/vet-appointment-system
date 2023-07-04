@@ -1,4 +1,4 @@
-
+/* 
 section {
     height: fit-content;
     width: 100%;
@@ -6,11 +6,11 @@ section {
     place-items: center;
     padding-bottom: 10px;
     font-family: 'Playfair Display', serif;
-  }
-  #service .row {
+  } */
+  /* #service .row {
     display: flex;
     flex-wrap: wrap;
-  }
+  } */
 
   #service h2{
     padding: 20px;
@@ -141,22 +141,5 @@ section {
     display: none;
   }
 
-  @media screen and (min-width: 768px) {
-    section {
-      padding: 0 2em;
-    }
-    .column {
-      flex: 0 50%;
-      max-width: 50%;
-    }
-  }
-  @media screen and (min-width: 992px) {
-    section {
-      padding: 1em 3em;
-    }
-    .column {
-      flex: 0 0 33.33%;
-      max-width: 33.33%;
-    }
-  }
+
   

@@ -179,7 +179,7 @@
 		background: #eee;
 	}
 
-	@media screen and (max-width: 768px) {
+	/* @media screen and (max-width: 768px) {
 		#sidebar {
 			width: 200px;
 		}
@@ -192,4 +192,4 @@
 		#content nav .nav-link {
 			display: none;
 		}
-	}
+	} */
