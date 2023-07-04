@@ -74,7 +74,15 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 						<?php foreach ($services as $key => $service) { ?>
 							<tr>
 								<td> <?= $service['name'] ?> </td>
-								<td> <?= $service['info'] ?> </td>
+								<td> 
+									<?php if (strlen($service['info']) <= 100): ?>
+										<?= $service['info'] ?>
+									<?php else: ?>
+										<span class="info-truncated"><?= substr($service['info'], 0, 100) ?> </span>
+										<span class="info-full" style="display: none"><?= $service['info'] ?></span>
+										<a href="#" class="see-more-link">...</a>
+									<?php endif; ?> 
+								</td>
 								<td> <?= $service['price'] ?> </td>
 								<td> <?= $service['duration_minutes'] == '61' ? 
 											'60 mins and up' : 
@@ -128,8 +136,8 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 $(document).ready(function() {
   $(document).on('click', '.see-more-link', function(e) {
     e.preventDefault();
-    var $truncatedDesc = $(this).siblings('.description-truncated');
-    var $fullDesc = $(this).siblings('.description-full');
+    var $truncatedDesc = $(this).siblings('.info-truncated');
+    var $fullDesc = $(this).siblings('.info-full');
     var $seeMoreLink = $(this);
 
     $truncatedDesc.hide();
@@ -141,13 +149,13 @@ $(document).ready(function() {
 
   $(document).on('click', '.see-less-link', function(e) {
     e.preventDefault();
-    var $truncatedDesc = $(this).siblings('.description-truncated');
-    var $fullDesc = $(this).siblings('.description-full');
+    var $truncatedDesc = $(this).siblings('.info-truncated');
+    var $fullDesc = $(this).siblings('.info-full');
     var $seeLessLink = $(this);
 
     $fullDesc.hide();
     $truncatedDesc.show();
-    $seeLessLink.text('See more');
+    $seeLessLink.text('...');
     $seeLessLink.removeClass('see-less-link');
     $seeLessLink.addClass('see-more-link');
   });

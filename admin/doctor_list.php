@@ -98,6 +98,9 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 							</td>
 
 							<td>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewModal" onclick="viewRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
+									<i class='bx bx-chevron-right-square'></i> 
+								</button>
 								<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($doctor)); ?>)">
 									<i class='bx bx-pencil'></i>
 								</button>
@@ -131,6 +134,23 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
         document.getElementById('edit-description').value = row.description;
 		previewEditImage(row.avatar)
     }
+
+	// function viewRow(row) {
+    //     document.getElementById('view-avatar').src = row.avatar;
+    //     document.getElementById('view-name').innerHtml = row.name;
+    //     document.getElementById('view-age').innerHtml = row.age;
+    //     document.getElementById('view-description').innerHtml = row.description;
+    //     document.getElementById('view-join').innerHtml = row.created_at;
+    // }
+
+  function viewRow(row) {
+    document.getElementById('view-avatar').src = row.avatar;
+    document.getElementById('view-name').innerHTML = row.name;
+    document.getElementById('view-age').innerHTML = row.age;
+    document.getElementById('view-description').innerHTML = row.description;
+    document.getElementById('view-join').innerHTML = row.created_at;
+  }
+
 
 	function deleteRow(row) {
         document.getElementById('delete-id').value = row.id;

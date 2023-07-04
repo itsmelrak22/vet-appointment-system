@@ -38,8 +38,8 @@
               <input type="number" class="form-control" name="price" aria-label="Password" aria-describedby="inputGroup-sizing-sm" required>
             </div>
             <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Duration (minutes) </span>
-              <input type="number" class="form-control" name="duration_minutes"  aria-describedby="inputGroup-sizing-sm" required>
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 146px">Duration (minutes)</span>
+              <input type="number" class="form-control" name="duration_minutes" aria-describedby="inputGroup-sizing-sm" min="1" max="59" oninput="validity.valid||(value='');" required>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="is_60_more" value="61" id="flexCheckDefault" onchange="handleCheckboxChange()">

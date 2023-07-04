@@ -10,6 +10,87 @@
       max-width: 100%;
       max-height: 100%;
     }
+
+
+.profile-card {
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.image img {
+    transition: all 0.5s
+}
+
+.profile-card:hover .image img {
+    transform: scale(1.5)
+}
+
+.profile-btn {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%
+}
+
+.name {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.idd {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.idd1 {
+    font-size: 12px
+}
+
+.number {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444
+}
+
+.btn1 {
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color: #000;
+    color: #aeaeae;
+    font-size: 15px
+}
+
+.text span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500
+}
+
+.icons i {
+    font-size: 19px
+}
+
+hr .new1 {
+    border: 1px solid
+}
+
+.join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold
+}
+
+.date {
+    background-color: #ccc
+}
 </style>
 
 <!-- Create Modal -->
@@ -129,6 +210,46 @@
   </div>
 </div>
 
+<!-- View Modal -->
+<div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <input type="hidden" name="id" id="delete-id">
+        <div class="modal-body">
+          <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+            <div class="card profile-card p-4">
+              <div class="image d-flex flex-column justify-content-center align-items-center">
+                <button type="button" class="profile-btn btn-secondary">
+                  <img src="../admin/img/users/351578900_132467359848047_2476611099745259805_n.png" height="100" width="100" id="view-avatar" />
+                </button>
+                <span class="name mt-3" id="view-name">John Doe</span>
+                <span class="idd" id="view-age">Age: 20</span>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2"></div>
+                <div class="d-flex flex-row justify-content-center align-items-center mt-3"></div>
+                <div class="d-flex mt-2"></div>
+                <div class="text mt-3">
+                  <span id="view-description">Lorem Ipmsum </span>
+                </div>
+                <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+                  <span><i class="fa fa-twitter"></i></span>
+                  <span><i class="fa fa-facebook-f"></i></span>
+                  <span><i class="fa fa-instagram"></i></span>
+                  <span><i class="fa fa-linkedin"></i></span>
+                </div>
+                <div class="px-2 rounded mt-4 date">
+                  <span class="join" id="view-join">Joined May,2021</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+
 
 
 <script>
@@ -218,4 +339,6 @@ function checkCharacterLimitEdit() {
     textarea.value = description.substring(0, 400);
   }
 }
+
+
 </script>
