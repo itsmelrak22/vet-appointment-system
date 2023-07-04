@@ -92,6 +92,7 @@ if( (int) $walkinSettings->is_disabled ){
 </div>
 
 <!-- Modal -->
+<form action="queries/walkin/create.php" method="post"  enctype="multipart/form-data">
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -106,7 +107,6 @@ if( (int) $walkinSettings->is_disabled ){
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Fill out pet information form</h5>
-                    <form action="queries/walkin/create.php" method="post"  enctype="multipart/form-data">
                       <input type="hidden" name="appointment_type" value="walkin">
                       <input type="hidden" name="appointment_date" value="" id="appointment_date">
                       <div class="row">
@@ -180,8 +180,6 @@ if( (int) $walkinSettings->is_disabled ){
                           <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age">
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
                 </div>
               </div>
 
@@ -190,11 +188,12 @@ if( (int) $walkinSettings->is_disabled ){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
 </div>
+</form>
 
 <?php include('link/scripts.php') ?> 
 </body>

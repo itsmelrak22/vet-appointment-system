@@ -220,7 +220,6 @@ if( (int) $virtualSettings->is_disabled ){
                         <input type="file" class="form-control" id="image" name="image" accept="image/*" aria-describedby="inputGroup-sizing-sm"  required>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
 
@@ -229,7 +228,7 @@ if( (int) $virtualSettings->is_disabled ){
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </div>

@@ -43,6 +43,7 @@ $virtuals = $conn2->getDashboardDataToday();
 				<table id="walkin" class="table table-striped">
 					<thead>
 						<tr>
+						<th>Appointment Code</th>
 						<th>Customer Name</th>
 						<th>Service Type</th>
 						<th>Appointment Date</th>
@@ -54,6 +55,7 @@ $virtuals = $conn2->getDashboardDataToday();
 					<tbody>
 						<?php foreach ($walkins as $key => $value) {  $value = (object) $value ?>
 						<tr>
+						<td><?= $value->appointment_code  ?></td>
 						<td><?= $value->owner_name ?></td>
 						<td><?= $value->service_name ?></td>
 						<td><?= $value->appointment_date ?></td>
@@ -61,7 +63,8 @@ $virtuals = $conn2->getDashboardDataToday();
 						<td><?= $value->pet_name ?></td>
 						<td>
 							<a href="dashboard-walkin-confirm-app.php?id=<?=$value->id?>">
-								<button type="button" class="btn btn-primary btn-sm" >View</button>
+								<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-chevron-right-square'></i> </button>
+
 							</a>
 						</td>
 						</tr>
@@ -80,6 +83,7 @@ $virtuals = $conn2->getDashboardDataToday();
 				<table id="virtual" class="table table-striped" >
 					<thead>
 						<tr>
+							<th>Appointment Code</th>
 							<th>Customer Name</th>
 							<th>Service Type</th>
 							<th>Appointment Date</th>
@@ -92,6 +96,7 @@ $virtuals = $conn2->getDashboardDataToday();
 					<tbody>
 						<?php foreach ($virtuals as $key2 => $virtual) {  $virtual = (object) $virtual;?>
 						<tr>
+							<td><?= $virtual->appointment_code  ?></td>
 							<td> <?= $virtual->owner_name ?> </td>
 							<td> <?= $virtual->service_name ?> </td>
 							<td> <?= $virtual->appointment_date ?> </td>
@@ -99,7 +104,8 @@ $virtuals = $conn2->getDashboardDataToday();
 							<td> <?= $virtual->pet_name ?> </td>
 							<td>
 								<a href="dashboard-virtual-confirm-app.php?id=<?=$virtual->id?>">
-									<button type="button" class="btn btn-primary btn-sm" >View</button>
+									<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-chevron-right-square'></i> </button>
+
 								</a>
 							</td>
 						</tr>

@@ -15,6 +15,7 @@
 				<table id="example" class="table table-striped" >
 					<thead>
 						<tr>
+							<th>Appointment Code</th>
 							<th>Customer Name</th>
 							<th>Service Type</th>
 							<th>Appointment Date</th>
@@ -27,14 +28,16 @@
 					<tbody>
 						<?php foreach ($todayAppointments as $key => $value) {  $value = (object) $value ?>
 						<tr>
+							<td> <?= $value->appointment_code ?> </td>
 							<td> <?= $value->owner_name ?> </td>
 							<td> <?= $value->service_name ?> </td>
 							<td> <?= $value->appointment_date ?> </td>
-							<td> <?= $value->time ?> </td>
-							<td> <?= $value->status ?> </td>
+							<td> <?= $value->time ?> </td>  
+							<td> <span class="badge bg-primary"><?= ucfirst($value->status); ?></span> </td>
 							<td> 
 								<a href="dashboard-walkin-confirm-app.php?id=<?=$value->id?>">
-									<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-check'></i> View</button>
+									<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-chevron-right-square'></i> </button>
+
 								</a>
 							</td>
 						</tr>

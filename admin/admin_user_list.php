@@ -121,6 +121,8 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
         document.getElementById('user-edit-old_username').value = user.username;
         document.getElementById('user-edit-category').value = user.category;
 		previewEditImage(user.avatar)
+		checkCharacterLimit('user-edit-fullname', 'user-edit-fullname-char-count', 60)
+		checkCharacterLimit('user-edit-username', 'user-edit-username-char-count', 60)
     }
 
 	function deleteUser(user) {

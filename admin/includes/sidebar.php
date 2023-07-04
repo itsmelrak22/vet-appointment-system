@@ -33,7 +33,7 @@ $allowedLinksVirtual = [
   "dashboard-virtual-cancelled.php"
 ];
 ?>
-  <div class="sidebar">
+  <div class="sidebar open">
     <ul class="nav-list">
       <li style="margin-left: -25px;">
           <a href="../index.php">

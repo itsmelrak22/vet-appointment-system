@@ -33,7 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     if (empty($password)) {
         $errors[] = "Password is required";
-    } else {
+    } else if ( count($password) < 8 ){
+        $errors[] = "Password to short, minimum of 8 characters";
+        
+    }else {
         // Optionally, you can also apply additional password validation rules
         $password = filter_var($password, FILTER_SANITIZE_STRING);
     }

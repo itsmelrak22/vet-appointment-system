@@ -39,7 +39,7 @@ $doctors = $instance->allWithOutTrash();
                         <div class="frontside">
                         <div class="card team-card">
                             <div class="card-body text-center">
-                            <p><img class="img-fluid" src="admin\<?=$value->avatar?>" alt="card image"></p>
+                            <p><img class="img-fluid" src="admin\<?=$value->avatar?>" alt="card image" style="width: 250px; height: auto;"></p>
                             <p class="card-text"><?=$value->name?></p>
                             </div>
                         </div>

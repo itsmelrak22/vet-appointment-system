@@ -35,7 +35,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $sidebarWalkins ) ?> </h3>
-                <p>PENDING</p>
+                <p>Pending</p>
             </span>
         </a>
     </li>
@@ -48,7 +48,7 @@ $pendingAppointments = $connection->getPendingAppointments();
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
                 <h3> <?= count( $allWalkinAppointments ) ?> </h3>
-                <p>ALL</p>
+                <p>All</p>
             </span>
         </a>
     </li>

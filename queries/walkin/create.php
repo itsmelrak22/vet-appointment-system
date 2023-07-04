@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
     include '../../models/' . $class . '.php';
 });
 
-// header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json; charset=utf-8');
 
 $today = date('Y-m-d H:i:s');
 $instance = new Appointment;
@@ -34,6 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $pet_weight = sanitizeInput($_POST["pet_weight"]);
     $pet_age = sanitizeInput($_POST["pet_age"]);
     $appointment_code = "COLC-". time();
+
+    // print_r($pet_height);
+    // exit();
 
     // Perform validation for each field
     if (empty($owner_name)) {
@@ -70,17 +73,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Please enter the type of breed.";
     }
 
-    if (empty($pet_height)) {
-        $errors[] = "Please enter the height in cm.";
-    }
+    // if (empty($pet_height)) {
+    //     $errors[] = "Please enter the height in cm.";
+    // }
 
-    if (empty($pet_weight)) {
-        $errors[] = "Please enter the weight in kg.";
-    }
+    // if (empty($pet_weight)) {
+    //     $errors[] = "Please enter the weight in kg.";
+    // }
 
-    if (empty($pet_age)) {
-        $errors[] = "Please enter the age.";
-    }
+    // if (empty($pet_age)) {
+    //     $errors[] = "Please enter the age.";
+    // }
 
     // If there are no errors, the form is successfully submitted
     if (empty($errors)) {

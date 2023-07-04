@@ -77,20 +77,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Please enter the type of breed.";
     }
 
-    if (empty($pet_height)) {
-        $errors[] = "Please enter the height in cm.";
-    }
+    // if (empty($pet_height)) {
+    //     $errors[] = "Please enter the height in cm.";
+    // }
 
-    if (empty($pet_weight)) {
-        $errors[] = "Please enter the weight in kg.";
-    }
+    // if (empty($pet_weight)) {
+    //     $errors[] = "Please enter the weight in kg.";
+    // }
 
-    if (empty($pet_age)) {
-        $errors[] = "Please enter the age.";
-    }
+    // if (empty($pet_age)) {
+    //     $errors[] = "Please enter the age.";
+    // }
 
     if (empty($reference_no)) {
-        $errors[] = "Please enter the age.";
+        $errors[] = "Please enter the reference no.";
     }
 
     // If there are no errors, the form is successfully submitted

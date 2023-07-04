@@ -22,7 +22,7 @@ session_start(); ?>
     <link rel="stylesheet" href="./css/services.css">
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="index.php">
             <img id="logo-image" src="images/colclogo.png" alt="Site Logo" class="brand-image img-circle">
@@ -62,3 +62,4 @@ session_start(); ?>
         </div>
     </div>
 </nav>
+

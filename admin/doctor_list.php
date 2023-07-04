@@ -91,9 +91,9 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 								<?php if (strlen($doctor['description']) <= 100): ?>
 									<?= $doctor['description'] ?>
 								<?php else: ?>
-									<span class="description-truncated"><?= substr($doctor['description'], 0, 100) ?>...</span>
+									<span class="description-truncated"><?= substr($doctor['description'], 0, 100) ?> </span>
 									<span class="description-full" style="display: none"><?= $doctor['description'] ?></span>
-									<a href="#" class="see-more-link">See more</a>
+									<a href="#" class="see-more-link">...</a>
 								<?php endif; ?>
 							</td>
 
@@ -161,7 +161,7 @@ $(document).ready(function() {
 
     $fullDesc.hide();
     $truncatedDesc.show();
-    $seeLessLink.text('See more');
+    $seeLessLink.text('...');
     $seeLessLink.removeClass('see-less-link');
     $seeLessLink.addClass('see-more-link');
   });
