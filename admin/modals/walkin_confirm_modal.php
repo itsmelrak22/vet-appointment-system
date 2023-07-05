@@ -13,24 +13,38 @@
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 175px">APPOINTMENT STATUS </span>
                     <select name="status" id="status" class="form-select form-select-sm">
+
                         <?php if( $data->status == 'pending' ) {?>
                             <option value="pending">pending</option>
                             <option value="confirmed">confirmed</option>
                             <option value="cancelled">cancelled</option>
                             <option value="completed" disabled>completed</option>
+                        <?php }else{ ?> 
 
-                        <?php } else if( $data->status == 'confirmed' ) {?>
+                            <option value="pending"  >pending</option>
+                            <option value="confirmed" >confirmed</option>
+                            <option value="cancelled" >cancelled</option>
+                            <option value="completed" >completed</option>
+                        <?php } ?> 
+
+                        <!-- <?php //if( $data->status == 'pending' ) {?>
+                            <option value="pending">pending</option>
+                            <option value="confirmed">confirmed</option>
+                            <option value="cancelled">cancelled</option>
+                            <option value="completed" disabled>completed</option>
+
+                        <?php //} else if( $data->status == 'confirmed' ) {?>
                             <option value="pending" disabled >pending</option>
                             <option value="confirmed" disabled>confirmed</option>
                             <option value="cancelled" disabled>cancelled</option>
                             <option value="completed" >completed</option>
 
-                        <?php } else if( $data->status == 'cancelled' ) {?>
+                        <?php //} else if( $data->status == 'cancelled' ) {?>
                             <option value="pending" disabled >pending</option>
                             <option value="confirmed" disabled>confirmed</option>
                             <option value="cancelled" disabled>cancelled</option>
                             <option value="completed" disabled>completed</option>
-                        <?php } ?>
+                        <?php //} ?> -->
 
                     </select>
                 </div>

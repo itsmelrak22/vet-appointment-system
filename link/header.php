@@ -20,6 +20,8 @@ session_start(); ?>
     <link rel="stylesheet" href="./css/homepages.css">
     <link rel="stylesheet" href="./css/about.css">
     <link rel="stylesheet" href="./css/services.css">
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -41,8 +43,8 @@ session_start(); ?>
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse justify-content-center" id="navmenu">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
@@ -62,4 +64,5 @@ session_start(); ?>
         </div>
     </div>
 </nav>
+
 

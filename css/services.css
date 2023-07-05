@@ -60,6 +60,10 @@
     .services-title{
         font-size: 18px !important;
     }
+    .virtual-consult-title{
+        font-size: 15px !important;
+        letter-spacing: 0px;
+    }
 }
 
 

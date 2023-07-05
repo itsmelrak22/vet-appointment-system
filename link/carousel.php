@@ -91,7 +91,6 @@ $bookingSettings = $instance->getBooking();
         </div>
       <?php } ?>
     </div>
-
 </div>
 
 <!-- <div>
@@ -110,11 +109,11 @@ $bookingSettings = $instance->getBooking();
 
 
 <style>
-  .content-wrapper img{
+  /* .content-wrapper img{
     height: 89vh;
     width: 100%;   
   }
-
+ */
 
 .choices{
   display: flex;

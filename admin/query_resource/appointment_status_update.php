@@ -105,9 +105,13 @@ function sanitizeInput($data) {
 
 
 function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $ID, $REMARKS = null){
+    $dateString = $APPOINTMENT_DATE;
+    $timestamp = strtotime($dateString);
+    $formattedDate = date('F d, Y l', $timestamp);
+
     $mailTo = $MAIL_TO;
-    $body = " <p>Hello $MAIL_TO,</p>
-                <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME is $STATUS.</p>  
+    $body = " <p>Hello $RECEIVER_NAME,</p>
+                <p>Your appointment on $formattedDate - $APPOINTMENT_TIME is $STATUS.</p>  
                 <br> 
                 <hr> 
                 <p>Note: Please be there 10 minutes before your appointment time. Thank you. </p>
@@ -157,9 +161,13 @@ function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, 
 }
 
 function sendCompleteEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $ID, $REMARKS = null){
+    $dateString = $APPOINTMENT_DATE;
+    $timestamp = strtotime($dateString);
+    $formattedDate = date('F d, Y l', $timestamp);
+
     $mailTo = $MAIL_TO;
-    $body = " <p>Hello $MAIL_TO,</p>
-                <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME has been completed .</p>  
+    $body = " <p>Hello $RECEIVER_NAME,</p>
+                <p>Your appointment on $formattedDate - $APPOINTMENT_TIME has been completed .</p>  
                 <br> 
                 <hr> 
                 <p>Thanks for trusting our service! </p>
@@ -209,9 +217,13 @@ function sendCompleteEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE,
 }
 
 function sendCancelEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $ID, $REMARKS = null){
+    $dateString = $APPOINTMENT_DATE;
+    $timestamp = strtotime($dateString);
+    $formattedDate = date('F d, Y l', $timestamp);
+
     $mailTo = $MAIL_TO;
-    $body = " <p>Hello $MAIL_TO,</p>
-                <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME is $STATUS, you can contact us via email in admin@clvc.online </p>
+    $body = " <p>Hello $RECEIVER_NAME,</p>
+                <p>Your appointment on $formattedDate - $APPOINTMENT_TIME is $STATUS, you can contact us via email in admin@clvc.online </p>
             <p>Circle of life Veterinary Clinic</p> ";
 
     if ( $REMARKS ) {

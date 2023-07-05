@@ -22,6 +22,7 @@
 								<th>Appointment Date</th>
 								<th>Appointment Time</th>
 								<th>Status</th>
+								<th>Creation Date</th>
 								<th>Actions</th>
 
 							</tr>
@@ -47,6 +48,7 @@
 										}
 									?> 
 								</td>
+								<td> <?= date("Y-m-d h:i:s A", strtotime($value->created_at)) ?> </td>
 								<td> 
 									<a href="dashboard-walkin-confirm-app.php?id=<?=$value->id?>">
 										<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-chevron-right-square'></i> </button>

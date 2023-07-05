@@ -203,45 +203,70 @@
       }
 
   // Function to handle the AJAX request
-  function addTimeSlot() {
-    // Retrieve the selected date
-    let date = selectedDate;
+  	function addTimeSlot() {
+		// Retrieve the selected date
+		let date = selectedDate;
 
-	var start_hour = document.getElementById('start-hour-select').value;
-	var start_minute = document.getElementById('start-minute-select').value;
-	var start_period = document.getElementById('start-period-select').value;
-	var end_hour = document.getElementById('end-hour-select').value;
-	var end_minute = document.getElementById('end-minute-select').value;
-	var end_period = document.getElementById('end-period-select').value;
+		var startHour = document.getElementById("start-hour-select").value;
+		var startMinute = document.getElementById("start-minute-select").value;
+		var startPeriod = document.getElementById("start-period-select").value;
+		var endHour = document.getElementById("end-hour-select").value;
+		var endMinute = document.getElementById("end-minute-select").value;
+		var endPeriod = document.getElementById("end-period-select").value;
 
-	const data = {
-		"date" : date,
-		"start_hour" : start_hour,
-		"start_minute" : start_minute,
-		"start_period" : start_period,
-		"end_hour" : end_hour,
-		"end_minute" : end_minute,
-		"end_period" : end_period,
+		// Convert start and end times to 24-hour format for comparison
+		var startHour24 = parseInt(startHour);
+		var endHour24 = parseInt(endHour);
+
+		if (startPeriod === "PM" && startHour24 < 12) {
+			startHour24 += 12;
+		}
+
+		if (endPeriod === "PM" && endHour24 < 12) {
+			endHour24 += 12;
+		}
+
+		// Calculate the duration in minutes
+		var startMinutes = startHour24 * 60 + parseInt(startMinute);
+		var endMinutes = endHour24 * 60 + parseInt(endMinute);
+
+		// Check if the duration exceeds 5 hours (300 minutes)
+		if (endMinutes - startMinutes > 300) {
+			// alert("The time slot duration exceeds 5 hours. Please adjust the start and end times.");
+			swal("The time slot duration exceeds 5 hours.", "Please adjust the start and end times.", "error")
+
+			return;
+		}
+
+		const data = {
+			date: date,
+			start_hour: startHour,
+			start_minute: startMinute,
+			start_period: startPeriod,
+			end_hour: endHour,
+			end_minute: endMinute,
+			end_period: endPeriod,
+		};
+
+		// Create the AJAX request
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "query_resource/timeslot_create.php", true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+		xhr.onload = function () {
+			if (xhr.status === 200) {
+			getTimeslot();
+			triggerCloseButton("createModal");
+			} else {
+			var errorResponse = JSON.parse(xhr.responseText);
+			alert(errorResponse.message);
+			}
+		};
+
+		// Send the request
+		xhr.send("data=" + JSON.stringify(data));
 	}
 
-    // Create the AJAX request
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'query_resource/timeslot_create.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-		getTimeslot()
-		triggerCloseButton('createModal')
-      } else {
-		var errorResponse = JSON.parse(xhr.responseText);
-		alert(errorResponse.message)
-      }
-    };
-
-    // Send the request
-    xhr.send('data=' + JSON.stringify(data));
-  }
 
   function editTimeSlot() {
     // Retrieve the selected date

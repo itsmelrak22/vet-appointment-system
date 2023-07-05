@@ -84,12 +84,9 @@ if( (int) $virtualSettings->is_disabled ){
       <?php unset($_SESSION['errors']); }  ?>
 
       <?php if ( isset($_SESSION['success']) ) { ?>
-        <div class="mt-4">
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong> Success! </strong> <?= $_SESSION['success'] ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        </div>
+        <script>
+          swal("Good job!", "You have Successfully Booked an appointment", "success");
+        </script>
       <?php unset($_SESSION['success']); }  ?>
   <div class="container">
     <div class="row date-picker-row">
@@ -102,129 +99,128 @@ if( (int) $virtualSettings->is_disabled ){
 </div>
 
   <!-- Modal -->
-  <form action="queries/virtual/create.php" method="post"  enctype="multipart/form-data">
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel"> <h3 id="selected-date">SELECTED DATE: </h3></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
+  <form action="queries/virtual/create.php" method="post" enctype="multipart/form-data">
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">
+            <h3 id="selected-date">SELECTED DATE:</h3>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
           <div class="col table-minutes">
-          <div class="container" id="selected_date_col" style="display: none">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Fill out pet information form</h5>
-                    <input type="hidden" name="appointment_date" value="" id="appointment_date">
-                    <div class="row">
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="name" name="owner_name" placeholder="Enter your name" required>
+            <div class="container" id="selected_date_col" style="display: none">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Fill out pet information form</h5>
+                  <input type="hidden" name="appointment_date" value="" id="appointment_date">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="name" name="owner_name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="phone" class="form-label">Phone number <span class="text-danger">*</span></label>
+                      <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="time-slot" class="form-label">Time <span class="text-danger">*</span></label>
+                      <select class="form-select client-select-time" name="time" id="time-slot" required placeholder="Select Timeslot">
+                        <option value="" selected>Select Time</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="breed" class="form-label">Service <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" value="Animal Wellness" readonly placeholder="Enter the type of breed" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="petName" class="form-label">Pet name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="petType" class="form-label">Type of pet or animal <span class="text-danger">*</span></label>
+                      <select class="form-select" id="petType" name="pet_type" required>
+                        <option value="" selected disabled hidden>Select an option</option>
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="breed" class="form-label">Type of breed <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="breed" name="pet_breed" placeholder="Enter the type of breed" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="height" class="form-label">Height (Optional)</label>
+                      <input type="text" class="form-control" id="height" name="pet_height" placeholder="Enter the height in cm">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="weight" class="form-label">Weight (Optional)</label>
+                      <input type="text" class="form-control" id="weight" name="pet_weight" placeholder="Enter the weight in kg">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="age" class="form-label">Age (Optional)</label>
+                      <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="lastNormal" class="form-label">When was your pet last normal? <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" name="last_normal" id="lastNormal" placeholder="Last Normal Date" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="symptoms" class="form-label">What symptoms have brought you here today? <span class="text-danger">*</span></label>
+                      <textarea class="form-control" id="symptoms" rows="3" required name="symptoms_remarks"></textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="progress" class="form-label">Since I first noticed the problem, it has: <span class="text-danger">*</span></label>
+                      <select class="form-select" id="progress" required name="progress">
+                        <option value="same">Stayed the same</option>
+                        <option value="worsened">Worsened</option>
+                        <option value="improved">Improved</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="otherSymptoms" class="form-label">Have you noticed any of the following?</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="coughing" name="is_coughing">
+                        <label class="form-check-label" for="coughing">Coughing</label>
                       </div>
-                      <div class="mb-3">
-                        <label for="phone" class="form-label">Phone number <span class="text-danger">*</span></label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sneezing" name="is_sneezing">
+                        <label class="form-check-label" for="sneezing">Sneezing</label>
                       </div>
-                      <div class="mb-3">
-                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="vomiting" name="is_vomiting">
+                        <label class="form-check-label" for="vomiting">Vomiting</label>
                       </div>
-                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="time-slot" class="form-label">Time <span class="text-danger">*</span></label>
-                        <select class="form-select client-select-time" name="time" id="time-slot" required placeholder="Select Timeslot">
-                          <option value="" selected>Select Time</option>
-                        </select>
-                      </div>
-                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="breed" class="form-label">Service <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" value="Animal Wellness" readonly placeholder="Enter the type of breed" required>
-                      </div>
-                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="petName" class="form-label">Pet name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="petName" name="pet_name" placeholder="Enter your pet's name"required>
-                      </div>
-                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="petType" class="form-label">Type of pet or animal <span class="text-danger">*</span></label>
-                        <select class="form-select" id="petType" name="pet_type" required>
-                          <option value="" selected disabled hidden>Select an option</option>
-                          <option value="dog">Dog</option>
-                          <option value="cat">Cat</option>
-                        </select>
-                      </div>
-                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="breed" class="form-label">Type of breed <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="breed" name="pet_breed" placeholder="Enter the type of breed" required>
-                      </div>
-                    
-                      <div class="col-12  col-sm-12 col-xs-12 mb-3">
-                        <label for="height" class="form-label">Height (Optional)</label>
-                        <input type="text" class="form-control" id="height" name="pet_height" placeholder="Enter the height in cm" >
-                      </div>
-                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="weight" class="form-label">Weight (Optional)</label>
-                        <input type="text" class="form-control" id="weight" name="pet_weight" placeholder="Enter the weight in kg" >
-                      </div>
-                      <div class="col-12 col-sm-12 col-xs-12 mb-3">
-                        <label for="age" class="form-label">Age (Optional)</label>
-                        <input type="text" class="form-control" id="age" name="pet_age" placeholder="Enter the age" >
-                      </div>
-                      <div class="mb-3">
-                        <label for="lastNormal" class="form-label">When was your pet last normal? <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="last_normal" id="lastNormal" placeholder="Last Normal Date" required>
-                      </div>
-                      <div class="mb-3">
-                        <label for="symptoms" class="form-label">What symptoms have brought you here today? <span class="text-danger">*</span></label>
-                        <textarea class="form-control" id="symptoms" rows="3" required name="symptoms_remarks"></textarea>
-                      </div>
-                      <div class="mb-3">
-                        <label for="progress" class="form-label">Since I first noticed the problem, it has: <span class="text-danger">*</span></label>
-                        <select class="form-select" id="progress" required name="progress">
-                          <option value="same">Stayed the same</option>
-                          <option value="worsened">Worsened</option>
-                          <option value="improved">Improved</option>
-                        </select>
-                      </div>
-                      <div class="mb-3">
-                        <label for="otherSymptoms" class="form-label">Have you noticed any of the following? </label>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="coughing" name="is_coughing">
-                          <label class="form-check-label" for="coughing">Coughing</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="sneezing" name="is_sneezing">
-                          <label class="form-check-label" for="sneezing">Sneezing</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="vomiting" name="is_vomiting">
-                          <label class="form-check-label" for="vomiting">Vomiting</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="diarrhea" name="has_diarrhea">
-                          <label class="form-check-label" for="diarrhea">Diarrhea</label>
-                        </div>
-                      </div>
-                      <div class="col-12 mb-3">
-                        <div class="alert alert-primary d-flex align-items-center" role="alert">
-                          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-                          <div>
-                            Send the Payment to: <strong>09151587882</strong> <br>
-                            Payment Cost : <strong>350 php</strong>
-                          </div>
-                        </div>
-                        <label for="age" class="form-label">Gcash Reference #: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="age" name="reference_no" placeholder="Reference #" required>
-                      </div>
-                      <div class="mb-3">
-                        <label for="formFileSm" class="form-label">Upload Screenshot here <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" id="image" name="image" accept="image/*" aria-describedby="inputGroup-sizing-sm"  required>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="diarrhea" name="has_diarrhea">
+                        <label class="form-check-label" for="diarrhea">Diarrhea</label>
                       </div>
                     </div>
+                    <div class="col-12 mb-3">
+                      <div class="alert alert-primary d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        <div>
+                          Send the Payment to: <strong>09151587882</strong> <br>
+                          Payment Cost : <strong>350 php</strong>
+                        </div>
+                      </div>
+                      <label for="age" class="form-label">Gcash Reference #: <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="age" name="reference_no" placeholder="Reference #" required>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="formFileSm" class="form-label">Upload Screenshot here <span class="text-danger">*</span></label>
+                      <input type="file" class="form-control" id="image" name="image" accept="image/*" aria-describedby="inputGroup-sizing-sm" required>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-          </div>
-        </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -234,9 +230,50 @@ if( (int) $virtualSettings->is_disabled ){
       </div>
     </div>
   </form>
+
 <?php include('link/scripts.php') ?> 
 </body>
 </html>
+
+<script>
+// Get the phone number input element
+var phoneNumberInput = document.getElementById("phone");
+
+// Initialize a variable to store the previous valid phone number
+var previousPhoneNumber = "";
+
+// Add an event listener for input changes
+phoneNumberInput.addEventListener("input", validatePhoneNumber);
+
+function validatePhoneNumber() {
+  var phoneNumber = phoneNumberInput.value;
+
+  // Remove all non-digit characters
+  phoneNumber = phoneNumber.replace(/\D/g, "");
+
+  // Check if the input contains non-digit characters
+  if (phoneNumberInput.value !== phoneNumber) {
+    // alert("Invalid input. Please enter numbers only.");
+    swal("Invalid input.", "Please enter numbers only.", "error")
+    phoneNumberInput.value = previousPhoneNumber; // Restore the previous valid phone number
+    return;
+  }
+
+  // Check if the phone number contains only digits and has a length less than or equal to 11
+  if (/^\d{0,11}$/.test(phoneNumber)) {
+    // Valid phone number
+    phoneNumberInput.setCustomValidity("");
+    previousPhoneNumber = phoneNumber; // Store the valid phone number
+  } else {
+    // Invalid phone number
+    // phoneNumberInput.setCustomValidity("Please enter a valid phone number consisting of up to 11 digits.");
+    swal("Invalid phone number.", "Please enter a valid phone number consisting of up to 11 digits.", "error")
+    // alert("Invalid phone number. Please enter a valid phone number consisting of up to 11 digits.");
+    phoneNumberInput.value = previousPhoneNumber; // Restore the previous valid phone number
+  }
+}
+
+</script>
 
 <script>
       let selectedDate = '';

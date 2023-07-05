@@ -21,6 +21,7 @@
 								<th>Appointment Time</th>
 								<th>Meeting Link</th>
 								<th>Status</th>
+								<th>Creation Date</th>
 								<th>Actions</th>
 
 							</tr>
@@ -35,6 +36,7 @@
 								<td> <?= "$value->start_hour:$value->start_minute $value->start_period - $value->end_hour:$value->end_minute $value->end_period" ?> </td>
 								<td> <a href="<?= $value->meeting_link ?>" class="href" target="_blank"><?= $value->meeting_link ?></a> </td>
 								<td> <span class="badge bg-danger"><?= ucfirst($value->status); ?></span> </td>
+								<td> <?= date("Y-m-d h:i:s A", strtotime($value->created_at)) ?> </td>
 								<td> 
 									<a href="dashboard-virtual-confirm-app.php?id=<?=$value->id?>">
 										<button type="button" class="btn btn-primary btn-sm" > <i class='bx bx-chevron-right-square'></i> </button>

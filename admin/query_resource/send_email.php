@@ -70,16 +70,20 @@ exit();
 
 
 function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $MEETING_LINK, $ID, $appointment_type){
+    $dateString = $APPOINTMENT_DATE;
+    $timestamp = strtotime($dateString);
+    $formattedDate = date('F d, Y l', $timestamp);
+
     $mailTo = $MAIL_TO;
     
     if($MEETING_LINK){
-        $body = " <p>Hello $MAIL_TO,</p>
-                <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME is $STATUS.  <br> <hr> Your meeting link is $MEETING_LINK <br> <hr>
+        $body = " <p>Hello $RECEIVER_NAME,</p>
+                <p>Your appointment on $formattedDate - $APPOINTMENT_TIME is $STATUS.  <br> <hr> Your meeting link is $MEETING_LINK <br> <hr>
                 Note: Please be there 10 minutes before your appointment time. Thank you. </p>
                <p> Best regard, </p>
             <p>Circle of life Veterinary Clinic</p> ";
     }else{
-        $body = " <p>Hello $MAIL_TO,</p>
+        $body = " <p>Hello $RECEIVER_NAME,</p>
                 <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME is $STATUS.
                 Note: Please be there 10 minutes before your appointment time. Thank you. </p>
                <p> Best regard, </p>
@@ -121,9 +125,13 @@ function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, 
 }
 
 function sendCancelEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, $APPOINTMENT_TIME, $ID, $appointment_type){
+    $dateString = $APPOINTMENT_DATE;
+    $timestamp = strtotime($dateString);
+    $formattedDate = date('F d, Y l', $timestamp);
+
     $mailTo = $MAIL_TO;
-    $body = " <p>Hello $MAIL_TO,</p>
-                <p>Your appointment on $APPOINTMENT_DATE - $APPOINTMENT_TIME is $STATUS, you can contact us via email in admin@clvc.online </p>
+    $body = " <p>Hello $RECEIVER_NAME,</p>
+                <p>Your appointment on $formattedDate - $APPOINTMENT_TIME is $STATUS, you can contact us via email in admin@clvc.online </p>
             <p>Circle of life Veterinary Clinic</p> ";
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();

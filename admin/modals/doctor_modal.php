@@ -71,7 +71,9 @@
 .text span {
     font-size: 13px;
     color: #545454;
-    font-weight: 500
+    font-weight: 500;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .icons i {
@@ -228,7 +230,7 @@ hr .new1 {
                 <div class="d-flex flex-row justify-content-center align-items-center mt-3"></div>
                 <div class="d-flex mt-2"></div>
                 <div class="text mt-3">
-                  <span id="view-description">Lorem Ipmsum </span>
+                  <span id="view-description">Lorem Ipsum</span>
                 </div>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                   <span><i class="fa fa-twitter"></i></span>
@@ -317,7 +319,9 @@ function checkCharacterLimit() {
   if (remainingChars >= 0) {
     charCountElement.textContent = remainingChars + " characters remaining";
   } else {
-    alert("Description Character limit exceeded!")
+    // alert("Description Character limit exceeded!")
+    swal("Invalid input.", "Description Character limit exceeded.", "error")
+
     charCountElement.textContent = "Description Character limit exceeded!";
     textarea.value = description.substring(0, 400);
   }
@@ -334,7 +338,8 @@ function checkCharacterLimitEdit() {
   if (remainingChars >= 0) {
     charCountElement.textContent = remainingChars + " characters remaining";
   } else {
-    alert("Description Character limit exceeded!")
+    // alert("Description Character limit exceeded!")
+    swal("Invalid input.", "Description Character limit exceeded.", "error")
     charCountElement.textContent = "Description Character limit exceeded!";
     textarea.value = description.substring(0, 400);
   }

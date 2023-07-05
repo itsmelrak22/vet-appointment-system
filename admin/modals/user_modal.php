@@ -201,7 +201,8 @@
   if (remainingChars >= 0) {
     charCountElement.textContent = remainingChars + "/60";
   } else {
-    alert("Description Character limit exceeded!")
+    // alert("Description Character limit exceeded!")
+    swal("Invalid input.", "Description Character limit exceeded.", "error")
     charCountElement.textContent = "Description Character limit exceeded!";
     input.value = description.substring(0, maxCount);
   }

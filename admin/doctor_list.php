@@ -144,11 +144,14 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
     // }
 
   function viewRow(row) {
+	const dateTime = new Date(row.created_at);
+	let humanReadableDate = dateTime.toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
+	humanReadableDate = `Joined ${humanReadableDate}`;
     document.getElementById('view-avatar').src = row.avatar;
     document.getElementById('view-name').innerHTML = row.name;
     document.getElementById('view-age').innerHTML = row.age;
     document.getElementById('view-description').innerHTML = row.description;
-    document.getElementById('view-join').innerHTML = row.created_at;
+    document.getElementById('view-join').innerHTML = humanReadableDate;
   }
 
 

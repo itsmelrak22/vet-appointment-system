@@ -41,7 +41,7 @@
 
         <div class="modal-footer">
           <button id="close_btn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onClick="addTimeSlot()">Add Time slot</button>
+          <button type="button" class="btn btn-primary" onClick="addTimeSlot()">Add Time slots</button>
         </div>
     </div>
   </div>

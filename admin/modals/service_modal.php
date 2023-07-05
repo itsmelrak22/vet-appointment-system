@@ -174,7 +174,8 @@
   if (remainingChars >= 0) {
     charCountElement.textContent = remainingChars + " characters remaining";
   } else {
-    alert("info Character limit exceeded!")
+    // alert("info Character limit exceeded!")
+    swal("Invalid input.", "info Character limit exceeded.", "error")
     charCountElement.textContent = "info Character limit exceeded!";
     textarea.value = info.substring(0, 400);
   }
@@ -191,7 +192,8 @@ function checkCharacterLimitEdit() {
   if (remainingChars >= 0) {
     charCountElement.textContent = remainingChars + " characters remaining";
   } else {
-    alert("info Character limit exceeded!")
+    // alert("info Character limit exceeded!")
+    swal("Invalid input.", "info Character limit exceeded.", "error")
     charCountElement.textContent = "info Character limit exceeded!";
     textarea.value = info.substring(0, 400);
   }
