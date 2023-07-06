@@ -189,23 +189,47 @@
         // minuteSelect.value = currentMinute;
         endPeriodSelect.value = amPm;
         endPeriodSelect.value = amPm;
-      });
+	});
 
 
-      function triggerCloseButton(modalName) {
-        var modal = document.getElementById(modalName);
-        var button = modal.querySelector('#close_btn');
-        if (button) {
-          button.click();
-        } else {
-          console.log("Button not found.");
-        }
-      }
+	function triggerCloseButton(modalName) {
+	var modal = document.getElementById(modalName);
+	var button = modal.querySelector('#close_btn');
+	if (button) {
+		button.click();
+	} else {
+		console.log("Button not found.");
+	}
+	}
 
-  // Function to handle the AJAX request
-  	function addTimeSlot() {
+	function convertTo24HourFormat(timeString){
+		const timeParts = timeString.split(':');
+		let hours = parseInt(timeParts[0]);
+		const minutes = parseInt(timeParts[1].split(' ')[0]);
+		const period = timeParts[1].split(' ')[1];
+
+		if (period === 'PM' && hours !== 12) {
+		hours += 12;
+		} else if (period === 'AM' && hours === 12) {
+		hours = 0;
+		}
+
+		const time24 = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
+		return time24
+	}
+
+	function addTimeSlot() {
 		// Retrieve the selected date
 		let date = selectedDate;
+
+		// Get the current date and time
+		let currentDate = new Date();
+		let currentYear = currentDate.getFullYear();
+		let currentMonth = currentDate.getMonth() + 1; // Month is zero-based
+		let currentDay = currentDate.getDate();
+		let currentHour = currentDate.getHours();
+		let currentMinute = currentDate.getMinutes();
+		let currentPeriod = currentHour >= 12 ? 'PM' : 'AM';
 
 		var startHour = document.getElementById("start-hour-select").value;
 		var startMinute = document.getElementById("start-minute-select").value;
@@ -226,15 +250,62 @@
 			endHour24 += 12;
 		}
 
-		// Calculate the duration in minutes
+		// Convert current time to 12-hour format
+		if (currentHour > 12) {
+			currentHour -= 12;
+		}
+
+		// Adjust current period based on the current time
+		if (currentPeriod === "AM" && currentHour === 12) {
+			currentPeriod = "PM";
+		} else if (currentPeriod === "PM" && currentHour === 12) {
+			currentPeriod = "AM";
+		}
+
+		// Calculate the start and end time in minutes
 		var startMinutes = startHour24 * 60 + parseInt(startMinute);
 		var endMinutes = endHour24 * 60 + parseInt(endMinute);
+
+		// Calculate the current time in minutes
+		var currentMinutes = currentHour * 60 + currentMinute;
+
+
+		if (
+			date ===
+			(currentMonth < 10 ? "0" : "") +
+			currentMonth +
+			"/" +
+			(currentDay < 10 ? "0" : "") +
+			currentDay +
+			"/" +
+			currentYear
+		) {
+			
+			let givenTime = convertTo24HourFormat(`${startHour}:${startMinute} ${startPeriod}`)
+
+			// Extract the current time components
+			const currentHours = currentDate.getHours();
+			const currentMinutes = currentDate.getMinutes();
+			
+			// Extract the given time components
+			const [givenHours, givenMinutes] = givenTime.split(':').map(Number);
+			
+			// Compare the given time with the current time
+			if (givenHours < currentHours || (givenHours === currentHours && givenMinutes < currentMinutes)) {
+				swal("Start Time invalid.", "start time is past the current time", "error");
+				return 
+			} 
+
+		}
 
 		// Check if the duration exceeds 5 hours (300 minutes)
 		if (endMinutes - startMinutes > 300) {
 			// alert("The time slot duration exceeds 5 hours. Please adjust the start and end times.");
-			swal("The time slot duration exceeds 5 hours.", "Please adjust the start and end times.", "error")
-
+			swal(
+			"The time slot duration exceeds 5 hours.",
+			"Please adjust the start and end times.",
+			"error"
+			);
 			return;
 		}
 
@@ -268,102 +339,103 @@
 	}
 
 
-  function editTimeSlot() {
-    // Retrieve the selected date
-	var editModal = document.getElementById('editModal');
 
-    let date = selectedDate;
-	var id = editModal.querySelector('#edit-id').value;
-	var start_hour = editModal.querySelector('#start-hour-select').value;
-	var start_minute = editModal.querySelector('#start-minute-select').value;
-	var start_period = editModal.querySelector('#start-period-select').value;
-	var end_hour = editModal.querySelector('#end-hour-select').value;
-	var end_minute = editModal.querySelector('#end-minute-select').value;
-	var end_period = editModal.querySelector('#end-period-select').value;
+	function editTimeSlot() {
+		// Retrieve the selected date
+		var editModal = document.getElementById('editModal');
 
-	const data = {
-		"date" : date,
-		"id" : id,
-		"start_hour" : start_hour,
-		"start_minute" : start_minute,
-		"start_period" : start_period,
-		"end_hour" : end_hour,
-		"end_minute" : end_minute,
-		"end_period" : end_period,
+		let date = selectedDate;
+		var id = editModal.querySelector('#edit-id').value;
+		var start_hour = editModal.querySelector('#start-hour-select').value;
+		var start_minute = editModal.querySelector('#start-minute-select').value;
+		var start_period = editModal.querySelector('#start-period-select').value;
+		var end_hour = editModal.querySelector('#end-hour-select').value;
+		var end_minute = editModal.querySelector('#end-minute-select').value;
+		var end_period = editModal.querySelector('#end-period-select').value;
+
+		const data = {
+			"date" : date,
+			"id" : id,
+			"start_hour" : start_hour,
+			"start_minute" : start_minute,
+			"start_period" : start_period,
+			"end_hour" : end_hour,
+			"end_minute" : end_minute,
+			"end_period" : end_period,
+		}
+
+		// Create the AJAX request
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'query_resource/timeslot_update.php', true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+		xhr.onload = function() {
+		if (xhr.status === 200) {
+			getTimeslot()
+			triggerCloseButton('editModal')
+		} else {
+			var errorResponse = JSON.parse(xhr.responseText);
+			alert(errorResponse.message)
+		}
+		};
+
+		// Send the request
+		xhr.send('data=' + JSON.stringify(data));
+	}
+  
+	function deleteTimeSlot() {
+		// Retrieve the selected date
+		var deleteModal = document.getElementById('deleteModal');
+
+		let date = selectedDate;
+		var id = deleteModal.querySelector('#delete-id').value;
+
+		const data = {
+			"date" : date,
+			"id" : id,
+		}
+
+		// Create the AJAX request
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'query_resource/timeslot_delete.php', true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+		xhr.onload = function() {
+		if (xhr.status === 200) {
+			getTimeslot()
+			triggerCloseButton('deleteModal')
+		} else {
+			var errorResponse = JSON.parse(xhr.responseText);
+			alert(errorResponse.message)
+		}
+		};
+
+		// Send the request
+		xhr.send('data=' + JSON.stringify(data));
 	}
 
-    // Create the AJAX request
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'query_resource/timeslot_update.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	function getTimeslot(){
+		// Create the AJAX request
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'query_resource/timeslot_get.php', true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-		getTimeslot()
-		triggerCloseButton('editModal')
-      } else {
-		var errorResponse = JSON.parse(xhr.responseText);
-		alert(errorResponse.message)
-      }
-    };
+		xhr.onload = function() {
+		if (xhr.status === 200) {
+			dataGathered = JSON.parse(xhr.responseText)
+			console.log( 'dataGathered', dataGathered ) 
+			displayArrayInTable( dataGathered.data )
+		} else {
+			console.log('Error: ' + xhr);
+			
+		}
+		};
 
-    // Send the request
-    xhr.send('data=' + JSON.stringify(data));
-  }
-
-  function deleteTimeSlot() {
-    // Retrieve the selected date
-	var deleteModal = document.getElementById('deleteModal');
-
-    let date = selectedDate;
-	var id = deleteModal.querySelector('#delete-id').value;
-
-	const data = {
-		"date" : date,
-		"id" : id,
+		// Send the request
+		xhr.send('date=' + encodeURIComponent(selectedDate));
 	}
 
-    // Create the AJAX request
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'query_resource/timeslot_delete.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-		getTimeslot()
-		triggerCloseButton('deleteModal')
-      } else {
-		var errorResponse = JSON.parse(xhr.responseText);
-		alert(errorResponse.message)
-      }
-    };
-
-    // Send the request
-    xhr.send('data=' + JSON.stringify(data));
-  }
-
-  function getTimeslot(){
-	// Create the AJAX request
-	var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'query_resource/timeslot_get.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-		dataGathered = JSON.parse(xhr.responseText)
-		console.log( 'dataGathered', dataGathered ) 
-		displayArrayInTable( dataGathered.data )
-      } else {
-        console.log('Error: ' + xhr);
-		
-      }
-    };
-
-    // Send the request
-	xhr.send('date=' + encodeURIComponent(selectedDate));
-  }
-
-  function displayArrayInTable(array) {
+  	function displayArrayInTable(array) {
 		clearTable();
 		var table = document.getElementById('schedule_table');
 		var tbody = table.querySelector('tbody');

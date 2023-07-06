@@ -9,7 +9,7 @@
       <div class="modal-body">
         <p>Book an appointment for:</p>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <?php if ((int)$walkinSettings->is_disabled) { ?>
               <a data-bs-toggle="tooltip" data-bs-placement="top" title="Walk-in is temporarily disabled" class="btn btn-lg btn-outline-secondary w-100">
                 <i class="fa-solid fa-house-chimney-medical"></i> Walk-in

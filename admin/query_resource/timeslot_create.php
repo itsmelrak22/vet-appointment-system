@@ -31,6 +31,7 @@ $schedules = $instance->setQuery( "SELECT * FROM `schedules`
                                     AND `end_hour` = '$end_hour' 
                                     AND `end_minute` = '$end_minute' 
                                     AND `end_period` = '$end_period' 
+                                    AND `deleted_at` = NULL
                                 ")->getAll();
 if (count( $schedules ) > 0) {
     $errors[] = "Schedule is already Registered";

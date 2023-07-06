@@ -20,11 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Link is required";
     }
 
-    $status = $_POST['status'];
-    $status = filter_var($status, FILTER_SANITIZE_STRING);
-    if (empty($status)) {
-        $errors[] = "Status is required";
-    }
+    // $status = $_POST['status'];
+    // $status = filter_var($status, FILTER_SANITIZE_STRING);
+    // if (empty($status)) {
+    //     $errors[] = "Status is required";
+    // }
 
     $meeting_links = $intance->setQuery( "SELECT * FROM `meeting_links` WHERE `link` = '$link'" )->getAll();
     if (count( $meeting_links ) > 0) {
@@ -36,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../meeting_links.php');
     }else{
         try {
-            $intance->setQuery(" INSERT INTO `meeting_links`( `link`, `status`,`created_at`, `updated_at`) VALUES ('$link','$status','$today', '$today') ");
+            // $intance->setQuery(" INSERT INTO `meeting_links`( `link`, `status`,`created_at`, `updated_at`) VALUES ('$link','$status','$today', '$today') ");
+            $intance->setQuery(" INSERT INTO `meeting_links`( `link`,`created_at`, `updated_at`) VALUES ('$link','$today', '$today') ");
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
         }

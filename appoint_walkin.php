@@ -56,7 +56,7 @@ if( (int) $walkinSettings->is_disabled ){
 
 
 ?>
-<div class="container">
+<div class="container date-picker-main-container d-flex justify-content-center align-items-center">
   <div class="container">
     <?php if ( isset($_SESSION['errors']) && count( $_SESSION['errors'] ) > 0 ) { ?>
         <div class="mt-4">
@@ -78,12 +78,23 @@ if( (int) $walkinSettings->is_disabled ){
           swal("Good job!", "You have Successfully Booked an appointment", "success");
         </script>
       <?php unset($_SESSION['success']); }  ?>
-    <div class="row">
-        <div class="col">
-          <h3 id="">PLEASE SELECT DATE: </h3>
+
+      <div class="container">
+        <div class="row date-picker-row">
+          <div class="col">
             <div id="datepicker"></div>
+          </div>
         </div>
-    </div>
+        <div class="row" style="margin-top: 15px">
+          <div class="col d-flex justify-content-center ">
+            <div class="d-grid gap-2 col-6 mx-auto">
+            <a class="btn btn-primary" type="button" href="index.php">
+              Back
+            </a>
+          </div>
+          </div>
+        </div>
+      </div> 
   </div>
   
 </div>

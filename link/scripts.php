@@ -13,20 +13,20 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-    const navbarBrand = document.getElementById('nav-text');
+        const navbarBrand = document.getElementById('nav-text');
 
-    function updateNavbarBrand() {
-        if (window.innerWidth < 390) {
-            navbarBrand.textContent = 'CLVC';
-        } else {
-            navbarBrand.textContent = 'Circle of Life Veterinary Clinic';
+        function updateNavbarBrand() {
+            if (window.innerWidth < 390) {
+                navbarBrand.style.fontSize = '13px';
+            } else {
+                navbarBrand.textContent = 'Circle of Life Veterinary Clinic';
+            }
         }
-    }
 
-    // Update the navbar brand initially
-    updateNavbarBrand();
+        // Update the navbar brand initially
+        updateNavbarBrand();
 
-    // Update the navbar brand when the window is resized
-    window.addEventListener('resize', updateNavbarBrand);
-});
+        // Update the navbar brand when the window is resized
+        window.addEventListener('resize', updateNavbarBrand);
+    });
 </script>

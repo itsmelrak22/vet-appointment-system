@@ -13,85 +13,89 @@ $virtualSettings = $instance->getVirtual();
 $bookingSettings = $instance->getBooking();
 
 ?>
-
-<div id="home" class="content-wrapper w-100" style="box-shadow: rgba(0, 0, 0, .1) 0px 25px 30px -30px;>
+<div id="home" class="content-wrapper w-100" style="box-shadow: rgba(0, 0, 0, .1) 0px 25px 30px -30px;">
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <?php if ( (int) $bookingSettings->is_disabled ) { ?>
-        <div class="carousel-inner" style="height: 95vh;">
+      <?php if ((int) $bookingSettings->is_disabled) { ?>
+        <div class="carousel-inner" >
           <div class="carousel-item active">
-            <img class="d-block w-100" style="opacity: 0.4; height: 100vh;" src="images/first.jpg" alt="First slide">
-            <div class="carousel-caption top-0 mt-4">
-              <p class="fs-3 text-uppercase" style="color: #0C375A; margin-top: 15rem"> Give your pet the best experience </p>
-              <h1 class="display-1 fw-bolder text-capitalize" style="color: #0C375A;"> We offer effective services </h1> 
-              <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Book Now is temporarily disabled" class="btn btn-secondary mt-4 px-4 py-2 fs-5 text-white mt-5"  style="display: flex justify-content-center; background-color: #gray" disabled>
+            <img class="d-block w-100" style="opacity: 0.4; height: 100vh; object-fit: cover;" src="images/first.jpg" alt="First slide">
+            <div class="carousel-caption top-0 mt-4 d-flex flex-column align-items-center justify-content-center">
+              <p class="fs-3 text-uppercase text-center" style="color: #0C375A;">Give your pet the best experience</p>
+              <h1 class="display-1 fw-bolder text-capitalize text-center" style="color: #0C375A;">We offer Virtual consultation</h1> 
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Now is temporarily disabled" class="btn btn-secondary mt-4 px-4 py-2 fs-5 text-white" style="background-color: gray;" disabled>
                 Book Now
               </a>
             </div>
           </div>
 
           <div class="carousel-item">
-            <img class="d-block w-100" style="opacity: 0.4; height: 100vh;" src="images/second.jpg" alt="Second slide">
-            <div class="carousel-caption top-0 mt-4">
-                <p class="fs-3 text-uppercase" style="color: #0C375A; margin-top: 15rem"> Give your pet the best experience </p>
-                <h1 class="display-1 fw-bolder text-capitalize" style="color: #0C375A;"> We offer online appointment </h1> 
-                <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Book Now is temporarily disabled" class="btn btn-secondary mt-4 px-4 py-2 fs-5 text-white mt-5"  style="display: flex justify-content-center; background-color: #gray" disabled>
+            <img class="d-block w-100" style="opacity: 0.4; height: 100vh; object-fit: cover;" src="images/second.jpg" alt="First slide">
+            <div class="carousel-caption top-0 mt-4 d-flex flex-column align-items-center justify-content-center">
+              <p class="fs-3 text-uppercase text-center" style="color: #0C375A;">Give your pet the best experience</p>
+              <h1 class="display-1 fw-bolder text-capitalize text-center" style="color: #0C375A;">We offer Virtual consultation</h1> 
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Now is temporarily disabled" class="btn btn-secondary mt-4 px-4 py-2 fs-5 text-white" style="background-color: gray;" disabled>
                 Book Now
               </a>
             </div>
           </div>
 
           <div class="carousel-item">
-            <img class="d-block w-100" style="opacity: 0.4; height: 100vh;" src="images/third.jpg" alt="Second slide">
-            <div class="carousel-caption top-0 mt-4">
-                <p class="fs-3 text-uppercase" style="color: #0C375A; margin-top: 15rem"> Give your pet the best experience </p>
-                <h1 class="display-1 fw-bolder text-capitalize" style="color: #0C375A;"> We offer Virtual consultation </h1> 
-                <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Book Now is temporarily disabled" class="btn btn-secondary mt-4 px-4 py-2 fs-5 text-white mt-5"  style="display: flex justify-content-center; background-color: #gray" disabled>
+            <img class="d-block w-100" style="opacity: 0.4; height: 100vh; object-fit: cover;" src="images/third.jpg" alt="First slide">
+            <div class="carousel-caption top-0 mt-4 d-flex flex-column align-items-center justify-content-center">
+              <p class="fs-3 text-uppercase text-center" style="color: #0C375A;">Give your pet the best experience</p>
+              <h1 class="display-1 fw-bolder text-capitalize text-center" style="color: #0C375A;">We offer Virtual consultation</h1> 
+              <a data-bs-toggle="tooltip" data-bs-placement="top" title="Book Now is temporarily disabled" class="btn btn-secondary mt-4 px-4 py-2 fs-5 text-white" style="background-color: gray;" disabled>
                 Book Now
               </a>
             </div>
           </div>
+
+          <!-- Other carousel items -->
+
         </div>
       <?php } else { ?>
         <div class="carousel-inner" style="height: 95vh;">
           <div class="carousel-item active">
-            <img class="d-block w-100" style="opacity: 0.4; height: 100vh;" src="images/first.jpg" alt="First slide">
-            <div class="carousel-caption top-0 mt-4">
-              <p class="fs-3 text-uppercase" style="color: #0C375A; margin-top: 15rem"> Give your pet the best experience </p>
-              <h1 class="display-1 fw-bolder text-capitalize" style="color: #0C375A;"> We offer effective services </h1> 
-              <a class="btn btn-primary mt-4 px-4 py-2 fs-5 text-white mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: flex justify-content-center; background-color: #0C375A" >
+            <img class="d-block w-100" style="opacity: 0.4; height: 100vh; object-fit: cover;" src="images/first.jpg" alt="First slide">
+            <div class="carousel-caption top-0 mt-4 d-flex flex-column align-items-center justify-content-center">
+              <p class="fs-3 text-uppercase text-center" style="color: #0C375A;">Give your pet the best experience</p>
+              <h1 class="display-1 fw-bolder text-capitalize text-center" style="color: #0C375A;">We offer Virtual consultation</h1> 
+              <a class="btn btn-primary mt-4 px-4 py-2 fs-5 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #0C375A;">
                 Book Now
               </a>
-              <!-- <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Book Now is currently disabled" class="btn btn-secondary mt-4 px-4 py-2 fs-5 text-white mt-5"  style="display: flex justify-content-center; background-color: #gray" disabled>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img class="d-block w-100" style="opacity: 0.4; height: 100vh; object-fit: cover;" src="images/second.jpg" alt="First slide">
+            <div class="carousel-caption top-0 mt-4 d-flex flex-column align-items-center justify-content-center">
+              <p class="fs-3 text-uppercase text-center" style="color: #0C375A;">Give your pet the best experience</p>
+              <h1 class="display-1 fw-bolder text-capitalize text-center" style="color: #0C375A;">We offer Virtual consultation</h1> 
+              <a class="btn btn-primary mt-4 px-4 py-2 fs-5 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #0C375A;">
                 Book Now
-              </a> -->
+              </a>
             </div>
           </div>
 
-          <div class="carousel-item">
-            <img class="d-block w-100" style="opacity: 0.4; height: 100vh;" src="images/second.jpg" alt="Second slide">
-            <div class="carousel-caption top-0 mt-4">
-                <p class="fs-3 text-uppercase" style="color: #0C375A; margin-top: 15rem"> Give your pet the best experience </p>
-                <h1 class="display-1 fw-bolder text-capitalize" style="color: #0C375A;"> We offer online appointment </h1> 
-                <a class="btn btn-primary mt-4 px-4 py-2 fs-5 text-white mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: flex justify-content-center; background-color: #0C375A">
-                  Book Now
-                </a>
-            </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" style="opacity: 0.4; height: 100vh; object-fit: cover;" src="images/third.jpg" alt="First slide">
+          <div class="carousel-caption top-0 mt-4 d-flex flex-column align-items-center justify-content-center">
+            <p class="fs-3 text-uppercase text-center" style="color: #0C375A;">Give your pet the best experience</p>
+            <h1 class="display-1 fw-bolder text-capitalize text-center" style="color: #0C375A;">We offer Virtual consultation</h1> 
+            <a class="btn btn-primary mt-4 px-4 py-2 fs-5 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #0C375A;">
+              Book Now
+            </a>
           </div>
+        </div>
+          
 
-          <div class="carousel-item">
-            <img class="d-block w-100" style="opacity: 0.4; height: 100vh;" src="images/third.jpg" alt="Second slide">
-            <div class="carousel-caption top-0 mt-4">
-                <p class="fs-3 text-uppercase" style="color: #0C375A; margin-top: 15rem"> Give your pet the best experience </p>
-                <h1 class="display-1 fw-bolder text-capitalize" style="color: #0C375A;"> We offer Virtual consultation </h1> 
-                <a class="btn btn-primary mt-4 px-4 py-2 fs-5 text-white mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: flex justify-content-center; background-color: #0C375A">
-                  Book Now
-                </a>
-            </div>
-          </div>
+          <!-- Other carousel items -->
+
         </div>
       <?php } ?>
     </div>
 </div>
+
 
 <!-- <div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">

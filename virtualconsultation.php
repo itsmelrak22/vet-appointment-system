@@ -1,7 +1,8 @@
 <br>
-    <h2 class="virtual-consult-title">Virtual Consultation</h2>
-    <label><!-- line here --></label> 
-    
+<div id="virtual">
+  <h2 class="virtual-consult-title">Virtual Consultation</h2>
+</div>
+
 
 <div class="container">
   <div class="accordion accordion-lg" id="accordionExample">
@@ -49,8 +50,8 @@
             <li>After you receive the email, it contains a summary of your information and a meeting link which is only accessible on the date and time you specified in the appointment form.</li>
             <li>You can now wait for your schedule and enjoy talking to our available vets about the wellness of your pets. They can also provide prescriptions if necessary. Thank you!</li>
           </ul>
-</div>
-</div>
-
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
-</div>

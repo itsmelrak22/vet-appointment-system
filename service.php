@@ -7,7 +7,7 @@ $servicesAll = $services->allWithOutTrash();
 ?>
     <!-- <link rel="stylesheet" href="./css/serv.css"> -->
 
-<about id="about">
+<about id="service">
     <div class="about_content">
         <h2 class="services-title">Our Services</h2>
         <label><!-- line here --></label> 

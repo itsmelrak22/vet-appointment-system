@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if( !isset($_POST['is_to_send_email']) ){
             // header('Location: ../dashboard-virtual-confirm-app.php?id='.$id);
             $_SESSION['success'] = "Appointment has been updated !";
-            header('Location: ../dashboard-virtual-pending.php');
+            header('Location: ../dashboard-virtual-today.php');
         }
 
 

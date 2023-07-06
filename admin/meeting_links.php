@@ -65,7 +65,6 @@ $links = $instance->allWithOutTrash();
 					<thead>
 						<tr>
 							<th>Link</th>
-							<th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -73,7 +72,6 @@ $links = $instance->allWithOutTrash();
 						<?php foreach ($links as $key => $row) { ?>
 							<tr>
 								<td> <?= $row['link'] ?> </td>
-								<td> <?= $row['status'] ?> </td>
 								<td> 
 									<button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editRow(<?php echo htmlspecialchars(json_encode($row)); ?>)">
 										<i class='bx bx-pencil'></i>
@@ -103,7 +101,7 @@ $links = $instance->allWithOutTrash();
     function editRow(row) {
         document.getElementById('edit-id').value = row.id;
         document.getElementById('edit-link').value = row.link;
-        document.getElementById('edit-status').value = row.status;
+        // document.getElementById('edit-status').value = row.status;
     }
 
 	function deleteRow(row) {

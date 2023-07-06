@@ -29,10 +29,10 @@
             <input type="text" class="form-control" name="link" aria-label="Link" aria-describedby="inputGroup-sizing-sm" required>
           </div>
 
-          <div class="input-group input-group-sm mb-3">
+          <!-- <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Status</span>
             <input type="text" class="form-control" name="status" aria-label="Status" aria-describedby="inputGroup-sizing-sm" required>
-          </div>
+          </div> -->
 
         </div>
 
@@ -64,10 +64,10 @@
             <input type="text" class="form-control" name="link" id="edit-link" aria-label="Link" aria-describedby="inputGroup-sizing-sm" required>
           </div>
 
-          <div class="input-group input-group-sm mb-3">
+          <!-- <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 146px">Status</span>
             <input type="text" class="form-control" name="status" id="edit-status" aria-label="Status" aria-describedby="inputGroup-sizing-sm" required>
-          </div>
+          </div> -->
 
         </div>
 

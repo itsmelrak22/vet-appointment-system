@@ -23,14 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $link = $_POST['link'];
     $link = filter_var($link, FILTER_SANITIZE_STRING);
     if (empty($link)) {
-        $errors[] = "Link is requiredss";
+        $errors[] = "Link is required";
     }
 
-    $status = $_POST['status'];
-    $status = filter_var($status, FILTER_SANITIZE_STRING);
-    if (empty($status)) {
-        $errors[] = "Status is required";
-    }
+    // $status = $_POST['status'];
+    // $status = filter_var($status, FILTER_SANITIZE_STRING);
+    // if (empty($status)) {
+    //     $errors[] = "Status is required";
+    // }
 
 
     // Check if already taken
@@ -44,9 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../meeting_links.php');
     }else{
         try {
+            // $instance->setQuery(" UPDATE `meeting_links`
+            //                         SET `link` = '$link',
+            //                             `status` = '$status',
+            //                             `updated_at` = '$today'
+            //                         WHERE `id` = $id;
+            //                         ");
             $instance->setQuery(" UPDATE `meeting_links`
                                     SET `link` = '$link',
-                                        `status` = '$status',
                                         `updated_at` = '$today'
                                     WHERE `id` = $id;
                                     ");
