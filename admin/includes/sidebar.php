@@ -33,6 +33,8 @@ $allowedLinksVirtual = [
   "dashboard-virtual-cancelled.php"
 ];
 ?>
+
+
   <div class="sidebar open">
     <ul class="nav-list">
       <li style="margin-left: -25px;">
@@ -181,41 +183,53 @@ $allowedLinksVirtual = [
       <!-- CONTENT -->
       <section id="content">
         <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"><h2>Circle of Life Veterinary Clinic</h2></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <span id="datetime"></span>
-                </li>
-              </ul>
+        <style>
+  /* Custom CSS */
+  .dropdown-menu a.dropdown-item:hover {
+    background-color: #0C375A;
+    color: #fff;
+  }
+</style>
 
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <img src="<?= $_SESSION['user']['avatar'] ?>" alt="profileImg" class="avatar" style="height: 50px; width: 50px; border-radius: 6px;">
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link mt-3" href="#"><strong><?= $_SESSION['user']['name'] ?></strong></a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link mt-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <strong><i class="bx bx-cog mt-1"></i></strong>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#editProfile" onClick="previewEditProfileImage('<?=$_SESSION['user']['avatar']?>')">Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #0C375A !important">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><h2 class="text-white">Circle of Life Veterinary Clinic</h2></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <span id="datetime" class="text-white"></span>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img src="<?= $_SESSION['user']['avatar'] ?>" alt="profileImg" class="avatar" style="height: 50px; width: 50px; border-radius: 6px;">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mt-3 text-white" href="#"><strong><?= $_SESSION['user']['name'] ?></strong></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link mt-3 dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <strong><i class="bx bx-cog mt-1"></i></strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: #0C375A;">
+            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal" data-bs-target="#editProfile" onClick="previewEditProfileImage('<?=$_SESSION['user']['avatar']?>')">Edit Profile</a></li>
+            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
 
         <!-- Edit Modal -->
             <form action="query_resource/user_edit.php" method="post"  enctype="multipart/form-data">
