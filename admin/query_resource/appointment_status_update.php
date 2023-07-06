@@ -154,7 +154,7 @@ function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, 
         echo "Message Sent";
         $_SESSION['success'] = "Appointment has been updated and Email has been Sent!!";
         // header('Location: ../dashboard-walkin-confirm-app.php?id='.$ID);
-        header('Location: ../dashboard-walkin-pending.php');
+        header('Location: ../dashboard-walkin-today.php');
         
     }
 

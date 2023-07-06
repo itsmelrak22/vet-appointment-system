@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if( !isset($_POST['is_to_send_email']) ){
             // header('Location: ../dashboard-virtual-confirm-app.php?id='.$id);
             $_SESSION['success'] = "Appointment has been updated !";
-            header('Location: ../dashboard-virtual-today.php');
+            header('Location: ../dashboard-virtual-pending.php');
         }
 
 
@@ -151,7 +151,7 @@ function sendConfirmEmail($MAIL_TO, $RECEIVER_NAME, $STATUS, $APPOINTMENT_DATE, 
         echo "Message Sent";
         $_SESSION['success'] = "Appointment has been updated and Email has been Sent!!";
         // header('Location: ../dashboard-virtual-confirm-app.php?id='.$ID);
-        header('Location: ../dashboard-virtual-pending.php');
+        header('Location: ../dashboard-virtual-today.php');
 
     }
 
