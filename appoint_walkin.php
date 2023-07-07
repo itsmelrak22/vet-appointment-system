@@ -1,15 +1,30 @@
-<?php require_once('link/header.php') ?>
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-  </symbol>
-  <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-  </symbol>
-  <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-  </symbol>
-</svg>
+<?php 
+session_start(); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Veterinary Appointment System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="./css/homepages.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/services.css">
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<body>
 <?php
 date_default_timezone_set('Asia/Manila');
 
@@ -56,47 +71,73 @@ if( (int) $walkinSettings->is_disabled ){
 
 
 ?>
-<div class="container date-picker-main-container d-flex justify-content-center align-items-center">
-  <div class="container">
+<div class="container content-wrapper date-picker-main-container d-flex justify-content-center align-items-center">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    </symbol>
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+  </svg>
     <?php if ( isset($_SESSION['errors']) && count( $_SESSION['errors'] ) > 0 ) { ?>
-        <div class="mt-4">
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <ul>
-                <?php foreach ($_SESSION['errors'] as $key => $value) { ?>
-                  <li>
-                    <strong> Notice! </strong> <?= $value ?>
-                  </li>
-                <?php  } ?>
-              </ul>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+      <div class="mt-4">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+              <?php foreach ($_SESSION['errors'] as $key => $value) { ?>
+                <li>
+                  <strong> Notice! </strong> <?= $value ?>
+                </li>
+              <?php  } ?>
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      <?php unset($_SESSION['errors']); }  ?>
+      </div>
+    <?php unset($_SESSION['errors']); }  ?>
 
-      <?php if ( isset($_SESSION['success']) ) { ?>
-        <script>
-          swal("Good job!", "You have Successfully Booked an appointment", "success");
-        </script>
-      <?php unset($_SESSION['success']); }  ?>
+    <?php if ( isset($_SESSION['success']) ) { ?>
+      <script>
+        Swal.fire({
+        title: "Good job!",
+        text: "You have successfully booked an appointment",
+        icon: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "index.php";
+        }
+      });
+
+      </script>
+    <?php unset($_SESSION['success']); }  ?>
 
       <div class="container">
+        <div class="mt-2">
+            <a class="btn btn-outline-primary" type="button" href="index.php">
+                <span><ion-icon name="arrow-undo" style="font-size: 24px;"></ion-icon> Back</span>
+            </a>
+        </div>
         <div class="row date-picker-row">
           <div class="col">
+            <div class=" d-flex justify-content-center mb-2">
+              <div class="d-grid gap-4 mx-auto">
+                <h1 class="display-6">Clinic Appointment</h1>
+              </div>
+            </div>
+            <div class=" d-flex justify-content-center mb-2">
+              <div class="d-grid gap-4 mx-auto">
+                <h1 class="display-6">Select Date</h1>
+              </div>
+            </div>
             <div id="datepicker"></div>
           </div>
         </div>
-        <div class="row" style="margin-top: 15px">
-          <div class="col d-flex justify-content-center ">
-            <div class="d-grid gap-2 col-6 mx-auto">
-            <a class="btn btn-primary" type="button" href="index.php">
-              Back
-            </a>
-          </div>
-          </div>
-        </div>
       </div> 
-  </div>
-  
 </div>
 
 <!-- Modal -->
@@ -199,7 +240,18 @@ if( (int) $walkinSettings->is_disabled ){
 </form>
 
 
-<?php include('link/scripts.php') ?> 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
 
@@ -223,7 +275,12 @@ function validatePhoneNumber() {
   // Check if the input contains non-digit characters
   if (phoneNumberInput.value !== phoneNumber) {
     // alert("Invalid input. Please enter numbers only.");
-    swal("Invalid input.", "Please enter numbers only.", "error")
+    // swal("Invalid input.", "Please enter numbers only.", "error")
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid input',
+      text: 'Please enter numbers only!',
+    })
     phoneNumberInput.value = previousPhoneNumber; // Restore the previous valid phone number
     return;
   }
@@ -236,7 +293,12 @@ function validatePhoneNumber() {
   } else {
     // Invalid phone number
     // phoneNumberInput.setCustomValidity("Please enter a valid phone number consisting of up to 11 digits.");
-    swal("Invalid phone number.", "Please enter a valid phone number consisting of up to 11 digits.", "error")
+    // swal("Invalid phone number.", "Please enter a valid phone number consisting of up to 11 digits.", "error")
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid phone number',
+      text: 'Please enter a valid phone number consisting of up to 11 digits.',
+    })
     phoneNumberInput.value = previousPhoneNumber; // Restore the previous valid phone number
   }
 }

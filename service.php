@@ -11,6 +11,7 @@ $servicesAll = $services->allWithOutTrash();
     <div class="about_content">
         <h2 class="services-title">Our Services</h2>
         <label><!-- line here --></label> 
+    </div>
     <br>
 </about> 
 <div class="container team">

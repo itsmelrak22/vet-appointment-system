@@ -1,8 +1,14 @@
- /* #datepicker-container {
-		width: 50%;
-		height: 80vh;
-		margin: 50px auto;
-    } */
+
+*{
+    margin:  0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+font-family: 'Poppins', sans-serif;
+}
 
 
     #datepicker {
@@ -18,7 +24,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        /* height: 100vh; */
       }
 
 

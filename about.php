@@ -11,23 +11,16 @@ $doctors = $instance->allWithOutTrash();
 <about id="about">
     <div class="about_content">
         <h2>About Us</h2>
-                 <label><!-- line here --></label> 
-                    <p class="first"> Sincere, compassionate and skilled veterinary care for all dogs and cats - all breeds and sizes.</p>
-                        <span id="dots">...</span>
-                            <span class="second" id="more">
-                                Circle Of Life Veterinary Clinic started their official operation /launched their grand opening on February 24 2021. Circle of Life Veterinary Clince offers various services like grooming, services, Microscopic examination, Progesterone test, Surgery, etc. The Clinice has three doctors — two resident Veterinarians and one on-call veterinarian. It also has one groomer, one assistant veterinarian and one receptionist. The clinic has an in-house Ultrasound Services and Bionote Vcheck V200 Immunoflourescenes Analyzer. The Clinic also offers microchip implant  — Pet mircochip from Petdentity. <br>
-                                We are a team of passionate and dedicated veterinarians who provide high-quality care for your pets. Our mission is to help your pets live happy and healthy lives by providing them with the best medical care possible. We believe that every pet deserves the best care, and we strive to make sure that all of our patients receive the personalized attention that they need.
-                            
-                            We offer a range of services, including regular check-ups, vaccinations, and emergency care. Our team is always available to answer any questions that you may have about your pet's health, and we are committed to providing you with the information that you need to make informed decisions about your pet's care. We are dedicated to building long-term relationships with our clients and their pets. We believe that it is important to get to know our patients and their owners in order to provide them with the best possible care. We are committed to providing a warm and welcoming environment for our clients and their pets.
-                        
-                                </span></p>
-
-                                <button onclick="myFunction()" id="myBtn"> Read more</button>
-                     <!-- </p> -->
+        <label><!-- line here --></label> 
+        <p class="first"> Sincere, compassionate and skilled veterinary care for all dogs and cats - all breeds and sizes.</p>
+        <span id="dots">...</span>
+        <span class="second" id="more">
+            Circle Of Life Veterinary Clinic started their official operation /launched their grand opening on February 24 2021. Circle of Life Veterinary Clince offers various services like grooming, services, Microscopic examination, Progesterone test, Surgery, etc. The Clinice has three doctors — two resident Veterinarians and one on-call veterinarian. It also has one groomer, one assistant veterinarian and one receptionist. The clinic has an in-house Ultrasound Services and Bionote Vcheck V200 Immunoflourescenes Analyzer. The Clinic also offers microchip implant  — Pet mircochip from Petdentity. <br>
+            We are a team of passionate and dedicated veterinarians who provide high-quality care for your pets. Our mission is to help your pets live happy and healthy lives by providing them with the best medical care possible. We believe that every pet deserves the best care, and we strive to make sure that all of our patients receive the personalized attention that they need.
+            We offer a range of services, including regular check-ups, vaccinations, and emergency care. Our team is always available to answer any questions that you may have about your pet's health, and we are committed to providing you with the information that you need to make informed decisions about your pet's care. We are dedicated to building long-term relationships with our clients and their pets. We believe that it is important to get to know our patients and their owners in order to provide them with the best possible care. We are committed to providing a warm and welcoming environment for our clients and their pets.
+        </span>
+            <button onclick="myFunction()" id="myBtn" class="mt-2"> Read more</button>
     </div>
-    <br>
-  </div>
-
 </about> 
 <div class="container">
     <div class="container team">

@@ -1,14 +1,16 @@
 <br>
-<div id="virtual">
-  <h2 class="virtual-consult-title">Virtual Consultation</h2>
-</div>
-
-
+<about id="virtual">
+    <div class="about_content">
+        <h2 class="virtual-consult-title">Virtual Consultation</h2>
+        <label><!-- line here --></label> 
+    </div>
+    <br>
+</about> 
 <div class="container">
   <div class="accordion accordion-lg" id="accordionExample">
     <div class="accordion-item">
       <h3 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
           What Is Virtual Consultation?
         </button>
       </h3>

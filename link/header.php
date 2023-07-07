@@ -22,6 +22,7 @@ session_start(); ?>
     <link rel="stylesheet" href="./css/services.css">
     <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
