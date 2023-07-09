@@ -93,9 +93,14 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 										<i class='bx bx-pencil'></i>
 									</button>
 
+									<button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#changePasswordModal" onclick="changePassword(<?php echo htmlspecialchars(json_encode($user)); ?>)">
+										<img src="../images/padlock.png" alt="padlock.png">
+									</button>
+
 									<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteUser(<?php echo htmlspecialchars(json_encode($user)); ?>)">
 										<i class='bx bx-trash'></i>
 									</button>
+									
 								</td>
 							</tr>
 						<?php } ?>
@@ -114,7 +119,6 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 </script>
 <script>
     function editUser(user) {
-		
         document.getElementById('user-edit-id').value = user.id;
         document.getElementById('user-edit-fullname').value = user.name;
         document.getElementById('user-edit-username').value = user.username;
@@ -128,6 +132,12 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 	function deleteUser(user) {
         document.getElementById('user-delete-id').value = user.id;
 	}
+
+	function changePassword(user) {
+        document.getElementById('user-change-id').value = user.id;
+	}
+
+
 
 </script>
 

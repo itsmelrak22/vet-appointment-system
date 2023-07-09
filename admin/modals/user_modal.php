@@ -136,6 +136,39 @@
   </div>
 </div>
 
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="query_resource/user_change_password.php" method="post">
+        <input type="hidden" name="id" id="user-change-id">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 160px">Old Password</span>
+            <input type="password" class="form-control" name="old_password" aria-label="Password" aria-describedby="inputGroup-sizing-sm" required>
+          </div>
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 160px">New Password</span>
+            <input type="password" class="form-control" name="new_password" aria-label="Password" aria-describedby="inputGroup-sizing-sm" required>
+          </div>
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm"  style="width: 160px">Confirm New Password</span>
+            <input type="password" class="form-control" name="confirm_new_password" aria-label="Confirm Password" aria-describedby="inputGroup-sizing-sm" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Understood</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 
 <script>
