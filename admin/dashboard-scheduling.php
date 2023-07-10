@@ -242,6 +242,14 @@
 		// Convert start and end times to 24-hour format for comparison
 		var startHour24 = parseInt(startHour);
 		var endHour24 = parseInt(endHour);
+		var startTime = `${startHour}:${startMinute} ${startPeriod}`
+		var endTime = `${endHour}:${endMinute} ${endPeriod}`
+		console.log( 'startTime', startTime )
+		console.log( 'endTime', endTime )
+		if( startTime === endTime ){
+			swal("Same time", "Start time and End time is invalid", "error");
+			return
+		}
 
 		if (startPeriod === "PM" && startHour24 < 12) {
 			startHour24 += 12;
