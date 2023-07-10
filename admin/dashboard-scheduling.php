@@ -69,6 +69,7 @@
 							<tr>
 								<th>DATE</th>
 								<th>TIME</th>
+								<th>CREATED AT</th>
 								<th>ACTION</th>
 							</tr>
 						</thead>
@@ -454,6 +455,11 @@
 			var timeCell = document.createElement('td');
 			timeCell.textContent = `${item.start_hour}:${item.start_minute} ${item.start_period} - ${item.end_hour}:${item.end_minute} ${item.end_period}`;
 			row.appendChild(timeCell);
+
+			// Insert the time in the second column
+			var createdAtCell = document.createElement('td');
+			createdAtCell.textContent = `${item.created_at}`;
+			row.appendChild(createdAtCell);
 
 			// Insert the action buttons in the third column
 			var actionCell = document.createElement('td');
