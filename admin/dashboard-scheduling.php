@@ -290,6 +290,7 @@
 			// Extract the given time components
 			const [givenHours, givenMinutes] = givenTime.split(':').map(Number);
 			
+			console.log(givenHours < currentHours || (givenHours === currentHours && givenMinutes < currentMinutes))
 			// Compare the given time with the current time
 			if (givenHours < currentHours || (givenHours === currentHours && givenMinutes < currentMinutes)) {
 				swal("Start Time invalid.", "start time is past the current time", "error");

@@ -357,7 +357,7 @@ function validatePhoneNumber() {
             var allowedDates = response.data.map(function(res) {
               return $.datepicker.formatDate("mm-dd-yy", new Date(res.date));
             });
-            console.log('allowedDates', allowedDates)
+            // console.log('allowedDates', allowedDates)
             initializeDatepicker(allowedDates);
           }
         };
@@ -416,19 +416,19 @@ function validatePhoneNumber() {
           xhr.onload = function() {
             if (xhr.status === 200) {
                 dataGathered = JSON.parse(xhr.responseText)
-                console.log(dataGathered)
-                const select = document.getElementById('time-slot');
-                while (select.options.length > 0) {
-                  select.remove(0);
+                // console.log(dataGathered)
+                const selectElement = document.getElementById('time-slot');
+                while (selectElement.options.length > 0) {
+                  selectElement.remove(0);
                 } 
 
                 const placeholderOption = document.createElement('option');
-                placeholderOption.value = '';
-                placeholderOption.text = 'Select Time';
-                placeholderOption.disabled = true;
-                placeholderOption.selected = true;
-                placeholderOption.hidden = true;
-                select.appendChild(placeholderOption);
+                // placeholderOption.value = '';
+                // placeholderOption.text = 'Select Time';
+                // placeholderOption.disabled = true;
+                // placeholderOption.selected = true;
+                // placeholderOption.hidden = true;
+                // selectElement.appendChild(placeholderOption);
 
                // Get the current time
                 var currentTime = new Date();
@@ -469,36 +469,40 @@ function validatePhoneNumber() {
                   const option = document.createElement('option');
                   option.value = item.id;
                   option.text = `${item.start_hour}:${item.start_minute} ${item.start_period} - ${item.end_hour}:${item.end_minute} ${item.end_period}`;
+
                   // console.log('startTime', startTime);
                   // console.log('combinedDateTime', combinedDateTime);
-
+                  // console.log(selectElement)
                   // Check if selectedDate is in the future
-                  console.log('combinedDateTime', combinedDateTime)
-                  console.log('currentDatetime', new Date())
                   if (combinedDateTime >= new Date()) {
-                    console.log('future')
-                    
+                    // console.log('future')
+                    // console.log(option.text)
                     option.disabled = false; 
+                    // console.log(option)
 
                   } else {
-                    console.log('past')
+                    // console.log('past')
                     if (startTime < currentTime) {
                       option.disabled = true; 
                     } else {
                       option.disabled = false; 
                     }
-                  }
-                  console.log('---------------')
 
-                    
-                    select.appendChild(option);
+                  }
+                  // console.log(option)
+                  // console.log('---------------')
+                  
+                  setTimeout(() => {
+                    selectElement.appendChild(option);
+                  }, 300);
+
                   });
+
 
               getDateSchedules('getTimeSlot', selectedDate)
 
             } else {
               console.log('Error: ' + xhr);
-          
             }
           };
 
