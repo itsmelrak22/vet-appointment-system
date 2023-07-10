@@ -169,7 +169,7 @@ if( (int) $virtualSettings->is_disabled ){
                       <div class="col-md-6 mb-3">
                         <label for="time-slot" class="form-label">Time <span class="text-danger">*</span></label>
                         <select class="form-select client-select-time" name="time" id="time-slot" required placeholder="Select Timeslot">
-                          <option value="" selected>Select Time</option>
+                          <option value="" selected disabled hidden>Select Time</option>
                         </select>
                       </div>
                       <div class="col-md-6 mb-3">
@@ -423,12 +423,12 @@ function validatePhoneNumber() {
                 } 
 
                 const placeholderOption = document.createElement('option');
-                // placeholderOption.value = '';
-                // placeholderOption.text = 'Select Time';
-                // placeholderOption.disabled = true;
-                // placeholderOption.selected = true;
-                // placeholderOption.hidden = true;
-                // selectElement.appendChild(placeholderOption);
+                placeholderOption.value = '';
+                placeholderOption.text = 'Select Time';
+                placeholderOption.disabled = true;
+                placeholderOption.selected = true;
+                placeholderOption.hidden = true;
+                selectElement.appendChild(placeholderOption);
 
                // Get the current time
                 var currentTime = new Date();
@@ -515,6 +515,7 @@ function validatePhoneNumber() {
           const selectElement = document.querySelector('.client-select-time');
           array.forEach(el => {
             var optionToDisable = selectElement.querySelector(`option[value="${el.schedule_id}"]`); 
+            console.log('optionToDisable', optionToDisable)
             if(optionToDisable) optionToDisable.disabled = true;
           });
           // Check if the currently selected option is disabled
@@ -539,7 +540,9 @@ function validatePhoneNumber() {
             xhr.onload = function() {
               if (xhr.status === 200) {
                 const appointments = JSON.parse(xhr.responseText)
-                disableSchedules(appointments.data)
+                setTimeout(() => {
+                  disableSchedules(appointments.data)
+                }, 300);
               } else {
                 var errorResponse = JSON.parse(xhr.responseText);
                 alert(errorResponse.message)
