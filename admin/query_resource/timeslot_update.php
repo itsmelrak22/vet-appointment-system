@@ -17,6 +17,7 @@ $data = json_decode($_POST['data']);
 $date = trim($data->date); // Remove leading/trailing whitespace
 $date = filter_var($date, FILTER_SANITIZE_STRING);
 $id =  (int) $data->id;
+$doctor_id =  $data->doctor_id;
 $start_hour =  $data->start_hour;
 $start_minute = $data->start_minute;
 $start_period = $data->start_period;
@@ -50,6 +51,7 @@ if( isset($errors) && count( $errors ) > 0 ){
         $instance->setQuery(" UPDATE `schedules` 
                                 SET 
                                     `start_hour`='$start_hour',
+                                    `doctor_id`='$doctor_id',
                                     `start_minute`='$start_minute',
                                     `start_period`='$start_period',
                                     `end_hour`='$end_hour',

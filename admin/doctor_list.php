@@ -73,7 +73,7 @@ if( $_SESSION['user']['category'] != 'Admin' ) {
 	<div class="card">
 		<div class="card-body" style="min-height: 75vh">
 			<div class="table-responsive">
-				<table id="example" class="table table-striped">
+				<table  class="table table-striped">
 				<thead>
 					<tr>
 						<th>Doctor's Name</th>

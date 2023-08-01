@@ -37,6 +37,11 @@
             <option value="PM">PM</option>
           </select>
         </div>
+        <!-- <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 146px">Select Doctor</span>
+            <select id="doctor-select" name="doctor_id" class="form-select" style="width: 60px" required>
+            </select>
+        </div> -->
       </div>
 
       <div class="modal-footer">
@@ -87,6 +92,12 @@
               <option value="PM">PM</option>
             </select>
           </div>
+
+          <!-- <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 146px">Select Doctor</span>
+              <select id="edit-doctor-select" name="doctor_id" class="form-select" style="width: 60px" required>
+              </select>
+          </div> -->
         </div>
 
         <div class="modal-footer">

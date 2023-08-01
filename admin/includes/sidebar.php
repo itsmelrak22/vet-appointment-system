@@ -40,8 +40,8 @@ $allowedLinksVirtual = [
       <li style="margin-left: -25px;">
           <a href="../index.php">
           <img src="../images/adlogo.png"></img>
-          <span class="links_name">Go to Website</span>
-          <span class="tooltip">Go to Website </span>
+          <span class="links_name"></span>
+          <span class="tooltip"> </span>
         </a>
       </li>
     
@@ -154,6 +154,18 @@ $allowedLinksVirtual = [
             <span class="links_name">Doctor List</span>
           </a>
           <span class="tooltip">Doctor List</span>
+        </li>
+
+        <li>
+          <?php if($url == 'doctor_schedules.php'){ ?>
+            <a href="../admin/doctor_schedules.php" class="active">
+          <?php }else{ ?>
+          <a href="../admin/doctor_schedules.php">
+          <?php } ?>
+            <i class='bx bx-calendar' ></i>
+            <span class="links_name">Doctor Schedules</span>
+          </a>
+          <span class="tooltip">Doctor Schedules</span>
         </li>
 
         <li>

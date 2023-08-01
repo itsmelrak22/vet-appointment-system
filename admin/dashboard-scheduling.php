@@ -58,25 +58,27 @@
 		<div class="col table-minutes">
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
+					<div class="head" >
 						<h3 id="selected-date">SELECTED DATE: </h3>
 						<button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
 							ADD TIME SLOT
 						</button>
 					</div>
-					<table id="schedule_table">
-						<thead>
-							<tr>
-								<th>DATE</th>
-								<th>TIME</th>
-								<th>CREATED AT</th>
-								<th>ACTION</th>
-							</tr>
-						</thead>
-						<tbody>
+					<div class="table-responsive">
+						<table id="schedule_table" class="table" style="width:100%;">
+							<thead>
+								<tr>
+									<th>DATE</th>
+									<th>TIME</th>
+									<th>CREATED AT</th>
+									<th>ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
 
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -88,6 +90,37 @@
 <?php require_once('includes/scripts.php') ?> 
 <?php require_once('includes/footer.php') ?> 
 <script>
+	function getDoctors() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "query_resource/doctors_get.php", true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+			populateSelect(response.data);
+          }
+        };
+        xhr.send();
+	}
+	function populateSelect(doctorsData) {
+		const selectElement = document.getElementById('doctor-select');
+		const editSelectElement = document.getElementById('edit-doctor-select');
+
+		// Clear any existing options
+		selectElement.innerHTML = '';
+		editSelectElement.innerHTML = '';
+
+		// Create and append options for each doctor
+		doctorsData.forEach(doctor => {
+			const option = document.createElement('option');
+			option.value = doctor.id;
+			option.text = doctor.name;
+			selectElement.appendChild(option);
+			editSelectElement.appendChild(option);
+		});
+	}
+
+	// getDoctors();
+
 	let selectedDate = '';
 
 	document.addEventListener('DOMContentLoaded', function() {
@@ -118,7 +151,9 @@
     });
 
 
+
 	document.addEventListener('DOMContentLoaded', function() {
+
         var selectedDateElement = document.getElementById('selected-date');
         var currentDate = new Date().toLocaleDateString('en-US', {
 			month: '2-digit',
@@ -238,14 +273,13 @@
 		var endHour = document.getElementById("end-hour-select").value;
 		var endMinute = document.getElementById("end-minute-select").value;
 		var endPeriod = document.getElementById("end-period-select").value;
+		// var doctorId = document.getElementById("doctor-select").value;
 
 		// Convert start and end times to 24-hour format for comparison
 		var startHour24 = parseInt(startHour);
 		var endHour24 = parseInt(endHour);
 		var startTime = `${startHour}:${startMinute} ${startPeriod}`
 		var endTime = `${endHour}:${endMinute} ${endPeriod}`
-		console.log( 'startTime', startTime )
-		console.log( 'endTime', endTime )
 		if( startTime === endTime ){
 			swal("Same time", "Start time and End time is invalid", "error");
 			return
@@ -327,6 +361,7 @@
 			end_hour: endHour,
 			end_minute: endMinute,
 			end_period: endPeriod,
+			// doctor_id: doctorId
 		};
 
 		// Create the AJAX request
@@ -362,6 +397,7 @@
 		var end_hour = editModal.querySelector('#end-hour-select').value;
 		var end_minute = editModal.querySelector('#end-minute-select').value;
 		var end_period = editModal.querySelector('#end-period-select').value;
+		// var doctor_id = editModal.querySelector('#edit-doctor-select').value;
 
 		const data = {
 			"date" : date,
@@ -372,6 +408,7 @@
 			"end_hour" : end_hour,
 			"end_minute" : end_minute,
 			"end_period" : end_period,
+			// "doctor_id" : doctor_id,
 		}
 
 		// Create the AJAX request
@@ -433,7 +470,6 @@
 		xhr.onload = function() {
 		if (xhr.status === 200) {
 			dataGathered = JSON.parse(xhr.responseText)
-			console.log( 'dataGathered', dataGathered ) 
 			displayArrayInTable( dataGathered.data )
 		} else {
 			console.log('Error: ' + xhr);
@@ -446,6 +482,7 @@
 	}
 
   	function displayArrayInTable(array) {
+		console.log(array)
 		clearTable();
 		var table = document.getElementById('schedule_table');
 		var tbody = table.querySelector('tbody');
@@ -463,6 +500,11 @@
 			var timeCell = document.createElement('td');
 			timeCell.textContent = `${item.start_hour}:${item.start_minute} ${item.start_period} - ${item.end_hour}:${item.end_minute} ${item.end_period}`;
 			row.appendChild(timeCell);
+
+			// Insert the time in the second column
+			// var nameCell = document.createElement('td');
+			// nameCell.textContent = `${item.name}`;
+			// row.appendChild(nameCell);
 
 			// Insert the time in the second column
 			var createdAtCell = document.createElement('td');
@@ -485,7 +527,7 @@
 
 			var editText = document.createElement('span');
 			editText.setAttribute('class', 'text');
-			editText.textContent = 'Edit';
+			// editText.textContent = 'Edit';
 
 			editButton.appendChild(editIcon);
 			editButton.appendChild(editText);
@@ -505,7 +547,7 @@
 
 			var deleteText = document.createElement('span');
 			deleteText.setAttribute('class', 'text');
-			deleteText.textContent = 'Delete';
+			// deleteText.textContent = 'Delete';
 
 			deleteButton.appendChild(deleteIcon);
 			deleteButton.appendChild(deleteText);
@@ -522,6 +564,7 @@
 		var editModal = document.getElementById('editModal');
 		// Retrieve the item from the array based on the index
 		var item = dataGathered.data[index];
+		console.log(item)
 		document.getElementById('edit-id').value = item.id
 
 		// Set the values in the edit form fields
@@ -542,6 +585,9 @@
 
 		var endPeriodInput = editModal.querySelector('#end-period-select');
 		endPeriodInput.value = item.end_period;
+
+		// var doctorId = editModal.querySelector('#edit-doctor-select');
+		// doctorId.value = item.doctor_id;
 
 		// Set the index as a data attribute in the Save button
 		var saveButton = editModal.querySelector('#edit_save_button');
