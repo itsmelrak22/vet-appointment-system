@@ -151,6 +151,14 @@ if( (int) $virtualSettings->is_disabled ){
               <div class="container" id="selected_date_col" style="display: none">
                 <div class="card">
                   <div class="card-body">
+
+                    <h5 class="card-title">Scheduled Vet:</h5>
+                    <div class="row">
+                      <div class="col-md-12 mb-3">
+                        <label for="veterinarian_name" class="form-label">Veterinarian Name</label>
+                        <input type="text" class="form-control" id="veterinarian_name" name="owner_name" readonly>
+                      </div>
+                    </div>
                     <h5 class="card-title">Fill out pet information form</h5>
                     <input type="hidden" name="appointment_date" value="" id="appointment_date">
                     <div class="row">
@@ -417,6 +425,7 @@ function validatePhoneNumber() {
             if (xhr.status === 200) {
                 dataGathered = JSON.parse(xhr.responseText)
                 // console.log(dataGathered)
+                 
                 const selectElement = document.getElementById('time-slot');
                 while (selectElement.options.length > 0) {
                   selectElement.remove(0);
@@ -436,6 +445,8 @@ function validatePhoneNumber() {
 
                 // Create and add options
                 dataGathered.data.forEach(item => {
+                  const scheduledVet = document.getElementById('veterinarian_name');
+                  scheduledVet.value = item.doctor_name ? item.doctor_name : 'N/A'
                   // Extract start and end time information
                   var startHour = item.start_hour;
                   var startMinute = item.start_minute;

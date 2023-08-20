@@ -11,7 +11,6 @@ $instance = new DoctorSchedule;
 
 header('Content-Type: application/json; charset=utf-8');
 
-print_r($_POST);
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -29,8 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    $doctor_schedules = $instance->setQuery( "SELECT * FROM `doctor_schedules` WHERE `doctor_id` = '$doctor_id' AND `selected_date` = '$selected_date'" )->getAll();
-
+    $doctor_schedules = $instance->setQuery( "SELECT * FROM `doctor_schedules` WHERE `selected_date` = '$selected_date'" )->getAll();
 
     if( isset($errors) && count( $errors ) > 0 ){
         $_SESSION['errors'] = $errors;
@@ -38,20 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }else{
         try {
             if (count( $doctor_schedules ) > 0) {
+                $id = $doctor_schedules[0]['id'];
                 $instance->setQuery("UPDATE `doctor_schedules`
                                     SET `selected_date` = '$selected_date',
                                         `doctor_id` = '$doctor_id',
                                         `updated_at` = '$today'
-                                    WHERE `id` = '$doctor_schedules[0]['id']';");
+                                    WHERE `id` = $id;");
+                $_SESSION['success'] = "doctor schedules has been Updated!";
+
             }else{
                 $instance->setQuery(" INSERT INTO `doctor_schedules`( `selected_date`, `doctor_id`, `created_at`, `updated_at`) VALUES ('$selected_date','$doctor_id','$today', '$today') ");
+                $_SESSION['success'] = "doctor schedules has been added!";
             }
         } catch (\PDOException  $e) {
             die('Database connection error: ' . $e->getMessage());
         }
     }
 
-    $_SESSION['success'] = "doctor schedules has been added!";
     header('Location: ../doctor_schedules.php');
 }
 ?>

@@ -17,7 +17,7 @@ $data = json_decode($_POST['data']);
 // Perform validation and sanitization on the date
 $date = trim($data->date); // Remove leading/trailing whitespace
 $date = filter_var($date, FILTER_SANITIZE_STRING);
-$doctor_id =  $data->doctor_id;
+// $doctor_id =  $data->doctor_id;
 $start_hour =  $data->start_hour;
 $start_minute = $data->start_minute;
 $start_period = $data->start_period;
@@ -28,7 +28,6 @@ $end_period = $data->end_period;
 
 $schedules = $instance->setQuery( "SELECT * FROM `schedules` 
                                     WHERE `date` = '$date' 
-                                    AND `doctor_id` = '$doctor_id' 
                                     AND `start_hour` = '$start_hour' 
                                     AND `start_minute` = '$start_minute' 
                                     AND `start_period` = '$start_period' 
@@ -47,8 +46,8 @@ if( isset($errors) && count( $errors ) > 0 ){
     exit();
 }else{
     try {
-        $instance->setQuery(" INSERT INTO `schedules`( `date`, `doctor_id`,  `start_hour`, `start_minute`, `start_period`, `end_hour`, `end_minute`, `end_period`, `created_at`, `updated_at`) 
-                                    VALUES ('$date', $doctor_id,'$start_hour','$start_minute','$start_period','$end_hour', '$end_minute', '$end_period', '$today','$today')");
+        $instance->setQuery(" INSERT INTO `schedules`( `date`,  `start_hour`, `start_minute`, `start_period`, `end_hour`, `end_minute`, `end_period`, `created_at`, `updated_at`) 
+                                    VALUES ('$date','$start_hour','$start_minute','$start_period','$end_hour', '$end_minute', '$end_period', '$today','$today')");
         http_response_code(200);
         echo json_encode(array('message' => 'Success' ));
         exit();
